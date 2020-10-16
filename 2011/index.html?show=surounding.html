@@ -1,0 +1,723 @@
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="SC-Camp Super Computing Camp" />
+<meta name="keywords" content="Super computing, high performance, summer school, MPI, OpenMP, Grid Computing, performance evaluation" />
+<title>SC-Camp 2011</title>
+<link rel="icon" type="image/png" href="_images/picto2011.png" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="SpryAssets/SpryEffects.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+	var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_findObj(n, d) { //v4.01
+	var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+  if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_effectAppearFade(targetElement, duration, from, to, toggle)
+{
+	Spry.Effect.DoFade(targetElement, {duration: duration, from: from, to: to, toggle: toggle});
+}
+	//-->
+</script>
+</head>
+<body onload="MM_preloadImages('_images/SCcamp2011-survol.jpg')">
+<div class="fondSite">
+  <div class="accrochelogo">
+    <p><strong class="Style16b">Super Computing and Distributed Computing Camp</strong><br />
+      <span class="Style14">Universidad de Costa Rica, Sede del Atlántico en Turrialba<br />July 10-16, 2011</span></p>
+  </div>
+  <div class="logo">
+  </div>
+  <div style="clear:both"></div>
+  <div class="menu"><a href="index.html%3Fshow=overview.html" target="_self" onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Overview</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=program.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Program</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=application&amp;action=newLogin.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Application Form</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=camp.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Action Pictures</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=surounding.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Local Information</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=committee.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Committee</a></div>
+  <div class="colonneDroite">
+    <p><span style="letter-spacing: 8pt">SPONSORS</span></p>
+<p>       <a href="http://turrialba.sa.ucr.ac.cr/" target="_blank"><img src="_images/sponsors/simescud.gif" width="108" height="113" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+       <a href="https://www.grid5000.fr" target="_blank"><img src="_images/sponsors/grid5000.png" width="140" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://oar.imag.fr/" target="_blank"><img src="_images/sponsors/oar_logo.png" width="80" height="80" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://www.i3s.unice.fr/I3S/" target="_blank"><img src="_images/sponsors/I3S_logo.png" width="150" height="45" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="index.html%3Fshow=surounding.html" target="_blank"><img src="_images/sponsors/cenat.jpg" width="140" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="index.html%3Fshow=surounding.html" target="_blank"><img src="_images/sponsors/conarelogo.jpg" width="120" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="index.html%3Fshow=surounding.html" target="_blank"><img src="_images/sponsors/LogoNuevoCONICIT.gif" width="120" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="index.html%3Fshow=surounding.html" target="_blank"><img src="_images/sponsors/micit_transparente.jpg" width="140" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<p>    <a href="https://www.uis.edu.co" target="_blank"><img src="_images/sponsors/uis.jpg" alt="" width="120" height="79" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>
+</p>
+<p><a href="https://www.redclara.net" target="_blank"><img src="_images/sponsors/logo_clara.png" width="150" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+<p><a href="http://www.ecci.ucr.ac.cr/" target="_blank"><img src="_images/sponsors/logo_ecci.jpg" width="150" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+</p><a href="http://www.cecalc.ula.ve/" target="_blank"><img src="_images/sponsors/cecalcula.png" width="92" height="82" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></la><a href="https://www.ula.ve" target="_blank"><img src="_images/sponsors/udla.jpg" width="150" height="60" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+<p><span style="letter-spacing: 8pt">MEDIA PARTNERS</span></p>
+<p><a href="http://www.isgtw.org/" target="_blank"><img src="_images/partners/isgtw-button.jpg" width="159" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<a href="http://www.gridtalk.org/" target="_blank"><img src="_images/partners/logo-gridtalk.jpeg" width="108" height="108" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+    <img src="_images/barre-separation-horizontale.jpg" width="140" height="68" /><br />
+ <p><span class="Style16b"><strong>Past Events</strong></span><br/><br/>
+<a href="../2010/"><span class="Style12b"><strong>SC-Camp 2010</strong></span></a></p>
+  </div>
+  <div class="colonnePrincipale">
+
+
+
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />About Costa Rica</p>
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Local Information</span><br />
+</p>
+<p class="Style14j">Costa Rica is a small, tropical country,
+situated in the Central American isthmus. It is neighbored to the
+Northwest by Nicaragua and to the Southeast by Panama, and has
+coastlines on the Pacific to the West and on the Caribbean sea to the
+East. It is located approximately between 8 and 11 degrees North
+latitude and 82 degrees West longitude.</p>
+
+<iframe width="670" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;msa=0&amp;msid=213651804441979366083.00049bd5671ce8e7f6cd5&amp;t=h&amp;source=embed&amp;ll=12.297068,-83.408203&amp;spn=29.732538,58.886719&amp;z=4&amp;output=embed"></iframe><br /><small>View <a href="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;msa=0&amp;msid=213651804441979366083.00049bd5671ce8e7f6cd5&amp;t=h&amp;source=embed&amp;ll=12.297068,-83.408203&amp;spn=29.732538,58.886719&amp;z=4" style="color:#0000FF;text-align:left">SC-Camp 2011</a> in a larger map</small>
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Languages</span><br />
+</p>
+<p class="Style14j">The official language is Spanish. A relatively large
+part of the population speaks English, due to the magnitude of the
+country's foreign commercial and cultural exchange. Also, in some
+regions of the country, native languages are spoken: Cabecar, Bribri,
+Maleku (also known as Guatuso), Ngöbe (aka Guaymí), Térraba, Boruca, and
+Limon Creole English. </p>
+<br />
+
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Population</span><br />
+</p>
+<p class="Style14j">The population, of approximately 4.5 million
+inhabitants, is mostly mestizo, however there is a large ethnic and
+cultural diversity, due to a long series of immigrations from different
+parts of the world, and large demographic movements in the region due to
+social and political turmoil during the last decades.
+</p>
+
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Political and geographical
+division</span><br />
+</p>
+<p class="Style14j">The country is divided geographically in seven
+provinces: San José (its header city San José is the country's Capital),
+Alajuela (header city Alajuela), Cartago (Cartago), Heredia (Heredia),
+Puntarenas (Puntarenas), Guanacaste (Liberia) and Limón (Limón). The
+city of Turrialba is located within the province of Cartago.</p>
+
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Political system and social
+situation</span><br />
+</p>
+<p class="Style14j">Since the mid 1950s, when the National Army was
+abolished and social investment was considerably raised on education and
+public health, Costa Rica is ruled by a republican, pluripartisan
+political system. Its social welfare situation still inherits some of
+the benefits of the universal social security system developed during
+the 1960s and 1970s, which offers the population a basic structure for
+education, public health and communication in most cities and towns in
+the country. However, that condition has been heavily degraded during
+the last three decades of financial crisis along with State policies
+focused on public spending reduction and the country's opening to global
+markets.</p>
+
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Education</span><br />
+</p>
+<p class="Style14j">The literacy rate in Costa Rica is higher than
+95% and basic education is mandatory; also, State-funded higher
+education has been reached by almost 20% of the population.</p>
+
+
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Economy and Society</span><br />
+</p>
+<p class="Style14j">Costa Rica has developed during the last three
+decades a strong strategy for economic growth based on technical
+education, English as a second language, and the formation of
+entrepreneural initiatives to attract foreign investment in markets such
+as high technologies. This, however, at a cost on social investment.
+This context makes it more relevant in the long term than before to
+invest in scientific research and technology development as a way to
+develop own, innovative means to approach problems of a national or
+regional scale related to public health, education, social security,
+disaster prevention and management, environment, biodiversity and
+others.</p>
+
+
+<br />
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Geography and Climate</span><br />
+</p>
+<p class="Style14j">Costa Rica, with an extension of 51.100 square
+kilometers, has a large weather diversity caused by the influence of
+dominant wind currents coming mostly from the North, the Caribbean Sea
+and the Pacific Ocean. From the dry tropical flatlands in Guanacaste, on
+the Northwest side of the country, to the tropical rainforest on the
+Caribbean coast, passing over the humid weather of the highlands, a
+large number of different microclimate areas can be identified. The
+highest mountain peak, Cerro Chirripó, rises 3.820 meters over the sea
+level. Eleven volcanos form an almost straight line from Northwest in
+direction Southeast. Several of them are currently active: Tenorio,
+Arenal, Poás, Irazú and Turrialba. In dormant state are Orosi, Rincón de
+la Vieja, Miravalles, Platanar, Hula, and Barva.</p>
+
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />About Turrialba</p>
+<a name="about" id="about"></a>
+<p><span class="moyentitre"></span><br />
+</p>
+<p class="Style14j">The city of Turrialba, situated only at 646
+meters over the sea level in the Huetar region, was developed along the
+old passway from the Highlands to Port Limón on the Caribbean Sea. It is
+located in the province of Cartago, right at the foot of the Central
+Mountain Range (Cordillera Central), where the flatlands start their
+lead to the East coast. Economy in Turrialba is based on commerce, sugar
+cane grow, coffee, macadamia and dairy products. The county
+(cantón) of Turrialba has approcimately 800,000 inhabitants and has an
+extention of 1,664.57 km2.</p>
+
+<a href="gallery/index.html" target="GALLERY"><img src="_images/Turrialba_Parque_Central.jpg" align="top" width="670" height="235" border="0"></a>
+
+
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />Getting to Costa Rica and Turrialba</p>
+<a name="about" id="about"></a>
+<p><span class="moyentitre"></span><br />
+</p>
+
+
+
+<p class="Style14j">You can reach Costa Rica by land or air. Coming
+by land, the Interamerican Road crosses the country from the Nicaraguan
+border, in the small town of Peñas Blancas, to the Panameniam border, on
+the city of Paso Canoas. It takes somewhere between 12 and 15 hours to
+cross the country along this road.</p>
+
+<p class="Style14j">To arrive by air, you should plan to land in
+Juan Santamaría International Airport (airport code: SJO), located in
+the city of Alajuela, approximately 20 kilometers from San José.</p>
+
+<p class="Style14j">Moreover, SC-CAMP 2011's Local Committee has
+organized the transportation for instructors and participants to and
+from the event's site as explained further below. <br />
+</p>
+<br />
+<p><span class="moyentitre">Upon your arrival in Costa Rica </span><br />
+</p>
+<p class="Style14j">
+We suggest that you contact the Local Committee by email if you have any questions or any special needs once you arrive in Costa Rica.
+</p>
+<p class="Style14j">
+Upon your arrival at the Juan Santamaría airport, after passing through Immigration and Customs, you will need to seek for the counter of Taxis Unidos (http://www.taxiaeropuerto.com/), the only taxi company authorized and recommended by the airport authorities. Walk to Taxis Unidos counter and ask to be taken to the “Ciudad de la Investigación” of the University of Costa Rica, in San Pedro de Montes de Oca. Just say “A la ciudad de la investigación de la universidad de Costa Rica en San Pedro, por favor”. You will be able to pay the bill in US currency. The fare will depend on traffic, but should be somewhere between US$30 and 35.
+</p>
+
+
+
+<br />
+<p><span class="moyentitre">Transportation to and from Turrialba</span><br />
+</p>
+<p class="Style14j">
+Transportation for instructors and students will be provided from University of Costa Rica's central campus in San José to the Atlantic Campus in Turrialba on Sunday, July 10 in the morning. A precise timetable will be provided later. Also, on Saturday, July 16 in the afternoon, transportation will be provided back to San José.
+</p>
+<p class="Style14j">
+Local transportation between cities in Costa Rica can be done by bus or car only. If by any reasons you are not able to reach UCR's San José campus on Sunday, July 10, you will need to take a bus to Turrialba. For this, take a taxi and ask the driver to take you to “Parada de Turrialba, por la Corte” (which stands for “Turrialba bus stop, near the Courthouse”). Take the bus at the station, preferably a direct one (you can ask the ticket seller at the counter) as it will take shorter to get to Turrialba. Once you get to Turrialba, you will need to take a taxi to the University campus. Just ask the driver to take you to “Campus de la Universidad de Costa Rica”.
+</p>
+<p class="Style14j">
+The bus line to Turrialba operates every day from San José from 5 am to 9pm, and from Turrialba from 5am to 10pm. The trip is 65 kilometers long and takes about 1:30 hours.
+</p>
+
+
+
+<br />
+<p><span class="moyentitre">Safety tip: Using taxis</span><br />
+</p>
+<p class="Style14j">
+Please note that for safety reasons, if you need to take a taxi, we ask you to use only red-colored cabs identified on their doors with a yellow triangle and the cab's license plate number in it, and the driver's photo identification within the cabin. You should also make sure that the taxi driver uses the taximeter to charge for the service.
+</p>
+
+<br />
+<p><span class="moyentitre">Immigration requirements</span><br />
+</p>
+<p class="Style14j">
+The following information is provided as is and was taken from the Costa Rican Government's Immigration Office's website. Please consult the Costa Rican consulate in your country of citizenship to make sure to have the latest, official information.
+</p>
+
+
+<p class="Style14j">
+The rules are the following:
+</p>
+<ul>
+<li class="Style13j"> No entry visa is required for Canada, the United States, and any European country or Great Britain.</li>
+<li class="Style13j"> Citizens of the following Latin American countries are required an entry visa: Colombia, Ecuador, Nicaragua, Perú, Dominican Republic.</li>
+<li class="Style13j"> If you belong to the second group, but you have an entry visa stamped on your passport and still valid for at least three months for the United States, Canada, South Corea, Japan, the European Union countries, or a Shengen visa, you will not be required a Costa Rican entry visa.</li>
+</ul>
+
+
+
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />The stay in Turrialba</p>
+<a name="about" id="about"></a>
+<p><span class="moyentitre"></span><br />
+</p>
+
+<p><span class="moyentitre">Acommodation and meals</span><br />
+</p>
+<p class="Style14j">
+Students will be acommodated in camping tents in the open fields around the sports area of UCR's Turrialba campus, right in front of the barrack huts, where instructors will be lodged.
+</p>
+<p class="Style14j">
+Close to the camping area there are shared bathrooms, toilettes and picnic areas.
+</p>
+
+<br />
+<p><span class="moyentitre">Campus facilities</span><br /></p>
+<p class="Style14j">
+Three computing labs, several classrooms and an auditorium will be at the event's disposal during the week.
+</p>
+<p class="Style14j">
+Outside of the camp schedule, all participants will be allowed to use the campus' sports facilities: soccer field, basketball and volleyball courts, swimming pool, running tracks, etc.
+</p>
+
+<p>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/gimnasioYdeportes/gimnasio1.jpg" align="top" width="220" height="165" border="0"></a>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/edificiosYjardines/edificios1.jpg" align="top" width="220" height="165" border="0"></a>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/edificiosYjardines/museo.jpg" align="top" width="220" height="165" border="0"></a>
+</p>
+
+<p>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/historico/excavadora1.jpg" align="top" width="220" height="165" border="0"></a>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/edificiosYjardines/escuela.jpg" align="top" width="220" height="165" border="0"></a>
+<a href="gallery/index.html" target="GALLERY"><img src="gallery/campus/villas/villas3.jpg" align="top" width="220" height="165" border="0"></a>
+</p>
+
+<br />
+<p><span class="moyentitre">What to expect of Turrialba's weather</span><br /></p>
+<p class="Style14j">
+Costa Rica's yearly average temperature in the rainy (or “winter”) season, that is, April through November, reaches 22,9 degrees Celsius and the yearly average relative humidity reaches 72%. Turrialba's average temperature and relative humidity are higher than the national average.
+</p>
+
+<p class="Style14j">
+During the months of June and July there is usually a reduction in rain precipitation that is typical of the Costa Rican winter (invierno).
+</p>
+
+<p class="Style14j">
+Turrialba is particularly warm and humid, therefore you should expect temperatures somewhere in the 25-32 degrees Celsius range, and high relative humidity, probably around 80 to 85%.
+</p>
+
+<p class="Style14j">
+We suggest that you bring with you a rain poncho and/or a travel umbrella, and hicking (preferably impermeable) boots.
+</p>
+
+
+
+<br />
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />Important information</p>
+<a name="about" id="about"></a>
+<p><span class="moyentitre">Currency</span><br />
+</p>
+<p class="Style14j">
+The national currency is the Colón (₡). Current exchange rates are approximately ₡700 per € and ₡500 per US$.
+</p>	
+<p class="Style14j">
+Important: Currency can only be exchanged in official exchange offices or banks. You will always be asked to present your ID (passport) when requesting currency exchange. Don't accept street offers for currency exchange, as you may get fake bills.
+</p>
+
+<br />
+<p><span class="moyentitre">Safety advice: don't loose your passport</span><br />
+</p>
+
+<p class="Style14j">
+It is allowed for foreigners in Costa Rica to travel around the country with a photocopy of their passport (picture id page and entry stamp page), so that the original can be kept in a safe place during the stay. The Local Committee will ask you to hand your passport upon registration at the camp's venue, so that we can make the copy for you and a copy for our records.
+</p>
+
+<br />
+<p><span class="moyentitre">Entertainment, tours</span><br />
+</p>
+
+
+<p class="Style14j">
+During the week there will be a half day reserved for a group tour. The Local Committee is planning a tour of the Guayabo Archaeological Site. It is the only preserved urban site of precolombian societies in the country, although there is evidence of other sites that have not been searched and digged.
+</p>
+
+
+<a href="gallery/index.html" target="GALLERY"><img src="_images/Guayabo.jpg" align="top" width="670" height="235" border="0"></a>
+
+
+<br />
+<p><span class="moyentitre">Other places to visit around Turrialba are:</span><br />
+</p>
+
+<ul>
+<li>
+Reventazon River – Waterrafting
+</li><li>
+Turrialba Volcano
+</li><li>
+Aquiares Waterfalls
+</li><li>
+Guayabo National Monument – Archaeological site
+</li><li>
+CATIE – Tropical Agronomical Center for Research and Education
+</li>
+</ul>
+
+
+<br />
+<p><span class="moyentitre">If you want to stay longer</span><br />
+</p>
+<p  class="Style14j">
+If you would like to stay for a few days to visit Costa Rica before or after the camp, here 
+is a list of suggestions. Please feel free to contact us with your questions, we will be glad to help you plan your trip.
+</p>
+
+
+<br />
+<p><span class="moyentitre">Beaches and towns on the Caribbean coast:</span><br />
+</p>
+
+
+<ul><li>
+Turtle spawning, a paradise for sea biodiversity, turtle desovation
+</li><li>
+Cahuita, a laid-back town with black-sand beaches and surrounded by a National Park
+</li><li>
+Puerto Viejo, the prettiest Caribbean town along the coast
+</li><li>
+Manzanillo, the farthest town close to the Panamenian border
+</li><li>
+Sixaola, border city to Panama
+</li></ul>
+
+
+<br />
+<p><span class="moyentitre">Beaches and towns on the Pacific coast:</span><br />
+</p>
+
+<ul><li>
+Nosara and Sámara, on the Nicoya peninsula
+</li><li>
+Malpaís and Santa Teresa, on the Nicoya peninsula
+</li><li>
+Puntarenas, main port ont the Pacific
+</li><li>
+Manuel Antonio, a biological reserve and National Park
+</li><li>
+Dominical, on the Southern Pacific coast
+</li><li>
+Osa, a peninsula, the most biologically rich and diverse region in the country
+</li></ul>
+
+
+<br />
+<p><span class="moyentitre">River rafting near Turrialba (according to many, one of the world's finest!)</span><br />
+</p>
+
+
+<ul><li>
+Reventazón
+</li><li>
+Pacuare
+</li></ul>
+
+<br />
+<p><span class="moyentitre">Volcanos:</span><br />
+</p>
+
+
+<ul><li>
+Arenal: On the mid-Northwest region, currently erupting, large touristic infrastructure around
+</li><li>
+Irazú: On the Northern side of the road from San José to Turrialba, beautiful crater landscape
+</li><li>
+Poás: In the province of Alajuela, about 50 kilometers from the Airport
+</li><li>
+Turrialba: Right in front of the city, currently erupting, beautiful view from the city
+</li></ul>
+
+
+
+<br />
+<p class="grandtitre"><img src="_images/carre-hachure.jpg"
+	width="26" height="16" alt="" />Some statistics</p>
+<a name="about" id="about"></a>
+
+
+	
+<table width="100%" border="0" cellpadding="0" cellspacing="0"
+	bgcolor="#EEEEEE">
+
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"><strong>Category</strong></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		<strong>Subcategory</strong></span></td>
+		<td width="20%" valign="top" ><span
+			class="Style13"><strong>Statistic</strong></span></td>
+		<td width="20%" valign="top"><span class="Style13"><strong>1990</strong></span>
+		</td>
+		<td width="20%" valign="top" align="right"><span class="Style13"><strong>2009</strong></span>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">General:</span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Extension</span></td>
+		<td width="40%" valign="top" align="center" colspan="2"><span class="Style13">51,100 km&#178;</span>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Population</span></td>
+		<td width="20%" valign="top" ><span class="Style13">3.5 Millions</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">4.5 </span>
+		</td>
+	</tr>
+
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13">Social:</span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Demography</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Population density</span></td>
+		<td width="20%" valign="top" ><span class="Style13">59.8 per km&#178;</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">88</span>
+		</td>
+	</tr>
+
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Child mortality rate</span></td>
+		<td width="20%" valign="top" ><span class="Style13">14.78 children &lt;	 1 year old per 1000 born alive</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">8.8</span>
+		</td>
+	</tr>
+
+
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Life expectancy at birth</span></td>
+		<td width="20%" valign="top" ><span class="Style13">76.87 years</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">79.1</span>
+		</td>
+	</tr>
+	
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Work</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Workforce</span></td>
+		<td width="20%" valign="top" ><span class="Style13">1.7 inhabitants (57% ot total)</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">2.1 (47%)</span>
+		</td>
+	</tr>
+
+
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Open unemployment rate</span></td>
+		<td width="20%" valign="top" ><span class="Style13">4.6%</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">7.8%</span>
+		</td>
+	</tr>
+	
+	
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Poverty
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Poverty percentage
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">27%</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">18%</span>
+		</td>
+	</tr>
+	
+	<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Income
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Gini's coefficient
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">0.374</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">0.437</span>
+		</td>
+	</tr>
+	
+		<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Education
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Level of instruction
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">10.4% of total, with higher education</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13"></span>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Economy:</span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Production
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Gross national product per capita
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">US$ 2,296.2 Millions</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">US$ 6,494.1</span>
+		</td>
+	</tr>
+	
+		<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Foreign trade
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Exports
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">US$ 1,899.3 Millions</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">US$ 8,788.4</span>
+		</td>
+	</tr>
+	
+			<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Tourism
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Foreign currency entry
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">US$ 330.6 Millions</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">US$ 1989.7</span>
+		</td>
+	</tr>
+	
+				<tr>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13"></span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		
+		</span></td>
+		<td width="20%" valign="top" bgcolor="#EEEEEE"><span
+			class="Style13">Visitors
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">505 Thousands</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">1,495</span>
+		</td>
+	</tr>
+	
+					<tr bgcolor="#F9F9F9">
+		<td width="20%" valign="top"><span
+			class="Style13">Environment:</span></td>
+		<td width="20%" valign="top"><span class="Style13">
+		Land and forest
+		</span></td>
+		<td width="20%" valign="top"><span
+			class="Style13">Protected wild areas
+			</span></td>
+		<td width="20%" valign="top" ><span class="Style13">990,37 Hectars
+		</span>
+		</td>
+		<td width="20%" valign="top" align="right" ><span class="Style13">1,340,782</span>
+		</td>
+	</tr>
+</table>
+  </div>
+  <div style="clear:both"></div>
+  <div class="piedPage">
+   <p style="border-top:thin dotted #999;"></p>
+   <div style="float:right">
+     <div align="right"><a href="http://www.miamybiz.com" target="_blank">sitedesign : miamybiz</a></div>
+   </div>
+   <div> <span>Copyright © 2009, <strong>SC Camp</strong> | for Information : </span><a href="mailto:contact@sc-camp.org">contact@sc-camp.org</a></div>
+   <div style="clear:both"></div>
+  </div>
+  </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16081819-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

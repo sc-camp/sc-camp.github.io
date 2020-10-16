@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="SC-Camp Super Computing Camp" />
+<meta name="keywords" content="Super computing, high performance, summer school, MPI, OpenMP, Grid Computing, performance evaluation" />
+<title>SC-Camp 2013</title>
+<link rel="icon" type="image/png" href="_images/picto2.png" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="SpryAssets/SpryEffects.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+	var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_findObj(n, d) { //v4.01
+	var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+  if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_effectAppearFade(targetElement, duration, from, to, toggle)
+{
+	Spry.Effect.DoFade(targetElement, {duration: duration, from: from, to: to, toggle: toggle});
+}
+	//-->
+</script>
+</head>
+<body>
+<div class="fondSite">
+  <div class="accrochelogo">
+    <p><strong class="Style16b">Super Computing and Distributed Computing Camp</strong><br />
+      <span class="Style14">Instituto Tecnol&oacute;gico de Colima, Colima, Mexico<br />July 24-27, 2013</span></p>
+  </div>
+  <div class="logo">
+  </div>
+  <div style="clear:both"></div>
+  <div class="menu"><a href="index.html%3Fshow=overview.html" target="_self" onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Overview</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=program.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Program</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=application&amp;action=newLogin.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Application</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=camp.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Pictures</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=surounding.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Information</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=committee.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Committee</a></div>
+  <div class="colonneDroite">
+    <p><span style="letter-spacing: 8pt">SPONSORS</span></p>
+<p><a href="http://www.itcolima.edu.mx" target="_blank"><img src="_images/sponsors/logoITC.PNG" width="125" height="111" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p><a href="http://www.inf.ufrgs.br" target="_blank"><img src="_images/sponsors/ufrgs.png" width="153" height="95" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p><a href="http://www.kbs.tu-berlin.de/" target="_blank"><img src="_images/sponsors/TU_Logo_lang_RGB_rot.png" width="138" height="73" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p><a href="https://www.ula.ve" target="_blank"><img src="_images/sponsors/udla.jpg" width="165" height="66" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p><a href="http://grid.uis.edu.co/index.php/" target="_blank"><img src="_images/sponsors/logo-uis-sccc.png" width="136" height="140" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p>    <a href="https://www.uis.edu.co" target="_blank"><img src="_images/sponsors/uis.jpg" alt="" width="120" height="79" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>
+</p>
+<p><a href="http://www.ucv.ve" target="_blank"><img src="_images/sponsors/logo_ucv.jpg" width="120" height="119" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+</p><a href="http://www.cecalc.ula.ve/" target="_blank"><img src="_images/sponsors/cecalcula.png" width="92" height="82" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a></p>
+<p><a href="https://www.redclara.net" target="_blank"><img src="_images/sponsors/logo_clara.png" width="150" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+<p><a href="index.html%3Fshow=committee.html" target="_blank"><img src="_images/sponsors/logo-reside.jpg" width="150" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+       <a href="https://www.grid5000.fr" target="_blank"><img src="_images/sponsors/grid5000.png" width="140" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://oar.imag.fr/" target="_blank"><img src="_images/sponsors/oar_logo.png" width="80" height="80" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://www.i3s.unice.fr/I3S/" target="_blank"><img src="_images/sponsors/I3S_logo.png" width="150" height="45" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<p><span style="letter-spacing: 8pt">MEDIA PARTNERS</span></p>
+<p><a href="http://www.isgtw.org/" target="_blank"><img src="_images/partners/isgtw-button.jpg" width="159" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<a href="http://www.gridtalk.org/" target="_blank"><img src="_images/partners/logo-gridtalk.jpeg" width="108" height="108" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+    <img src="_images/barre-separation-horizontale.jpg" width="140" height="68" /><br />
+ <p><span class="Style16b"><strong>Past Events</strong></span><br/><br/>
+<a href="../2010/"><span class="Style12b"><strong>SC-Camp 2010</strong></span></a><br/><br/>
+<a href="../2011/"><span class="Style12b"><strong>SC-Camp 2011</strong></span></a></p>
+<a href="../2012/"><span class="Style12b"><strong>SC-Camp 2012</strong></span></a></p>
+  </div>
+  <div class="colonnePrincipale">
+   <p class="grandtitre"><img src="_images/carre-hachure.jpg" width="26" height="16" />Committee</p>
+
+    <p>    
+    	<span class="moyentitre"><br />Organization committee</span>
+	<br />
+    </p>
+    <table width="670" height="72" border="0" cellpadding="4" cellspacing="2" bgcolor="#FFFFFF" class="Style12">
+      <tr>
+        <td width="200" bgcolor="#F9F9F9"><strong>Name</strong></td>
+        <td width="300" bgcolor="#F9F9F9"><strong>Affiliation</strong></td>
+        <td colspan="2" bgcolor="#F9F9F9"><strong>Country</strong></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://mescal.imag.fr/membres/yiannis.georgiou/index.html" target="_blank">Yiannis Georgiou</a></td>
+        <td bgcolor="#EEEEEE">Bull</td>
+        <td bgcolor="#EEEEEE">Greece</td>
+        <td bgcolor="#EEEEEE"><img src="_images/drapeaux/1259970924_Greece-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F9F9F9"><a href="http://www.pedrovelho.info" target="_blank">Pedro Velho</a></td>
+        <td bgcolor="#F9F9F9">UFRGS</td>
+        <td bgcolor="#F9F9F9">Brazil</td>
+        <td bgcolor="#F9F9F9"><img src="_images/drapeaux/1259970952_Brazil-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="https://sites.google.com/site/carlosjaimebh" target="_blank">Carlos Jaime Barrios Hern&aacute;ndez</a></td>
+        <td bgcolor="#EEEEEE">UIS - Bucaramanga</td>
+        <td width="72" bgcolor="#EEEEEE">Colombia</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259970945_Colombia-Flag.png" width="16" height="16" /></td>
+      </tr>      
+      <tr>
+        <td bgcolor="#F9F9F9"><a href="http://ccpd.ciens.ucv.ve/~rrivas/" target="_blank">Robinson Rivas</a></td>
+        <td bgcolor="#F9F9F9">Universidad Central de Venezuela</td>
+        <td bgcolor="#F9F9F9">Venezuela</td>
+        <td bgcolor="#F9F9F9"><img src="_images/drapeaux/1261495647_Venezuela-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+
+        <td bgcolor="#EEEEEE"><a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/" target="_blank">Gilberto D&iacute;az</a></td>
+        <td bgcolor="#EEEEEE">Universidad de Los Andes Venezuela</td>
+        <td bgcolor="#EEEEEE">Venezuela</td>
+        <td bgcolor="#EEEEEE"><img src="_images/drapeaux/1261495647_Venezuela-Flag.png" width="16" height="16" /></td>
+      </tr>
+      
+    </table>
+
+    <p>
+      <span class="moyentitre"><br />
+        Steering committee</span>
+      <br />
+    </p>
+    <table width="670" height="72" border="0" cellpadding="4" cellspacing="2" bgcolor="#FFFFFF" class="Style12">
+      <tr>
+        <td width="200" bgcolor="#F9F9F9"><strong>Name</strong></td>
+        <td width="300" bgcolor="#F9F9F9"><strong>Affiliation</strong></td>
+        <td colspan="2" bgcolor="#F9F9F9"><strong>Country</strong></td>
+
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://fikovnik.net/" target="_blank">Filip K&#1075;ikava</a></td>
+        <td bgcolor="#EEEEEE">I3S, CNRS, Universit&eacute; Nice Sophia Antipolis</td>
+        <td width="72" bgcolor="#EEEEEE">Czeck Republic</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/cz.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#F9F9F9"><a href="index.html%3Fshow=committee.html" target="_blank">Joseph Emeras</a></td>
+        <td bgcolor="#F9F9F9">CNRS, CEA, Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#F9F9F9">France</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://www.democritos.it/~baro/" target="_blank">Moreno Baricevic</a></td>
+        <td bgcolor="#EEEEEE">CNR-IOM DEMOCRITOS</td>
+        <td width="72" bgcolor="#EEEEEE">Italy</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259971039_Italy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#F9F9F9"><a href="http://mescal.imag.fr/membres/brigitte.plateau/" target="_blank">Brigitte Plateau</a></td>
+        <td bgcolor="#F9F9F9">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#F9F9F9">France</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://www.cs.rpi.edu/~cvarela/" target="_blank">Carlos Varela</a></td>
+        <td bgcolor="#EEEEEE">RPI- World Computign Laboratory</td>
+        <td width="72" bgcolor="#EEEEEE">Colombia</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259970945_Colombia-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#F9F9F9"><a href="http://mescal.imag.fr/membres/derrick.kondo/" target="_blank">Derrick Kondo</a></td>
+        <td bgcolor="#F9F9F9">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#F9F9F9">USA</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971052_United-States-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#EEEEEE"><a href="http://webdelprofesor.ula.ve/ciencias/nunez/" target="_blank">Luis Nu&ntilde;ez</a></td>
+        <td bgcolor="#EEEEEE">Universidad de Los Andes Venezuela</td>
+        <td width="72" bgcolor="#EEEEEE">Venezuela</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1261495647_Venezuela-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#F9F9F9"><a href="http://rangiroa.polytech.unice.fr/riveill/" target="_blank">Michel Riveill</a></td>
+        <td bgcolor="#F9F9F9">Universit&eacute; de Nice - Sophia Antipolis</td>
+        <td width="72" bgcolor="#F9F9F9">France</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE">Philippe O. A. Navaux</td>
+        <td bgcolor="#EEEEEE">UFRGS</td>
+        <td width="72" bgcolor="#EEEEEE">Brazil</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259970952_Brazil-Flag.png" width="16" height="16" /></td>
+      </tr>      
+	  <tr>
+        <td bgcolor="#F9F9F9"><a href="http://www.democritos.it/~cozzini/" target="_blank">Steffano Cozzini</a></td>
+        <td bgcolor="#F9F9F9">CNR-IOM DEMOCRITOS</td>
+        <td width="72" bgcolor="#F9F9F9">Italy</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971039_Italy-Flag.png" width="16" height="16" /></td>
+      </tr>
+    </table>
+
+
+    <p>    
+    
+    	<span class="moyentitre"><br />Local committee</span>
+	<br />
+    </p>
+    <table width="670" height="72" border="0" cellpadding="4" cellspacing="2" bgcolor="#FFFFFF" class="Style12">
+      <tr>
+        <td width="200" bgcolor="#F9F9F9"><strong>Name</strong></td>
+        <td width="300" bgcolor="#F9F9F9"><strong>Affiliation</strong></td>
+        <td colspan="2" bgcolor="#F9F9F9"><strong>Country</strong></td>
+      </tr>
+
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="index.html%3Fshow=committee.html" target="_blank">Saturnino Castro Reyes</a></td>
+        <td bgcolor="#EEEEEE">Instituto Tecnol&oacute;gico de colima</td>
+        <td bgcolor="#EEEEEE" width="72">Mexico</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/mexico-icon.png" width="16" height="16" /></td>
+      </tr>
+
+      <tr>
+        <td bgcolor="#F9F9F9"><a href="index.html%3Fshow=committee.html" target="_blank">Rene Mart&iacute;nez Bonilla</a></td>
+        <td bgcolor="#F9F9F9">Instituto Tecnol&oacute;gico de colima</td>
+        <td bgcolor="#F9F9F9" width="72">Mexico</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/mexico-icon.png" width="16" height="16" /></td>
+      </tr>
+      
+
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="index.html%3Fshow=committee.html" target="_blank">Sergio Ure&ntilde;a Fuentes</a></td>
+        <td bgcolor="#EEEEEE">Instituto Tecnol&oacute;gico de colima</td>
+        <td bgcolor="#EEEEEE" width="72">Mexico</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/mexico-icon.png" width="16" height="16" /></td>
+      </tr>
+
+      <tr>
+        <td bgcolor="#F9F9F9"><a href="index.html%3Fshow=committee.html" target="_blank">Enrique V&aacute;zquez Gonz&aacute;lez</a></td>
+        <td bgcolor="#F9F9F9">Instituto Tecnol&oacute;gico de colima</td>
+        <td bgcolor="#F9F9F9" width="72">Mexico</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/mexico-icon.png" width="16" height="16" /></td>
+      </tr>
+
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="index.html%3Fshow=committee.html" target="_blank">Jesús Alberto Verduzco Ram&iacute;rez</a></td>
+        <td bgcolor="#EEEEEE">Instituto Tecnol&oacute;gico de colima</td>
+        <td bgcolor="#EEEEEE" width="72">Mexico</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/mexico-icon.png" width="16" height="16" /></td>
+      </tr>
+</table>
+    
+
+    <p>
+      <span class="moyentitre"><br />
+        Scientific committee</span>
+      <br />
+    </p>
+    <table width="670" height="72" border="0" cellpadding="4" cellspacing="2" bgcolor="#FFFFFF" class="Style12">
+      <tr>
+        <td width="200" bgcolor="#F9F9F9"><strong>Name</strong></td>
+        <td width="300" bgcolor="#F9F9F9"><strong>Affiliation</strong></td>
+        <td colspan="2" bgcolor="#F9F9F9"><strong>Country</strong></td>
+      </tr>
+
+	  <tr>
+        <td bgcolor="#EEEEEE"><a href="http://mescal.imag.fr/membres/arnaud.legrand/" target="_blank">Arnaud Legrand</a></td>
+        <td bgcolor="#EEEEEE">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#EEEEEE">France</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#F9F9F9"><a href="http://moais.imag.fr/membres/jean-louis.roch/" target="_blank">Jean-Louis Roch</a></td>
+        <td bgcolor="#F9F9F9">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#F9F9F9">France</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+	  <tr>
+        <td bgcolor="#EEEEEE"><a href="http://www.marciocastro.com" target="_blank">M&aacute;rcio Bastos Castro</a></td>
+        <td bgcolor="#EEEEEE">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#EEEEEE">Brazil</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259970952_Brazil-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>  
+        <td bgcolor="#F9F9F9"><a href="http://www.inf.ufrgs.br/~nicolas" target="_blank">Nicolas Maillard</a></td>
+        <td bgcolor="#F9F9F9">UFRGS</td>
+        <td width="72" bgcolor="#F9F9F9">France</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://mescal.imag.fr/membres/olivier.richard/" target="_blank">Olivier Richard</a></td>
+        <td bgcolor="#EEEEEE">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#EEEEEE">France</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+	  <tr>
+        <td bgcolor="#F9F9F9"> Oscar Gualdron Gonzalez</td>
+        <td bgcolor="#F9F9F9">UIS - Bucaramanga</td>
+        <td width="72" bgcolor="#F9F9F9">Colombia</td>
+        <td width="16" bgcolor="#F9F9F9"><img src="_images/drapeaux/1259970945_Colombia-Flag.png" width="16" height="16" /></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE"><a href="http://mescal.imag.fr/membres/yves.denneulin/index.html" target="_blank">Yves Denneulin</a></td>
+        <td bgcolor="#EEEEEE">Universit&eacute; de Grenoble</td>
+        <td width="72" bgcolor="#EEEEEE">France</td>
+        <td width="16" bgcolor="#EEEEEE"><img src="_images/drapeaux/1259971032_Saint-Barthelemy-Flag.png" width="16" height="16" /></td>
+      </tr>
+    </table>
+
+<!--
+    <p>(drapeaux sur : http://www.iconfinder.net )</p>
+-->
+  </div>
+  <div style="clear:both"></div>
+  <div class="piedPage">
+   <p style="border-top:thin dotted #999;"></p>
+   <div style="float:right">
+     <div align="right"><a href="http://www.miamybiz.com" target="_blank">sitedesign : miamybiz</a></div>
+   </div>
+   <div> <span>Copyright © 2009, <strong>SC Camp</strong> | for Information : </span><a href="mailto:contact@sc-camp.org">contact@sc-camp.org</a></div>
+   <div style="clear:both"></div>
+  </div>
+  </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16081819-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

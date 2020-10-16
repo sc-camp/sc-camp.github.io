@@ -1,0 +1,277 @@
+
+
+			img
+			{
+				-ms-interpolation-mode : bicubic;
+			}
+
+			body.sfpg
+			{
+				background : #000000;
+				color: #aaaaaa;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: normal;
+				margin:0px;
+				padding:0px;
+				overflow:hidden;
+			}
+
+			body.sfpg a:active, body.sfpg a:link, body.sfpg a:visited, body.sfpg a:focus
+			{
+				color : #b0b0b0;
+				text-decoration : none;
+			}
+
+			body.sfpg a:hover
+			{
+				color : #ffffff;
+				text-decoration : none;
+			}
+
+			table
+			{
+				font-size: 12px;
+				height:100%;
+				width:100%;
+			}
+
+			table.info td
+			{
+				padding : 10px;
+				vertical-align : top;
+			}
+
+			table.sfpg_disp
+			{
+				text-align : center;
+				padding : 0px;
+			}
+
+			table.sfpg_disp td.menu
+			{
+				background : #000000;
+				border-top : 1px solid #303030;
+				vertical-align : middle;
+				white-space: nowrap;
+			}
+
+			table.sfpg_disp td.navi
+			{
+				height: 25px;
+				background : #202020;
+				border-top : 1px solid #303030;
+				vertical-align : middle;
+				white-space: nowrap;
+			}
+
+			table.sfpg_disp td.mid
+			{
+				vertical-align : middle;
+			}
+
+			.sfpg_info_text, .loading
+			{
+				background : #000000;
+				border : 1px solid #606060;
+				color : #aaaaaa;
+				padding : 1px 4px 1px 4px;
+				width : 200px;
+			}
+			
+			.loading
+			{
+				padding : 20px 20px 20px 20px;
+				margin-right: auto;
+				margin-left: auto;
+			}
+			
+			.sfpg_button, .sfpg_button_hover, .sfpg_button_on, .sfpg_button_nav, .sfpg_button_disabled
+			{
+				cursor : pointer;
+				background : #000000;
+				border : 1px solid #808080;
+				color : #aaaaaa;
+				padding : 0px 5px 0px 5px;
+				margin : 0px 5px 0px 5px;
+				white-space: nowrap;
+			}
+
+			.sfpg_button_hover
+			{
+				background : #ffffff;
+				color : #000000;
+			}
+
+			.sfpg_button_on
+			{
+				background : #aaaaaa;
+				color : #000000;
+			}
+
+			.sfpg_button_disabled
+			{
+				cursor : default;
+				border : 1px solid #505050;
+				background : #000000;
+				color : #505050;
+			}
+
+			.sfpg_button_nav
+			{
+				border : 1px solid #404040;
+				background:#101010;
+				color:#808080;
+			}
+
+			.thumbbox
+			{
+				vertical-align : top;
+				display:-moz-inline-stack;
+				display:inline-block;
+				zoom:1;
+				*display:inline;
+				width: 198px;
+				height: 172px;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.thumbimgbox
+			{
+				width: 182px;
+				height: 138px;
+				margin: 0px; 
+				padding: 0px;
+			}
+			
+			.innerboxdir, .innerboximg, .innerboxfile, .innerboxdir_hover, .innerboximg_hover, .innerboxfile_hover
+			{
+				cursor:pointer;
+				margin: 7px;
+				padding: 0px;
+				width: 184px;
+				height: 158px;
+			}
+
+			.innerboxdir, .innerboxdir_hover
+			{
+				border: 1px solid #505050;
+				background : #000000;
+				color : #aaaaaa;
+			}
+
+			.innerboximg, .innerboximg_hover
+			{
+				border: 1px solid #505050;
+				background : #202020;
+				color : #aaaaaa;
+			}
+
+			.innerboxfile, .innerboxfile_hover
+			{
+				border: 1px solid #404040;
+				background : #101010;
+				color : #aaaaaa;
+			}
+
+			.innerboxdir_hover
+			{
+				background : #ffffff;
+				color : #000000;
+			}
+
+			.innerboximg_hover
+			{
+				background : #ffffff;
+				color : #000000;
+			}
+
+			.innerboxfile_hover
+			{
+				background : #ffffff;
+				color : #000000;
+			}
+
+			.full_image
+			{
+				cursor:pointer;
+				border : 5px solid #ffffff;
+			}
+
+			.thumb
+			{
+				margin: 10px 10px 5px 10px;
+				border : 1px solid #606060;
+			}
+
+			.box_image
+			{
+				position:absolute;
+				bottom:70px;
+				right:0;
+				z-index:1020;
+				overflow:auto;
+				visibility:hidden;
+				text-align : center;
+			}
+
+			.box_wait
+			{
+				position:absolute;
+				bottom:70px;
+				right:0;
+				z-index:1015;
+				overflow:auto;
+				visibility:hidden;
+				text-align : center;
+			}
+
+			.box_navi
+			{
+				position:absolute;
+				bottom:0;
+				left:0;
+				height:70px;
+				width:100%;
+				z-index:1120;
+				overflow:hidden;
+				text-align : center;
+			}
+
+			.box_info
+			{
+				position:absolute;
+				top:10px;
+				left:10px;
+				width:250px;
+				z-index:1040;
+				visibility:hidden;
+				overflow:auto;
+				border : 1px solid #404040;
+				background: #101010;
+			}
+
+			.box_overlay
+			{
+				position:absolute;
+				bottom:70px;
+				left:0;
+				height:100%;
+				width:100%;
+				z-index:1010;
+				overflow:hidden;
+				visibility:hidden;
+				background:#000000;
+			}
+
+			.box_gallery
+			{
+				text-align:center;
+				position:absolute;
+				top:0;
+				right:0;
+				z-index:1000;
+				overflow:auto;
+			}
+			

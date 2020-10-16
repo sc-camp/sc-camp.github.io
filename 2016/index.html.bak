@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="description" content="SC-Camp - SuperComputing Summer Camp">
+    <meta name="keywords" content="Super computing, high performance, summer school, MPI, OpenMP, Grid Computing, performance evaluation">
+    <link rel="icon" type="image/png" href="images/picto.png">
+    <title>Overview</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.2.0">
+  </head>
+  <body>
+    <div class="header">
+      <div class="header_title Style14b"> <span class="Style16b">SuperComputing
+          Camp</span><br>
+        Universidad del Valle<br>
+        Centro de Investigación en Bioinformática y Fotónica<span class="Style14b">
+          <br>
+          16th to 21th of October 2016<br>
+        </span></div>
+      <div class="header_logo">
+        <div style="clear:both">
+          <div class="menu"> <a href="index.html">Overview</a> <a href="program.html">Program</a>
+            <a href="application.html">Application</a> <a href="pictures.html">Pictures</a>
+            <a href="information.html">Information</a> <a href="committee.html">Committee</a>
+          </div>
+        </div>
+        <div class="content">
+          <div class="main"> <img style="width: 665px; height: 251px;" alt="Univalle"
+              src="images/univalle/Campus_Univalle.png">
+            <h2><br>
+            </h2>
+            <h2>Important dates</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th style="text-align: center">Application Opening</th>
+                  <th style="text-align: center">Application Deadline</th>
+                  <th style="text-align: center">Adminission Notification</th>
+                  <th style="text-align: center">Registration Deadline</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center">Monday 29th of August 2016</td>
+                  <td style="text-align: center">Friday 19th of September 2016</td>
+                  <td style="text-align: center">Monday 26th of September 2016</td>
+                  <td style="text-align: center">Monday 3th of October 2016</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 id="school-mission">School Mission</h2>
+            <p>Taking advantage of the Internet and high speed networks
+              available today, one can exploit high performance computing
+              infrastructures from anywhere, even located in the middle of the
+              nature.</p>
+            <p>SC-Camp is an initiative of researchers inspired by this idea
+              that offers undergraduate and master students state-of-the-art
+              lectures and programming practical sessions upon High Performance
+              and Distributed Computing topics. SC-Camp is a non-profit event,
+              addressed to all students including those that lack of financial
+              backup. Usually, students applying in due time receive a partial
+              or total grant, including meals, accomodation, lectures access,
+              and programming challenges. This year the event will be hosted by
+              CIBioFI at Universidad del Valle,&nbsp; Santiago de&nbsp; Cali -
+              Colombia.</p>
+            <h2 id="content">Content</h2>
+            <p>The summer school focus on the following topics:</p>
+            <ul>
+              <li>Parallel Programming</li>
+              <li>Multiprocessors Programming</li>
+              <li>Distributed Systems</li>
+              <li>Cluster Computing</li>
+              <li>Grid Computing</li>
+              <li>Cloud Computing</li>
+              <li>Volunteer Computing</li>
+              <li>Hybrid and GPU Programming</li>
+              <li>Resource/Job Management &amp; Scheduling</li>
+              <li>Virtualization</li>
+              <li>Fault tolerance</li>
+              <li>Green Computing</li>
+              <li>Performance Evaluation</li>
+            </ul>
+            <h2 id="organization">Organization</h2>
+            <p>SC-Camp 2016 features 5 days of scientific sessions and 1 leisure
+              day with an organized activity (for example, hiking or rafting).
+              During the lectures several parallel programming practical
+              sessions will be held.</p>
+            <p>We welcome applications of undergraduate (preferable in Senior
+              year) or master students from all areas of engineering and science
+              with strong interest upon High Performance and Distributed
+              Computing. Due to the advanced content of lectures some basic
+              notions of Parallel and Distributed Computing along with
+              programming skills are desirable. All courses and lectures will be
+              held in English, thus a good knowledge of English -both oral and
+              written- is mandatory. The scientific and steering committee will
+              evaluate the application forms based on the applicant’s scientific
+              background and their motivation letter. This year, as the former
+              year, we expect to accept 20 - 40 students.</p>
+            <h2 id="registration-fee">Registration fee</h2>
+            <p>COST: $300.000 COP The registration fee includes accommodation
+              (apace for tents), food and access to all scientific lectures.</p>
+          </div>
+          <div class="sponsors">
+            <h3>Sponsors</h3>
+            <ul>
+            </ul>
+            <img style="width: 99px; height: 141px;" alt="univalle" src="images/univalle/Logo_Univalle.jpg"><br>
+            <img style="width: 116px; height: 35px;" alt="civiofi" src="images/univalle/Logo_Cibiofi.jpg"><br>
+            <img alt="UIS" src="images/uis.jpg"><br>
+            <img style="width: 120px; height: 123px;" alt="sc3" src="images/logo-uis-sccc.png"><br>
+            <ul>
+            </ul>
+          </div>
+          <div class="archives">
+            <h3>Archives</h3>
+            <a href="../2010/index.html">SC-Camp 2010</a><br>
+            <a href="../2011/index.html">SC-Camp 2011</a><br>
+            <a href="../2012/index.html">SC-Camp 2012</a><br>
+            <a href="../2013/index.html">SC-Camp 2013</a><br>
+            <a href="../2014/index.html">SC-Camp 2014</a><br>
+            <a href="../2015/index.html">SC-Camp 2015</a><br>
+          </div>
+          <div style="clear:both">
+            <div class="footer">
+              <p style="border-top:thin dotted #999;"></p>
+              <span>Copyright © 2016, <strong>SC Camp</strong> | for more
+                information </span><a href="mailto:contact@sc-camp.org">contact@sc-camp.org</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

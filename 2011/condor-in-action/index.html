@@ -1,0 +1,1583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>Condor in Action SC-CAMP 2011 - practical session</title> </head> <body>
+<style type="text/css" media="all">
+*
+{
+border:none
+}	
+
+body {
+margin:2em 2em 0 2em;
+font-family:Helvetica,sans-serif;
+font-size:11pt;
+background-color:#f8f8f8;
+color:#444
+width: 25em;
+}	
+
+a
+{
+text-decoration:underline;
+color:#888 
+}	
+
+a:hover
+{
+background-color:#F30;
+color:#eee;
+border:none
+}
+
+.codehilite
+{
+overflow:scroll;
+background-color:#eee;
+border:1px solid #ddd;
+padding:5px;
+line-height:1.5em;
+color:#444;
+overflow:auto;
+-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+-webkit-border-radius:3px;
+-moz-border-radius:3px;
+border-radius:3px
+}	
+
+.codehilite .hll 
+{
+ background-color: #ffffcc 
+}	
+.codehilite .c 
+{
+ color: #aaaaaa
+; font-style: italic 
+}	 /* Comment */
+.codehilite .err 
+{
+ color: #F00000
+; background-color: #F0A0A0 
+}	 /* Error */
+.codehilite .k 
+{
+ color: #0000aa 
+}	 /* Keyword */
+.codehilite .cm 
+{
+ color: #aaaaaa
+; font-style: italic 
+}	 /* Comment.Multiline */
+.codehilite .cp 
+{
+ color: #4c8317 
+}	 /* Comment.Preproc */
+.codehilite .c1 
+{
+ color: #aaaaaa
+; font-style: italic 
+}	 /* Comment.Single */
+.codehilite .cs 
+{
+ color: #0000aa
+; font-style: italic 
+}	 /* Comment.Special */
+.codehilite .gd 
+{
+ color: #aa0000 
+}	 /* Generic.Deleted */
+.codehilite .ge 
+{
+ font-style: italic 
+}	 /* Generic.Emph */
+.codehilite .gr 
+{
+ color: #aa0000 
+}	 /* Generic.Error */
+.codehilite .gh 
+{
+ color: #000080
+; font-weight: bold 
+}	 /* Generic.Heading */
+.codehilite .gi 
+{
+ color: #00aa00 
+}	 /* Generic.Inserted */
+.codehilite .go 
+{
+ color: #888888 
+}	 /* Generic.Output */
+.codehilite .gp 
+{
+ color: #555555 
+}	 /* Generic.Prompt */
+.codehilite .gs 
+{
+ font-weight: bold 
+}	 /* Generic.Strong */
+.codehilite .gu 
+{
+ color: #800080
+; font-weight: bold 
+}	 /* Generic.Subheading */
+.codehilite .gt 
+{
+ color: #aa0000 
+}	 /* Generic.Traceback */
+.codehilite .kc 
+{
+ color: #0000aa 
+}	 /* Keyword.Constant */
+.codehilite .kd 
+{
+ color: #0000aa 
+}	 /* Keyword.Declaration */
+.codehilite .kn 
+{
+ color: #0000aa 
+}	 /* Keyword.Namespace */
+.codehilite .kp 
+{
+ color: #0000aa 
+}	 /* Keyword.Pseudo */
+.codehilite .kr 
+{
+ color: #0000aa 
+}	 /* Keyword.Reserved */
+.codehilite .kt 
+{
+ color: #00aaaa 
+}	 /* Keyword.Type */
+.codehilite .m 
+{
+ color: #009999 
+}	 /* Literal.Number */
+.codehilite .s 
+{
+ color: #aa5500 
+}	 /* Literal.String */
+.codehilite .na 
+{
+ color: #1e90ff 
+}	 /* Name.Attribute */
+.codehilite .nb 
+{
+ color: #00aaaa 
+}	 /* Name.Builtin */
+.codehilite .nc 
+{
+ color: #00aa00
+; text-decoration: underline 
+}	 /* Name.Class */
+.codehilite .no 
+{
+ color: #aa0000 
+}	 /* Name.Constant */
+.codehilite .nd 
+{
+ color: #888888 
+}	 /* Name.Decorator */
+.codehilite .ni 
+{
+ color: #800000
+; font-weight: bold 
+}	 /* Name.Entity */
+.codehilite .nf 
+{
+ color: #00aa00 
+}	 /* Name.Function */
+.codehilite .nn 
+{
+ color: #00aaaa
+; text-decoration: underline 
+}	 /* Name.Namespace */
+.codehilite .nt 
+{
+ color: #1e90ff
+; font-weight: bold 
+}	 /* Name.Tag */
+.codehilite .nv 
+{
+ color: #aa0000 
+}	 /* Name.Variable */
+.codehilite .ow 
+{
+ color: #0000aa 
+}	 /* Operator.Word */
+.codehilite .w 
+{
+ color: #bbbbbb 
+}	 /* Text.Whitespace */
+.codehilite .mf 
+{
+ color: #009999 
+}	 /* Literal.Number.Float */
+.codehilite .mh 
+{
+ color: #009999 
+}	 /* Literal.Number.Hex */
+.codehilite .mi 
+{
+ color: #009999 
+}	 /* Literal.Number.Integer */
+.codehilite .mo 
+{
+ color: #009999 
+}	 /* Literal.Number.Oct */
+.codehilite .sb 
+{
+ color: #aa5500 
+}	 /* Literal.String.Backtick */
+.codehilite .sc 
+{
+ color: #aa5500 
+}	 /* Literal.String.Char */
+.codehilite .sd 
+{
+ color: #aa5500 
+}	 /* Literal.String.Doc */
+.codehilite .s2 
+{
+ color: #aa5500 
+}	 /* Literal.String.Double */
+.codehilite .se 
+{
+ color: #aa5500 
+}	 /* Literal.String.Escape */
+.codehilite .sh 
+{
+ color: #aa5500 
+}	 /* Literal.String.Heredoc */
+.codehilite .si 
+{
+ color: #aa5500 
+}	 /* Literal.String.Interpol */
+.codehilite .sx 
+{
+ color: #aa5500 
+}	 /* Literal.String.Other */
+.codehilite .sr 
+{
+ color: #009999 
+}	 /* Literal.String.Regex */
+.codehilite .s1 
+{
+ color: #aa5500 
+}	 /* Literal.String.Single */
+.codehilite .ss 
+{
+ color: #0000aa 
+}	 /* Literal.String.Symbol */
+.codehilite .bp 
+{
+ color: #00aaaa 
+}	 /* Name.Builtin.Pseudo */
+.codehilite .vc 
+{
+ color: #aa0000 
+}	 /* Name.Variable.Class */
+.codehilite .vg 
+{
+ color: #aa0000 
+}	 /* Name.Variable.Global */
+.codehilite .vi 
+{
+ color: #aa0000 
+}	 /* Name.Variable.Instance */
+.codehilite .il 
+{
+ color: #009999 
+}	 /* Literal.Number.Integer.Long */
+</style>
+<h1>Condor in Action SC-CAMP 2011 - practical session</h1>
+<h2>Acknowledge</h2>
+<p>Following exercises are based on the exercises made by Alain Roy from
+the Condor team of University of Wisconsin-Madison. A big thanks to
+Alain for letting us use them.</p>
+<h2>Introduction</h2>
+<p>During this exercises we will be using Condor version 7.6.1 which is the
+most current stable version. </p>
+<p>Some useful links:</p>
+<ul>
+<li><a href="http://www.cs.wisc.edu/condor/">Condor website</a></li>
+<li><a href="http://www.cs.wisc.edu/condor/manual/v7.6.1/">Condor manual</a></li>
+</ul>
+<h2>Condor Pool at SC-CAMP'11</h2>
+<p>The Condor Pool at SC-CAMP'11 is actually deployed on the top of the
+Grid5000 to which you had an introduction on Tuesday. It consists of
+30 hosts:</p>
+<ul>
+<li>1 host for the scheduler (<em>schedd</em>)</li>
+<li>29 hosts for the executors (<em>startd</em>)</li>
+</ul>
+<p>During the exercises we will refer to the schedd node as User Interface
+(UI).</p>
+<p>Before you start, make sure you can access it. All you need is a G5K
+account and internet access:</p>
+<ol>
+<li>
+<p>log to the G5K access</p>
+</li>
+<li>
+<p>log to the G5K frontend</p>
+</li>
+<li>
+<p>log to the Condor UI using the user name below with password <code>costarica</code>.</p>
+</li>
+</ol>
+<p>The details will be provided just at the beginning of the session as it
+depends on the current reservation.</p>
+<p><em>Notice what all can G5K allow you to do - deploy a Grid engine.</em></p>
+<div class="codehilite"><pre><span class="gh">Account   Name</span>
+<span class="gh">--------------</span>
+sccamp1:  Alejandro José Baltodano Madrigal
+sccamp2:  Andrei Fuentes Leiva
+sccamp3:  Andrés José Aguilar Umaña
+sccamp4:  Daniel Andrés Chacón Soto
+sccamp5:  Edwin Adverdi Pérez Ventura
+sccamp6:  Esteban Pérez Hodalgo
+sccamp7:  Fabian Fallas Moya
+sccamp8:  Giorgia Di Bianca
+sccamp9:  Guillermo Andree Oliva Mercado
+sccamp10: Gustavo Martínez Rivera
+sccamp11: José Esteban Pérez Hidalgo
+sccamp12: Joseiby Hernández Cedeño
+sccamp13: Julián Collado Umaña
+sccamp14: Kelvin Jose Jimenez Morales
+sccamp15: Marcela Alpízar Víquez
+sccamp16: Marcial Garbanzo Salas
+sccamp17: Marco Antonio Boniche Barquero
+sccamp18: Moreno Baricevic
+sccamp19: Ricardo Román Brenes
+sccamp20: Ricardo José Alvarado Villalobos
+sccamp21: Salvador Salado
+sccamp22: Sebastián Argüello Gutiérrez
+sccamp23: Emmanuel Vargas Blanco
+</pre></div>
+
+
+<p>We recommend to create a directory for each exercise so you can easily
+manage files and make sure that you do not override you stuff.</p>
+<p>Supported languages:</p>
+<ul>
+<li>java 1.6.0</li>
+<li>python 2.5.2</li>
+<li>gcc 4.3.2</li>
+</ul>
+<h3>Looking at the installation</h3>
+<p>Before you start doing any of these exercises, you need to initiate
+condor environment by executing:</p>
+<div class="codehilite"><pre><span class="gp">$</span> . /opt/condor/condor.sh
+</pre></div>
+
+
+<p>This will add Condor binaries into you path as well as set
+<code>CONDOR_CONFIG</code> variable that point to the config file of Condor and it
+is used by most of the binaries.</p>
+<p>Condor is installed in this pool in the <code>/opt/condor</code> directory.</p>
+<p>How do you know what version of Condor you are using? Try
+<code>condor_version</code>:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_version
+<span class="gp">$</span>CondorVersion: 7.6.1 May 31 2011 BuildID: 339001 <span class="err">$</span>
+<span class="gp">$</span>CondorPlatform: x86_64_deb_5.0 <span class="err">$</span>
+</pre></div>
+
+
+<p>Condor has some configuration files that it needs to find. It finds them
+because you have put CONDOR_CONFIG into your environment using the
+script above:</p>
+<div class="codehilite"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="nv">$CONDOR_CONFIG</span>
+<span class="go">/etc/condor/condor_config</span>
+</pre></div>
+
+
+<p>Condor has some directories that it keeps records of jobs in. Remember
+that each submission computer keeps track of all jobs submitted to it.
+That's in the local directory:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_config_val -v LOCAL_DIR
+<span class="go">LOCAL_DIR: /var/lib/condor</span>
+<span class="go">  Defined in &#39;/opt/condor/etc/condor_config.local&#39;, line 4.</span>
+
+<span class="gp">$</span> ls -CF /var/lib/condor
+<span class="go">log/ execute/  spool/</span>
+</pre></div>
+
+
+<p>The spool directory is where Condor keeps the jobs you submit, while the
+execute directory is where Condor keeps running jobs.</p>
+<p>Check if Condor is running:</p>
+<div class="codehilite"><pre><span class="gp">%</span>  ps auwx --forest | grep condor_ | grep -v grep
+<span class="go">condor    2873  0.0  0.0  33328  3676 ?        Ss   07:48   0:00 condor_master</span>
+<span class="go">condor    2874  0.0  0.0  33048  4840 ?        Ss   07:48   0:00  \_ condor_collector -f</span>
+<span class="go">condor    2875  0.0  0.0  32784  4876 ?        Ss   07:48   0:00  \_ condor_negotiator -f</span>
+<span class="go">condor    2876  0.0  0.0  34464  5512 ?        Ss   07:48   0:00  \_ condor_schedd -f</span>
+<span class="go">root      2877  0.0  0.0  21896  2520 ?        S    07:48   0:00      \_ condor_procd -A /tmp/condor-lock.suno-110.421387535127909/procd_pipe.SCHEDD -R 10000000 -S 60 -C 106</span>
+</pre></div>
+
+
+<p>There are five processes running: the <code>condor_master</code>, the
+<code>condor_collector</code>, the <code>condor_negotiator</code>, <code>condor_schedd</code>, and the
+<code>condor_procd</code>. In general, you might see many different Condor
+processes. Here's a list of the processes:</p>
+<ul>
+<li>
+<p><code>condor_master</code>: This program runs constantly and ensures that all
+other parts of Condor are running. If they hang or crash, it restarts
+them.</p>
+</li>
+<li>
+<p><code>condor_schedd</code>: If this program is running, it allows jobs to be
+submitted from this computer--that is, your computer is a "submit
+machine". This will advertise jobs to the central manager so that it
+knows about them. It will contact a <code>condor_startd</code> on other execute
+machines for each job that needs to be started.</p>
+</li>
+<li>
+<p><code>condor_procd</code>: This
+process helps Condor track process (from jobs) that it creates</p>
+</li>
+<li>
+<p><code>condor_collector</code>: This program is part of the Condor central manager.
+It collects information about all computers in the pool as well as which
+users want to run jobs. It is what normally responds to the
+<code>condor_status</code> command.</p>
+</li>
+<li>
+<p><code>condor_negotiator</code>: This program is part of the Condor central
+manager. It decides what jobs should be run where. It is run on the
+same computer as the collector.</p>
+</li>
+<li>
+<p><code>condor_startd</code>: If this program is running, it allows jobs to be
+started up on this computer--that is, your computer is an "execute
+machine". This advertises your computer to the central manager so that
+it knows about this computer. It will start up the jobs that run.</p>
+</li>
+<li>
+<p><code>condor_shadow</code>: For each job that has been submitted from this
+computer, there is one <code>condor_shadow</code> running. It will watch over the job
+as it runs remotely. In some cases it will provide some assistance.  You
+may or may not see any <code>condor_shadow</code> processes running, depending on
+what is happening on the computer when you try it out. </p>
+</li>
+</ul>
+<h4>condor_q</h4>
+<p>You can find out what jobs have been submitted on your computer with the
+condor_q command:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q
+
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD</span>
+
+<span class="go">0 jobs; 0 idle, 0 running, 0 held</span>
+</pre></div>
+
+
+<p>Nothing is running right now. If something was running, you would see output like this:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">60256.0   bbockelm        7/6  21:01   0+00:00:00 I  0   0.0  mytest.sh         </span>
+<span class="go">60279.0   roy             7/7  16:55   0+00:00:01 R  0   0.0  mytest.sh         </span>
+<span class="go">60279.1   roy             7/7  16:55   0+00:00:01 R  0   0.0  mytest.sh         </span>
+<span class="go">60279.2   roy             7/7  16:55   0+00:00:01 R  0   0.0  mytest.sh         </span>
+<span class="go">60279.3   roy             7/7  16:55   0+00:00:01 R  0   0.0  mytest.sh         </span>
+<span class="go">60279.4   roy             7/7  16:55   0+00:00:01 R  0   0.0  mytest.sh</span>
+
+<span class="go">6 jobs; 1 idle, 5 running, 0 held</span>
+</pre></div>
+
+
+<p>The output that you see will be different depending on what jobs are
+running. Notice what we can see from this:</p>
+<ul>
+<li><code>ID</code>: jobs cluster and process number. For the first job, the cluster is 60256 and the process is 0.</li>
+<li><code>OWNER</code>: who owns the job.</li>
+<li><code>SUBMITTED</code>: when the job was submitted</li>
+<li><code>RUN_TIME</code>: how long the job has been running.</li>
+<li><code>ST</code>: what the current state of the job is. I is idle, R is running.</li>
+<li><code>PRI</code>: the priority of the job.</li>
+<li><code>SIZE</code>: the memory consumption of the job.</li>
+<li><code>CMD</code>: the program that is being executed. </li>
+</ul>
+<h4>condor_status</h4>
+<p>You can find out what computers are in your Condor pool. (A pool is
+similar to a cluster, but it doesn't have the connotation that all
+computers are dedicated full-time to computation: some may be desktop
+computers owned by users.) To look, use <code>condor_status</code>:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status
+
+<span class="go">Name               OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime</span>
+
+<span class="go">slot1@sol-49.sophi LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:04</span>
+<span class="go">slot2@sol-49.sophi LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:05</span>
+<span class="go">slot3@sol-49.sophi LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:06</span>
+<span class="go">slot4@sol-49.sophi LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:07</span>
+<span class="go">slot1@sol-5.sophia LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:14:31</span>
+<span class="go">slot2@sol-5.sophia LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:05</span>
+<span class="go">slot3@sol-5.sophia LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:06</span>
+<span class="go">slot4@sol-5.sophia LINUX      X86_64 Unclaimed Idle     0.000   992  0+00:15:07</span>
+<span class="go">slot1@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:04</span>
+<span class="go">slot2@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:05</span>
+<span class="go">slot3@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:06</span>
+<span class="go">slot4@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:07</span>
+<span class="go">slot5@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:08</span>
+<span class="go">slot6@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:09</span>
+<span class="go">slot7@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:10</span>
+<span class="go">slot8@suno-10.soph LINUX      X86_64 Unclaimed Idle     0.000  4029  0+00:15:03</span>
+<span class="go">                     Total Owner Claimed Unclaimed Matched Preempting Backfill</span>
+
+<span class="go">        X86_64/LINUX    16     0       0        16       0          0        0</span>
+
+<span class="go">               Total    16     0       0        16       0          0        0</span>
+</pre></div>
+
+
+<p>Each computer shows up four or eight times, with a slotN at the
+beginning of the name. This is because we've configured Condor to be
+able to run multiple jobs per computer. Slot refers to <em>job slot</em>. We do
+this because these are multi-core computers and they are fully capable
+of running more jobs at once.</p>
+<p>Let's look at exactly what you can see:</p>
+<ul>
+<li><code>Name</code>: The name of the computer. Sometimes this gets chopped off, like above.</li>
+<li><code>OpSys</code>: The operating system, though not at the granularity you may wish: It says "Linux" instead of which distribution and version of Linux.</li>
+<li><code>Arch</code>: The architecture, such as INTEL or PPC.</li>
+<li><code>State</code>: The state is often Claimed (when it is running a Condor job) or Unclaimed (when it is not running a Condor job). It can be in a few other states as well, such as Matched.</li>
+<li><code>Activity</code>: This is usually something like Busy or Idle. Sometimes you may see a computer that is Claimed, but no job has yet begun on the computer. Then it is Claimed/Idle. Hopefully this doesn't last very long.</li>
+<li><code>LoadAv</code>: The load average on the computer.</li>
+<li><code>Mem</code>: The computers memory in megabytes.</li>
+<li><code>ActvtyTime</code>: How long the computer has been doing what it's been doing. </li>
+</ul>
+<h2>Condor Jobs</h2>
+<p>The object of this exercise to have you run and understand your first
+Condor job, as well as run small sets of jobs in a parameter sweep. This
+is an important exercise because it is the basis for everything that
+follows. If there is anything you don't understand in this exercise,
+please ask before you continue on.</p>
+<h3>Hello World from Condor</h3>
+<p>Let's start with the classical Hello World example.</p>
+<p>Your first exercise - a warm up - in this session. You are asked to
+write a simple program that takes a string argument, a name, and outputs
+a greeting like "Hello <name> from Condor on machine <machine>", where
+<code>&lt;name&gt;</code> is the provided argument and <code>&lt;machine&gt;</code> is the hostname of
+the host executing the jobs (use the <code>gethostname()</code> function for that
+if you use C). Also include a 5 second delay before exiting so you can
+see the execution in the schedd queue. Feel free to write in any
+language you like that is supported (including bash).</p>
+<p>After you have done with coding and compiling, test it if it runs:</p>
+<div class="codehilite"><pre><span class="gp">$</span> ./simple SC-CAMP11
+<span class="go">Hello SC-CAMP11 from Condor on machine sol-9.sophia.grid5000.fr</span>
+</pre></div>
+
+
+<p>You are now almost ready to run this job in Condor. The last thing you
+have to do is to create a Condor submit file. To do that, put the
+following text into a file called <code>simple.sub</code>:</p>
+<div class="codehilite"><pre>Universe   = vanilla
+Executable = simple
+Arguments  = SC-CAMP11
+Log        = simple.log
+Output     = simple.out
+Error      = simple.err
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+Queue
+</pre></div>
+
+
+<p>These lines should be more less self-explainable, but just to make sure:</p>
+<ul>
+<li>
+<p><code>Universe</code>: The vanilla universe means a plain old job. Later on,
+we'll encounter some special universes.</p>
+</li>
+<li>
+<p><code>Executable</code>: The name of your program</p>
+</li>
+<li>
+<p><code>Log</code>: This is the name of a file where Condor will record information
+about your job's execution. While it's not required, it is a really
+good idea to have a log.</p>
+</li>
+<li>
+<p><code>Output</code>: Where Condor should put the standard output from your job.</p>
+</li>
+<li>
+<p><code>Error</code>: Where Condor should put the standard error from your job. Our
+job isn't likely to have any, but we'll put it there to be safe.</p>
+</li>
+<li>
+<p><code>should_transfer_files</code>: Tell Condor that it should transfer files, instead of relying on a shared filesystem.</p>
+</li>
+<li>
+<p><code>when_to_transfer_output</code>: A technical detail about when files should
+be transported back to the computer from which you submitted your
+job.</p>
+</li>
+</ul>
+<p>Next, tell Condor to run your job:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_submit simple.sub
+<span class="go">Submitting job(s).</span>
+<span class="go">Logging submit event(s).</span>
+<span class="go">1 job(s) submitted to cluster 10.</span>
+</pre></div>
+
+
+<p>Now, we can watch the execution using the <code>condor_q</code> command:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q
+</pre></div>
+
+
+<p>Or more conveniently using the <code>watch</code> command:</p>
+<div class="codehilite"><pre><span class="gp">$</span> watch -n 1 condor_q
+</pre></div>
+
+
+<p>The output will be something like this:</p>
+<div class="codehilite"><pre><span class="go">Submitting job(s).</span>
+<span class="go">1 job(s) submitted to cluster 3.</span>
+<span class="gp">sccamp24@suno-11:~$</span> condor_q
+
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   3.0   sccamp24        7/14 08:17   0+00:00:02 R  0   0.0  simple</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+<span class="gp">sccamp24@suno-11:~$</span> condor_q
+
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   3.0   sccamp24        7/14 08:17   0+00:00:03 R  0   0.0  simple</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+<span class="gp">sccamp24@suno-11:~$</span> condor_q
+
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   3.0   sccamp24        7/14 08:17   0+00:00:05 R  0   0.0  simple</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+<span class="gp">sccamp24@suno-11:~$</span> condor_q
+
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD</span>
+
+<span class="go">0 jobs; 0 idle, 0 running, 0 held</span>
+</pre></div>
+
+
+<p>Now let's have a look at the output files. If everything worked out
+fine, you should see three files:</p>
+<ul>
+<li><code>simple.out</code> - the standard output from the executable</li>
+<li><code>simple.err</code> - the standard error from the executable</li>
+<li><code>simple.log</code> - the log file</li>
+</ul>
+<p>Let's start with the log file:</p>
+<div class="codehilite"><pre><span class="gp">$</span> cat simple.log
+<span class="go">000 (004.000.000) 07/14 08:19:22 Job submitted from host: &lt;138.96.21.111:52361&gt;</span>
+<span class="go">...</span>
+<span class="go">001 (004.000.000) 07/14 08:19:23 Job executing on host: &lt;138.96.22.5:43315&gt;</span>
+<span class="go">...</span>
+<span class="go">005 (004.000.000) 07/14 08:19:28 Job terminated.</span>
+<span class="go">        (1) Normal termination (return value 0)</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage</span>
+<span class="go">        61  -  Run Bytes Sent By Job</span>
+<span class="go">        9294  -  Run Bytes Received By Job</span>
+<span class="go">        61  -  Total Bytes Sent By Job</span>
+<span class="go">        9294  -  Total Bytes Received By Job</span>
+<span class="go">...</span>
+</pre></div>
+
+
+<p>Sounds good, lets see the output:</p>
+<div class="codehilite"><pre><span class="gp">$</span> cat simple.out
+<span class="go">Hello SC-CAMP11 from Condor on machine suno-1.sophia.grid5000.fr</span>
+</pre></div>
+
+
+<p>What can you tell from this output?</p>
+<h3>Parameter Sweep</h3>
+<p>Let's write a different program now <code>sum</code> - it will take two numbers as its
+arguments and prints out its sum:</p>
+<div class="codehilite"><pre><span class="gp">$</span> ./sum 1 2
+<span class="go">1 + 2 = 3</span>
+</pre></div>
+
+
+<p>In the previous section you saw how to run a single job. If you only
+ever had to run a single job, you probably wouldn't need Condor. But we
+would like to have our program calculate a whole set of values for
+different inputs. How can we do that? Let's make a new submit file
+called <code>sum.sub</code> that look like this:</p>
+<div class="codehilite"><pre>Universe   = vanilla
+Executable = sum
+Arguments  = 1 2
+Log        = sum.$(Process).log
+Output     = sum.$(Process).out
+Error      = sum.$(Process).error
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+Queue
+
+Arguments = 2 3
+Queue
+
+Arguments = 4 5
+Queue
+</pre></div>
+
+
+<p>There are two important differences to notice here. First, the <code>Log</code>,
+<code>Output</code> and <code>Error</code> lines have the <code>$(Process)</code> macro in them. This means
+that the output and error files will be named according to the process
+number of the job. You'll see what this looks like in a moment. Second,
+we told Condor to run the same job an extra two times by adding extra
+Arguments and Queue statements. Let's see what happens:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_submit sum.sub
+<span class="go">Submitting job(s)...</span>
+<span class="go">Logging submit event(s)...</span>
+<span class="go">3 job(s) submitted to cluster 60282.</span>
+
+<span class="gp">$</span> ls sum*out
+<span class="go">sum.0.out  sum.1.out  sum.2.out</span>
+
+<span class="gp">$</span> cat sum*out
+<span class="go">1 + 2 = 3</span>
+<span class="go">2 + 3 = 5</span>
+<span class="go">4 + 5 = 9</span>
+</pre></div>
+
+
+<p>Notice that we had three jobs with the same cluster number, but
+different process numbers. They have the same cluster number because
+they were all submitted from the same submit file. When the jobs ran,
+they created three different output files, each with the desired output.</p>
+<p>You are now ready to submit lots of jobs! Although this example was
+simple, Condor has many, many options so you can get a wide variety of
+behaviors. You can find many of these if you look at the documentation
+for <code>condor_submit</code>. </p>
+<h3>On your own</h3>
+<p>Now that you've gotten your feet wet, try a few things on your own.</p>
+<h4>Just one log file</h4>
+<p>There's no reason to have a separate log file for each job. Change your
+submit file so that it uses a single log file. </p>
+<ul>
+<li>Does it all still work?</li>
+<li>How does Condor keeps track of the progress?</li>
+</ul>
+<h4>New outputs for each run</h4>
+<p>You might have noticed that the output files were over-written when you
+re-ran the jobs. (That is, <code>simple.1.out</code> was just re-written.) That was
+okay for a simple exercise, but it might be very bad if you had wanted
+to keep around the results. Maybe you changed a parameter or rebuilt
+your program, and you want to compare the outputs.</p>
+<p>Just like you used <code>$(Process)</code>, you can also use <code>$(Cluster)</code>. This will be
+a number from your job ID. For example, it would be <code>3</code> from the above
+example. Change your submit file to use <code>$(Cluster)</code> and <code>$(Process)</code>. If
+you do two job submissions, will you have separate output files?</p>
+<h4>Lots of jobs</h4>
+<p>Instead of specifying the Arguments multiple times with multiple queue statements, try this:</p>
+<div class="codehilite"><pre>Arguments = $(Process) $(Cluster)
+queue 50
+</pre></div>
+
+
+<ul>
+<li>
+<p>What does it mean? </p>
+</li>
+<li>
+<p>What happens? </p>
+</li>
+<li>
+<p>Does it work as you expect?</p>
+</li>
+</ul>
+<p><em>An aside: you might wish to be able to do math, something like
+<code>$(Process)+1</code>. Unfortunately, you can't do that.</em> </p>
+<h3>A few tips and tricks</h3>
+<p>This exercise will teach you a few nifty commands to help you use Condor
+more easily.</p>
+<h4>Tips for condor_q</h4>
+<p>You're been using <code>condor_q</code>, but it shows the jobs of everyone who
+submitted from the computer you are running the command on. If you want
+to see just your jobs, try this:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -sub YOUR-LOGIN-NAME
+</pre></div>
+
+
+<p>Curious where your jobs are running? Use the <code>-run</code> option to see where
+jobs are running. (Idle jobs are not shown.)</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -run
+<span class="go">-- Submitter: vdt-itb.cs.wisc.edu : &lt;198.51.254.90:52713&gt; : vdt-itb.cs.wisc.edu</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME HOST(S)         </span>
+<span class="go">125665.0   roy             6/20 10:05   0+00:00:07 slot1@miniosg-c04.cs.wisc.edu</span>
+<span class="go">125665.1   roy             6/20 10:05   0+00:00:07 slot2@miniosg-c04.cs.wisc.edu</span>
+<span class="go">125665.2   roy             6/20 10:05   0+00:00:07 slot3@miniosg-c04.cs.wisc.edu</span>
+</pre></div>
+
+
+<p><code>condor_q</code> can also show you your job ClassAd. Recall back to the
+lecture and the discussion of ClassAds. For instance, you can look at
+the ClassAd for a single job:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -l 125665.0
+
+<span class="go">-- Submitter: vdt-itb.cs.wisc.edu : &lt;198.51.254.90:53928&gt; : vdt-itb.cs.wisc.edu</span>
+<span class="go">-- Submitter: vdt-itb.cs.wisc.edu : &lt;198.51.254.90:52713&gt; : vdt-itb.cs.wisc.edu</span>
+<span class="go">Out = &quot;simple.0.out&quot;</span>
+<span class="go">LastJobStatus = 1</span>
+<span class="go">JobCurrentStartDate = 1308582301</span>
+<span class="go">PublicClaimId = &quot;&lt;192.168.0.15:50888&gt;#1308343655#34#...&quot;</span>
+<span class="go">RemoteHost = &quot;slot1@miniosg-c04.cs.wisc.edu&quot;</span>
+<span class="go">BufferBlockSize = 32768</span>
+<span class="go">JobNotification = 2</span>
+<span class="go">JobLeaseDuration = 1200</span>
+<span class="go">TransferFiles = &quot;ONEXIT&quot;</span>
+<span class="go">ImageSize_RAW = 535</span>
+<span class="go">StreamOut = false</span>
+<span class="go">NumRestarts = 0</span>
+<span class="go">ImageSize = 750</span>
+<span class="go">Cmd = &quot;/home/roy/condor-test/simple&quot;</span>
+<span class="go">... output trimmed ...</span>
+</pre></div>
+
+
+<p>There are some interesting parts you can check out. For instance, where
+is the job running?</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -l 125665.0 | grep RemoteHost
+<span class="go">RemoteHost = &quot;slot1@miniosg-c04.cs.wisc.edu&quot;</span>
+</pre></div>
+
+
+<p>How many times has this job run? (It might be more than one if there
+were recoverable errors.)</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -l 125665.0 | grep JobRunCount
+<span class="go">JobRunCount = 1</span>
+</pre></div>
+
+
+<p>Where is the user log for this job? This is helpful when you assist someone else in debugging and they're not sure.</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -l 125665.0 | grep UserLog
+<span class="go">UserLog = &quot;/home/roy/condor-test/simple.0.log&quot;</span>
+</pre></div>
+
+
+<p>What the job's requirements? Condor automatically fills some in for you, to make sure your job runs on a reasonable computer in our cluster, but you can override any of these. I've broken the output into multiple lines to explain it to you.</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q -l 125665.0 | grep Requirements
+<span class="go">Requirements = ((Arch =!= &quot;&quot;))  #  Make sure you run on a reasonable architecture. We hacked this for technical reasons, ask Alain if you&#39;re curious. </span>
+<span class="go">    &amp;&amp; (OpSys == &quot;LINUX&quot;) #  Make sure you run on Linux </span>
+<span class="go">    &amp;&amp; (Disk &gt;= DiskUsage) #  Make sure the default disk Condor is on has enough disk space for your executable. Question: What is DiskUsage? </span>
+<span class="go">    &amp;&amp; (((Memory * 1024) &gt;= ImageSize)  #  Make sure there is enough memory for your executable. Question: What is ImageSize? </span>
+<span class="go">    &amp;&amp; ((RequestMemory * 1024) &gt;= ImageSize))  #  An extra complication, similar to the previous one. Question: What is RequestMemory? </span>
+<span class="go">    &amp;&amp; (HasFileTransfer) #  Only run on a computer that can accept your files.</span>
+</pre></div>
+
+
+<h3>Tips for condor_status</h3>
+<p>Curious about what jobs are being run right now?</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -claimed
+
+<span class="go">Name          OpSys       Arch   LoadAv RemoteUser           ClientMachine</span>
+
+<span class="go">slot1@miniosg LINUX       INTEL  0.000  roy@vdt-itb.cs.wisc. vdt-itb-interna</span>
+<span class="go">slot2@miniosg LINUX       INTEL  0.000  roy@vdt-itb.cs.wisc. vdt-itb-interna</span>
+<span class="go">                     Machines         MIPS       KFLOPS   AvgLoadAvg</span>
+
+<span class="go">         INTEL/LINUX        2         9486      2885154   0.000</span>
+
+<span class="go">               Total        2         9486      2885154   0.000</span>
+</pre></div>
+
+
+<p>Curious about who has submitted jobs?</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -submitters
+
+<span class="go">Name                 Machine      Running IdleJobs HeldJobs</span>
+
+<span class="go">osgedu@cs.wisc.edu   osg-edu.cs         0        0        0</span>
+<span class="go">bbockelm@vdt-itb.cs. vdt-itb.cs         0        1        0</span>
+<span class="go">roy@vdt-itb.cs.wisc. vdt-itb.cs         3        0        0</span>
+<span class="go">                           RunningJobs           IdleJobs           HeldJobs</span>
+
+<span class="go">bbockelm@vdt-itb.cs.                 0                  1                  0</span>
+<span class="go">  osgedu@cs.wisc.edu                 0                  0                  0</span>
+<span class="go">roy@vdt-itb.cs.wisc.                 3                  0                  0</span>
+
+<span class="go">               Total                 3                  1                  0</span>
+</pre></div>
+
+
+<p>Just like we could look at the ClassAd for a job, we can also look at them for computers.</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu
+<span class="go">Machine = &quot;miniosg-c01.cs.wisc.edu&quot;</span>
+<span class="go">LastHeardFrom = 1308582252</span>
+<span class="go">UpdateSequenceNumber = 819</span>
+<span class="go">JavaVersion = &quot;1.6.0_23&quot;</span>
+<span class="go">HasMPI = true</span>
+<span class="go">CpuIsBusy = false</span>
+<span class="go">HasVM = false</span>
+<span class="go">FileSystemDomain = &quot;cs.wisc.edu&quot;</span>
+<span class="go">JavaVendor = &quot;Sun Microsystems Inc.&quot;</span>
+<span class="go">Name = &quot;slot1@miniosg-c01.cs.wisc.edu&quot;</span>
+<span class="go">... output trimmed ...</span>
+</pre></div>
+
+
+<p>Some features of interest:</p>
+<p>The computer's name </p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu | grep -i Name
+<span class="go">Name = &quot;slot1@miniosg-c01.cs.wisc.edu&quot;</span>
+</pre></div>
+
+
+<p>The computer's other name. </p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu | grep -i ^Machine
+<span class="go">Machine = &quot;miniosg-c01.cs.wisc.edu&quot;</span>
+</pre></div>
+
+
+<p>The state of the computer? </p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu | grep -i ^State
+<span class="go">State = &quot;Unclaimed&quot;</span>
+</pre></div>
+
+
+<p>The version of Condor this computer is running. </p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu | grep CondorVersion
+<span class="go">CondorVersion = &quot;$CondorVersion: 7.6.1 May 31 2011 BuildID: 339001 $&quot;</span>
+</pre></div>
+
+
+<p>How many CPUs this computer has </p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_status -l slot1@miniosg-c01.cs.wisc.edu | grep  TotalCpus
+<span class="go">TotalCpus = 8</span>
+</pre></div>
+
+
+<p>What else can you find that's interesting in the ClassAd?</p>
+<h3>Removing jobs</h3>
+<p>If you submit a job that you realize has a problem, you can remove it
+with <code>condor_rm</code>. For example:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_q
+<span class="go">-- Submitter: vdt-itb.cs.wisc.edu : &lt;198.51.254.90:39927&gt; : vdt-itb.cs.wisc.edu</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">125668.0   roy             6/20 10:10   0+00:00:03 R  0   0.7  simple 60 10</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+
+<span class="gp">%</span> condor_rm 125668
+<span class="go">Cluster 125668 has been marked for removal.</span>
+
+<span class="gp">%</span> condor_q
+<span class="go">-- Submitter: vdt-itb.cs.wisc.edu : &lt;198.51.254.90:52713&gt; : vdt-itb.cs.wisc.edu</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD</span>
+
+<span class="go">0 jobs; 0 idle, 0 running, 0 held</span>
+</pre></div>
+
+
+<p>A few tips:</p>
+<ul>
+<li>You can remove all of your jobs with the -all option.</li>
+<li>You can't remove other users jobs.</li>
+<li>There are fancy options to <code>condor_rm</code>. </li>
+</ul>
+<h3>Historical information</h3>
+<p>You can see information about jobs that completed and are no longer in
+the queue with the <code>condor_history</code> command. It's rare that you want to
+see all the jobs, so try looking at jobs for just you:</p>
+<div class="codehilite"><pre><span class="go">condor_history USERNAME</span>
+</pre></div>
+
+
+<p>For example:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_history -backwards roy
+<span class="go">ID      OWNER            SUBMITTED     RUN_TIME ST   COMPLETED CMD            </span>
+<span class="go">1.0   sccamp24        7/14 07:49   0+00:00:01 C   7/14 07:49 /bin/hostname  </span>
+<span class="go">2.0   sccamp24        7/14 08:16   0+00:00:01 C   7/14 08:16 /home/sccamp24/</span>
+<span class="go">3.0   sccamp24        7/14 08:17   0+00:00:06 C   7/14 08:17 /home/sccamp24/</span>
+<span class="go">4.0   sccamp24        7/14 08:19   0+00:00:06 C   7/14 08:19 /home/sccamp24/</span>
+<span class="go">5.0   sccamp24        7/14 08:23   0+00:00:06 C   7/14 08:23 /home/sccamp24/</span>
+<span class="go">6.0   sccamp24        7/14 08:27   0+00:00:01 C   7/14 08:28 /home/sccamp24/</span>
+<span class="go">6.1   sccamp24        7/14 08:27   0+00:00:01 C   7/14 08:28 /home/sccamp24/</span>
+<span class="go">6.2   sccamp24        7/14 08:27   0+00:00:01 C   7/14 08:28 /home/sccamp24/</span>
+<span class="go">...</span>
+</pre></div>
+
+
+<h2>Workflows</h2>
+<p>As you have seen during the presentation, DAGMan (Directed Acyclic Graph
+Manager) is the default workflow enacting engine in Condor. It uses a
+very simple, yet very powerful description of a workflow in a form of a
+Directed Acyclic Graph. It performs very very and it is designed to
+handle huge workflow containing hundreds of thousands of jobs.</p>
+<h3>Coordinating Set of Jobs - A Simple DAG</h3>
+<p>DAGMan, lets you submit complex sequences of jobs as long as they can be
+expressed as a directed acyclic graph. For example, you may wish to run a
+large parameter sweep but before the sweep run you need to prepare your
+data. After the sweep runs, you need to collate the results. This might
+look like this, assuming you want to sweep over five parameters:</p>
+<p><img alt="Simple DAG" src="SimpleDag.gif" /></p>
+<p>DAGMan has many abilities, such as throttling jobs, recovery from
+failures, and more. More information about DAGMan can be found at in the
+<a href="http://www.cs.wisc.edu/condor/manual/v7.6.1/2_10DAGMan_Applications.html">Condor
+manual</a>.</p>
+<p>We're going to go back to the simple example that we did first. (The one
+with the job that slept and summed numbers.) Make sure that you have a
+submit file has only one <code>queue</code> command in it, as when we first wrote it.
+And we will just run vanilla universe jobs for now, though we could
+equally well run standard universe jobs.</p>
+<div class="codehilite"><pre>Universe                = vanilla
+Executable              = simple
+Arguments               = SC-CAMP11
+Log                     = simple.log
+Output                  = simple.out
+Error                   = simple.error
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+Queue
+</pre></div>
+
+
+<p>Make sure you've built the simple program. </p>
+<p>We are going to get a bit more sophisticated in submitting our jobs now.
+Let's have three windows open. In one window, you'll submit the job. In
+another you will watch the queue, and in the third you will watch what
+DAGMan does.</p>
+<p>First we will create the most minimal DAG that can be created: a DAG
+with just one node. Put this into a file named simple.dag.</p>
+<div class="codehilite"><pre>Job Simple simple.sub
+</pre></div>
+
+
+<p>In your first window, submit the DAG:</p>
+<div class="codehilite"><pre><span class="gp">%</span> condor_submit_dag simple.dag
+<span class="go">-----------------------------------------------------------------------</span>
+<span class="go">File for submitting this DAG to Condor           : simple.dag.condor.sub</span>
+<span class="go">Log of DAGMan debugging messages                 : simple.dag.dagman.out</span>
+<span class="go">Log of Condor library output                     : simple.dag.lib.out</span>
+<span class="go">Log of Condor library error messages             : simple.dag.lib.err</span>
+<span class="go">Log of the life of condor_dagman itself          : simple.dag.dagman.log</span>
+
+<span class="go">Submitting job(s).</span>
+<span class="go">1 job(s) submitted to cluster 126130.</span>
+<span class="go">-----------------------------------------------------------------------</span>
+</pre></div>
+
+
+<p>In the second window, watch the queue:</p>
+<div class="codehilite"><pre><span class="gp">$</span> watch -n 5 condor_q -sub YOUR-LOGIN-NAME
+
+<span class="gp">#</span> just submitted
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   9.0   sccamp24        7/14 08:37   0+00:00:05 R  0   19.5 condor_dagman</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+
+<span class="gp">#</span> running the DAGMan
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   9.0   sccamp24        7/14 08:37   0+00:00:10 R  0   19.5 condor_dagman</span>
+
+<span class="go">1 jobs; 0 idle, 1 running, 0 held</span>
+
+<span class="gp">#</span> DAG job submitted
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   9.0   sccamp24        7/14 08:37   0+00:00:15 R  0   19.5 condor_dagman     </span>
+<span class="go">  10.0   sccamp24        7/14 08:38   0+00:00:00 I  0   0.0  simple SC-CAMP11</span>
+
+<span class="go">2 jobs; 1 idle, 1 running, 0 held</span>
+
+<span class="gp">#</span> running the DAG job
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   9.0   sccamp24        7/14 08:37   0+00:00:20 R  0   19.5 condor_dagman     </span>
+<span class="go">  10.0   sccamp24        7/14 08:38   0+00:00:00 R  0   0.0  simple SC-CAMP11</span>
+
+<span class="go">2 jobs; 0 idle, 2 running, 0 held</span>
+
+<span class="gp">#</span> it lasts 5 seconds
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD               </span>
+<span class="go">   9.0   sccamp24        7/14 08:37   0+00:00:25 R  0   19.5 condor_dagman     </span>
+<span class="go">  10.0   sccamp24        7/14 08:38   0+00:00:05 R  0   0.0  simple SC-CAMP11</span>
+
+<span class="go">2 jobs; 0 idle, 2 running, 0 held</span>
+
+<span class="gp">#</span> <span class="k">done</span>
+<span class="go">-- Submitter: suno-11.sophia.grid5000.fr : &lt;138.96.21.111:52361&gt; : suno-11.sophia.grid5000.fr</span>
+<span class="go"> ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD</span>
+
+<span class="go">0 jobs; 0 idle, 0 running, 0 held</span>
+</pre></div>
+
+
+<p>In the third window, watch what DAGMan does:</p>
+<div class="codehilite"><pre><span class="gp">%</span>  tail -f --lines<span class="o">=</span>500 simple.dag.dagman.out
+<span class="go">07/14/11 08:38:05 Bootstrapping...</span>
+<span class="go">07/14/11 08:38:05 Number of pre-completed nodes: 0</span>
+<span class="go">07/14/11 08:38:05 Registering condor_event_timer...</span>
+<span class="go">07/14/11 08:38:06 Sleeping for one second for log file consistency</span>
+<span class="go">07/14/11 08:38:07 MultiLogFiles: truncating log file /home/sccamp24/simple.log</span>
+<span class="go">07/14/11 08:38:07 Submitting Condor Node Simple job(s)...</span>
+<span class="go">07/14/11 08:38:07 submitting: condor_submit -a dag_node_name&#39; &#39;=&#39; &#39;Simple -a +DAGManJobId&#39; &#39;=&#39; &#39;9 -a DAGManJobId&#39; &#39;=&#39; &#39;9 -a submit_event_notes&#39; &#39;=&#39; &#39;DAG&#39; &#39;Node:&#39; &#39;Simple -a +DAGParentNodeNames&#39; &#39;=&#39; &#39;&quot;&quot; simple.sub</span>
+<span class="go">07/14/11 08:38:07 From submit: Submitting job(s).</span>
+<span class="go">07/14/11 08:38:07 From submit: 1 job(s) submitted to cluster 10.</span>
+<span class="go">07/14/11 08:38:07       assigned Condor ID (10.0.0)</span>
+<span class="go">07/14/11 08:38:07 Just submitted 1 job this cycle...</span>
+<span class="go">07/14/11 08:38:07 Currently monitoring 1 Condor log file(s)</span>
+<span class="go">07/14/11 08:38:07 Event: ULOG_SUBMIT for Condor Node Simple (10.0.0)</span>
+<span class="go">07/14/11 08:38:07 Number of idle job procs: 1</span>
+<span class="go">07/14/11 08:38:07 Of 1 nodes total:</span>
+<span class="go">07/14/11 08:38:07  Done     Pre   Queued    Post   Ready   Un-Ready   Failed</span>
+<span class="go">07/14/11 08:38:07   ===     ===      ===     ===     ===        ===      ===</span>
+<span class="go">07/14/11 08:38:07     0       0        1       0       0          0        0</span>
+<span class="go">07/14/11 08:38:07 0 job proc(s) currently held</span>
+<span class="go">07/14/11 08:38:17 Currently monitoring 1 Condor log file(s)</span>
+<span class="go">07/14/11 08:38:17 Event: ULOG_EXECUTE for Condor Node Simple (10.0.0)</span>
+<span class="go">07/14/11 08:38:17 Number of idle job procs: 0</span>
+<span class="go">07/14/11 08:38:22 Currently monitoring 1 Condor log file(s)</span>
+<span class="go">07/14/11 08:38:22 Event: ULOG_IMAGE_SIZE for Condor Node Simple (10.0.0)</span>
+<span class="go">07/14/11 08:38:22 Event: ULOG_JOB_TERMINATED for Condor Node Simple (10.0.0)</span>
+<span class="go">07/14/11 08:38:22 Node Simple job proc (10.0.0) completed successfully.</span>
+<span class="go">07/14/11 08:38:22 Node Simple job completed</span>
+<span class="go">07/14/11 08:38:22 Number of idle job procs: 0</span>
+<span class="go">07/14/11 08:38:22 Of 1 nodes total:</span>
+<span class="go">07/14/11 08:38:22  Done     Pre   Queued    Post   Ready   Un-Ready   Failed</span>
+<span class="go">07/14/11 08:38:22   ===     ===      ===     ===     ===        ===      ===</span>
+<span class="go">07/14/11 08:38:22     1       0        0       0       0          0        0</span>
+<span class="go">07/14/11 08:38:22 0 job proc(s) currently held</span>
+<span class="go">07/14/11 08:38:22 All jobs Completed!</span>
+<span class="go">07/14/11 08:38:22 Note: 0 total job deferrals because of -MaxJobs limit (0)</span>
+<span class="go">07/14/11 08:38:22 Note: 0 total job deferrals because of -MaxIdle limit (0)</span>
+<span class="go">07/14/11 08:38:22 Note: 0 total job deferrals because of node category throttles</span>
+<span class="go">07/14/11 08:38:22 Note: 0 total PRE script deferrals because of -MaxPre limit (0)</span>
+<span class="go">07/14/11 08:38:22 Note: 0 total POST script deferrals because of -MaxPost limit (0)</span>
+<span class="go">07/14/11 08:38:22 **** condor_scheduniv_exec.9.0 (condor_DAGMAN) pid 3272 EXITING WITH STATUS 0</span>
+</pre></div>
+
+
+<p>Now verify your results:</p>
+<div class="codehilite"><pre><span class="gp">$</span> cat simple.log
+<span class="go">005 (010.000.000) 07/14 08:38:19 Job terminated.</span>
+<span class="go">        (1) Normal termination (return value 0)</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage</span>
+<span class="go">                Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage</span>
+<span class="go">        64  -  Run Bytes Sent By Job</span>
+<span class="go">        9154  -  Run Bytes Received By Job</span>
+<span class="go">        64  -  Total Bytes Sent By Job</span>
+<span class="go">        9154  -  Total Bytes Received By Job</span>
+<span class="go">...</span>
+
+<span class="go">::::console</span>
+<span class="gp">$</span> cat simple.out
+<span class="go">Hello SC-CAMP11 from Condor on machine sol-5.sophia.grid5000.fr</span>
+</pre></div>
+
+
+<p>Looking at DAGMan's various files, we see that DAGMan itself ran as a
+Condor job (specifically, a scheduler universe job).</p>
+<div class="codehilite"><pre><span class="gp">$</span> ls simple.dag.*
+<span class="go">simple.dag.condor.sub  simple.dag.dagman.log  simple.dag.dagman.out  simple.dag.lib.err  simple.dag.lib.out</span>
+
+<span class="gp">$</span> cat simple.dag.condor.sub
+<span class="gp">#</span> Filename: simple.dag.condor.sub
+<span class="gp">#</span> Generated by condor_submit_dag simple.dag 
+<span class="go">universe        = scheduler</span>
+<span class="go">executable      = /opt/condor/bin/condor_dagman</span>
+<span class="go">getenv          = True</span>
+<span class="go">output          = simple.dag.lib.out</span>
+<span class="go">error           = simple.dag.lib.err</span>
+<span class="go">log             = simple.dag.dagman.log</span>
+<span class="go">remove_kill_sig = SIGUSR1</span>
+<span class="go">+OtherJobRemoveRequirements     = &quot;DAGManJobId == $(cluster)&quot;</span>
+<span class="gp">#</span> Note: default on_exit_remove expression:
+<span class="gp">#</span> <span class="o">(</span> <span class="nv">ExitSignal</span> <span class="o">=</span>?<span class="o">=</span> 11 <span class="o">||</span> <span class="o">(</span><span class="nv">ExitCode</span> <span class="o">=</span>!<span class="o">=</span> UNDEFINED <span class="o">&amp;&amp;</span> ExitCode &gt;<span class="o">=</span>0 <span class="o">&amp;&amp;</span> ExitCode &lt;<span class="o">=</span> 2<span class="o">))</span>
+<span class="gp">#</span> attempts to ensure that DAGMan is automatically
+<span class="gp">#</span> requeued by the schedd <span class="k">if </span>it exits abnormally or
+<span class="gp">#</span> is killed <span class="o">(</span>e.g., during a reboot<span class="o">)</span>.
+<span class="go">on_exit_remove  = ( ExitSignal =?= 11 || (ExitCode =!= UNDEFINED &amp;&amp; ExitCode &gt;=0 &amp;&amp; ExitCode &lt;= 2))</span>
+<span class="go">copy_to_spool   = False</span>
+<span class="go">arguments       = &quot;-f -l . -Lockfile simple.dag.lock -AutoRescue 1 -DoRescueFrom 0 -Dag simple.dag -CsdVersion $CondorVersion:&#39; &#39;7.6.1&#39; &#39;May&#39; &#39;31&#39; &#39;2011&#39; &#39;BuildID:&#39; &#39;339001&#39; &#39;$ -Dagman /opt/condor/bin/condor_dagman&quot;</span>
+<span class="go">environment     = _CONDOR_DAGMAN_LOG=simple.dag.dagman.out;_CONDOR_MAX_DAGMAN_LOG=0</span>
+<span class="go">queue</span>
+</pre></div>
+
+
+<p>Clean up some of these files:</p>
+<div class="codehilite"><pre><span class="gp">$</span> rm simple.dag.*
+</pre></div>
+
+
+<h3>Scientific wokflow</h3>
+<p>Well, almost scientific, instead of making analysis of some HEP data, we
+will make some pretty pictures.</p>
+<p>For sure, you are all familiar with
+<a href="http://en.wikipedia.org/wiki/Fractal">fractals</a> - the beautiful
+geometric shapes that can be split into parts, each of which is at least
+approximately a reduced-size copy of the whole.</p>
+<p>One (and maybe the most well known) of such a structure is a <a href="http://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot
+Set</a>. The Mandelbrot set is
+a particular mathematical set of points, whose boundary generates a
+distinctive and easily recognisable two-dimensional fractal shape and it
+is the shape we will be generating using workflows.</p>
+<p><img alt="An example of Mandelbort Set" src="mandelbrot.png" /></p>
+<h4>Prerequisites</h4>
+<p>In <code>/usr/local/bin/goatbrot</code> you will find a simple program that can
+generate such image of the Mandelbrot Set. It is a command line utility
+that generates images in <a href="http://en.wikipedia.org/wiki/Netpbm_format">PPM
+format</a> of this fractal.</p>
+<div class="codehilite"><pre>goatbrot -- generate mandelbrot set images in PPM format
+
+      )_)
+   ___|oo)   Mandelbrot Set generation--
+  &#39;|  |\_|                               --for goats!
+   |||| #
+   ````
+</pre></div>
+
+
+<h5>Test it</h5>
+<p>Generate PPM image of the Mandelbrot Set:</p>
+<div class="codehilite"><pre><span class="gp">$</span> goatbrot -i 1000 -o tile_0_0.ppm -c 0,0 -w 3 -s 1000,1000
+<span class="go">Complex image:</span>
+<span class="go">            Center: 0 + 0i</span>
+<span class="go">             Width: 3</span>
+<span class="go">            Height: 3</span>
+<span class="go">        Upper Left: -1.5 + 1.5i</span>
+<span class="go">       Lower Right: 1.5 + -1.5i</span>
+
+<span class="go">Output image:</span>
+<span class="go">          Filename: tile_0_0.ppm</span>
+<span class="go">     Width, Height: 1000, 1000</span>
+<span class="go">             Theme: beej</span>
+<span class="go">       Antialiased: no</span>
+
+<span class="go">Mandelbrot:</span>
+<span class="go">    Max Iterations: 1000</span>
+<span class="go">        Continuous: no</span>
+
+<span class="go">Goatbrot:</span>
+<span class="go">       Num Threads: 4</span>
+
+<span class="go">Completed: 100.0%</span>
+</pre></div>
+
+
+<p>Convert it to a PNG file so it can be easily viewed: </p>
+<div class="codehilite"><pre><span class="gp">$</span> convert  tile_0_0.ppm  tile_0_0.png
+</pre></div>
+
+
+<p><em>Note: the convert program is part of the <a href="http://www.imagemagick.org/script/index.php">ImageMagick
+suite</a></em></p>
+<h5>See the results</h5>
+<p>You can easily see the file without copying it over to your local disk
+using your <code>public</code> directory at frontend which is accessible over web.</p>
+<p>Copy the data from the Condor UI. You can user <code>rsync</code> for it like:</p>
+<div class="codehilite"><pre><span class="go">rsync -avz &lt;your_grid_username&gt;@&lt;condor_ui&gt;:&lt;directory_to_sync&gt;/ /home/&lt;your_g5k_username&gt;/public</span>
+</pre></div>
+
+
+<p>In case of our test user sccamp24:</p>
+<div class="codehilite"><pre><span class="go">rsync -avz sccamp24@paramount-12:tests/ /home/fkrikava/public/sccamp</span>
+</pre></div>
+
+
+<p>Once syncing is done visit following URL in your browser:</p>
+<div class="codehilite"><pre>https://api.grid5000.fr/sid/grid5000/sites/&lt;site&gt;/public/&lt;username&gt;/
+</pre></div>
+
+
+<p>The goatbroat program takes several parameters. Let's break them down:</p>
+<div class="codehilite"><pre>-i 1000 The number of iterations. Bigger numbers generate more accurate images but are slower to run.
+-o tile_000000_000000.ppm The output file to generate.
+-c 0,0 The center point of the image. Here it is the point (0,0).
+-w 3 The width of the image. Here is 3.
+-s 1000,1000 The size of the final image. Here we generate a picture that is 1000 pixels wide and 1000 pixels tall.
+</pre></div>
+
+
+<p>The Mandelbrot set can take a while to create, particularly if you make
+the iterations large or the image size large. What if we broke the
+creation of the image into multiple invocations then stitched them
+together? Once we do that, we can run the each goatbroat in parallel in
+our cluster. Here's an example you can run by hand.</p>
+<p>Run goatbroat 4 times:</p>
+<div class="codehilite"><pre><span class="gp">$</span> goatbrot -i 1000 -o tile_0_0.ppm -c -0.75,0.75 -w 1.5 -s 500,500
+<span class="gp">$</span> goatbrot -i 1000 -o tile_0_1.ppm -c 0.75,0.75 -w 1.5 -s 500,500
+<span class="gp">$</span> goatbrot -i 1000 -o tile_1_0.ppm -c -0.75,-0.75 -w 1.5 -s 500,500
+<span class="gp">$</span> goatbrot -i 1000 -o tile_1_1.ppm -c 0.75,-0.75 -w 1.5 -s 500,500
+</pre></div>
+
+
+<p>Stitch them together:</p>
+<div class="codehilite"><pre><span class="gp">$</span> montage tile_0_0.ppm tile_0_1.ppm tile_1_0.ppm tile_1_1.ppm -mode Concatenate -tile 2x2 mandelbot.png
+</pre></div>
+
+
+<p><em>Note: the montage program is part of the <a href="http://www.imagemagick.org/script/index.php">ImageMagick
+suite</a></em></p>
+<p>This will produce the same image as above. We broke the image space into
+a 2 by 2 grid and ran goatbrot on each section of the grid. The montage
+program simply stitches the files together. </p>
+<p>The idea is we move in the complex plane and each time we change the
+center point of the computation to these locations:</p>
+<ul>
+<li><code>-0.75,0.75</code></li>
+<li><code>0.75,0.75</code></li>
+<li><code>-0.75,-0.75</code></li>
+<li><code>0.75,-0.75</code></li>
+</ul>
+<p>Also, notice that the width was adjusted by half as we are in 2x2 grid.</p>
+<p>Try it and make sure you understand the concept before you move on.</p>
+<h4>Mandelbrot as a workflow</h4>
+<p>We'll run our goatbrot example. We are going to make a DAG with four
+simultaneous jobs and one final node to stitch them together as you have
+seen in the previous section. This means we have five jobs. We're going
+to run goatbrot with more iterations 100,000 so it will take longer to
+run.</p>
+<p>You can create your five jobs. The goatbrot jobs very similar to each
+other, but they have slightly different parameters and output files.</p>
+<p>You should be already able to come up with the submission files for the
+goatbrot jobs. As help, we provide the first one. Please mind how you
+name the files and input and outputs of the respective jobs:</p>
+<p><code>goatbrot_0_0.sub</code>:</p>
+<div class="codehilite"><pre>executable              = /usr/local/bin/goatbrot
+arguments               = -i 100000 -c -0.75,0.75 -w 1.5 -s 500,500 -o tile_0_0.ppm
+log                     = goatbrot.log
+output                  = goatbrot_0_0.out
+error                   = goatbrot_0_0.err
+should_transfer_files   = YES
+when_to_transfer_output = ONEXIT
+queue
+</pre></div>
+
+
+<p>The rest 3 will be similar, only the argument will change.</p>
+<p>Once you are done with the goatbrot submission files you need to
+assemble a job to montage the results <code>montage.sub</code>:</p>
+<p>You should notice a few things about the montage submission file:</p>
+<ol>
+<li>
+<p>The <code>transfer_input_files</code> statement refers to the files created by
+the other jobs.<br />
+</p>
+</li>
+<li>
+<p>We do not transfer the montage program because it is pre-installed
+on the Condor pool. How do we avoid transferring it, and how do we
+specify where it is installed? </p>
+</li>
+</ol>
+&nbsp;
+
+<div class="codehilite"><pre>universe                = vanilla
+executable              = /usr/bin/montage
+arguments               = tile_0_0.ppm tile_0_1.ppm tile_1_0.ppm tile_1_1.ppm -mode Concatenate -tile 2x2 mandle.png
+should_transfer_files   = YES
+when_to_transfer_output = ONEXIT
+transfer_input_files    = tile_0_0.ppm,tile_0_1.ppm,tile_1_0.ppm,tile_1_1.ppm
+transfer_executable     = false
+output                  = montage.out
+error                   = montage.err
+log                     = montage.log
+queue
+</pre></div>
+
+
+<h5>Make your DAG</h5>
+<p>In a file called <code>goatbrot.dag</code>, you have your DAG specification:</p>
+<div class="codehilite"><pre>JOB g1 goatbrot_0_0.sub
+JOB g2 goatbrot_0_1.sub
+JOB g3 goatbrot_1_0.sub
+JOB g4 goatbrot_1_1.sub
+JOB montage montage.sub
+PARENT g1 g2 g3 g4 CHILD montage
+</pre></div>
+
+
+<p>Ask yourself: do you know how we ensure that all the goatbrot commands
+can run simultaneously and all of them will complete before we run the
+montage job?</p>
+<h5>Running the DAG</h5>
+<p>Submit your DAG:</p>
+<div class="codehilite"><pre><span class="gp">$</span> condor_submit_dag goatbrot.dag
+<span class="go">-----------------------------------------------------------------------</span>
+<span class="go">File for submitting this DAG to Condor           : goatbrot.dag.condor.sub</span>
+<span class="go">Log of DAGMan debugging messages                 : goatbrot.dag.dagman.out</span>
+<span class="go">Log of Condor library output                     : goatbrot.dag.lib.out</span>
+<span class="go">Log of Condor library error messages             : goatbrot.dag.lib.err</span>
+<span class="go">Log of the life of condor_dagman itself          : goatbrot.dag.dagman.log</span>
+
+<span class="go">Submitting job(s).</span>
+<span class="go">1 job(s) submitted to cluster 126182.</span>
+<span class="go">-----------------------------------------------------------------------</span>
+</pre></div>
+
+
+<p>Watch your dag with condor_q:</p>
+<div class="codehilite"><pre><span class="gp">$</span> watch -n 5 condor_q -sub YOUR-USER-NAME
+</pre></div>
+
+
+<p>Examine your results. For some reason, goatbrot prints everything to stderr, not stdout.</p>
+<div class="codehilite"><pre><span class="gp">$</span> cat goatbrot.err_0_0
+<span class="go">Complex image:</span>
+<span class="go">            Center: -0.75 + 0.75i</span>
+<span class="go">             Width: 1.5</span>
+<span class="go">            Height: 1.5</span>
+<span class="go">        Upper Left: -1.5 + 1.5i</span>
+<span class="go">       Lower Right: 0 + 0i</span>
+
+<span class="go">Output image:</span>
+<span class="go">          Filename: tile_0_0.ppm</span>
+<span class="go">     Width, Height: 500, 500</span>
+<span class="go">             Theme: beej</span>
+<span class="go">       Antialiased: no</span>
+
+<span class="go">Mandelbrot:</span>
+<span class="go">    Max Iterations: 100000</span>
+<span class="go">        Continuous: no</span>
+
+<span class="go">Goatbrot:</span>
+<span class="go">    Multithreading: not supported in this build</span>
+
+<span class="go">Completed: 100.0%</span>
+</pre></div>
+
+
+<p>Examine your log files (<code>goatbrot.log</code> and <code>montage.log</code>) and DAGMan output
+file (<code>goatbrot.dag.dagman.out</code>). Do they look as you expect? Can you see
+the progress of the DAG in the DAGMan output file?</p>
+<p>Clean up your results. Be careful about deleting the <code>goatbrot.dag.*</code>
+files, you do not want to delete the <code>goatbrot.dag</code> file, just
+<code>goatbrot.dag.*</code> .</p>
+<div class="codehilite"><pre><span class="gp">$</span> rm goatbrot.dag.*
+<span class="gp">$</span> rm goatbrot.out.*
+<span class="gp">$</span> rm goatbrot.err.*
+</pre></div>
+
+
+<h3>Simplifying Workflow Execution and Definition</h3>
+<h4>Simple work with DAGMan</h4>
+<p>You can use following Makefile to simplify your workflow of executing
+workflow:</p>
+<div class="codehilite"><pre><span class="nv">DAG</span><span class="o">=</span>goatbrot
+
+submit:
+  condor_submit_dag <span class="k">$(</span>DAG<span class="k">)</span>.dag
+
+check:
+  less <span class="k">$(</span>DAG<span class="k">)</span>.dag.dagman.out
+
+watch:
+  tail -f <span class="k">$(</span>DAG<span class="k">)</span>.dag.dagman.out
+
+clean:
+  rm -f *.condor.sub *.dagman.log *.dagman.out *.lib.err *.lib.out *rescue* *.temp *.lock *.dot *.out *.err *.log *.ps
+</pre></div>
+
+
+<p>Every time you just need to change the <code>DAG</code> variable to point to the
+name of the file that define your DAG. This file has to have a <code>.dag</code>
+extension.</p>
+<p>Then you can use following tasks:</p>
+<ul>
+<li><code>submit</code> to submit</li>
+<li><code>check</code> to check on the process</li>
+<li><code>watch</code> to watch in real time the log file of the execution</li>
+<li><code>clean</code> to remove all intermediate files</li>
+</ul>
+<h4>Workflow Visualization</h4>
+<p>Once you start using DAGMan to solve some real word problems, your
+workflow will grow quite considerable. As much as the DAG file is easy
+to write it is not that easy to read to make sure that it still works.
+Fortunately, there is an easy way how to visualize it.</p>
+<p>Add following line to the <code>goatbrot.dag</code>:</p>
+<div class="codehilite"><pre>DOT goatbrot.dot
+</pre></div>
+
+
+<p>This creates a file called goatbrot.dot (after you rerun the workflow)
+which contains a specification of the DAG before any programs within the
+DAG are submitted to Condor. </p>
+<p>This file itself is not very helpful, but it can be used as
+in input to the <a href="http://www.graphviz.org/">Graphviz</a>. You can use this
+tool to convert the DOT file into a PNG image for example:</p>
+<div class="codehilite"><pre><span class="gp">$</span> dot -Tpng goatbrot.dot -o goatbrot.png
+</pre></div>
+
+
+<p>Or, you can also keep the vector nature of the DOT graph. The <code>dot</code> command
+can generate PostScript files that can be then easily convert into PDFs
+using the <code>ps2pdf</code> command.</p>
+<div class="codehilite"><pre><span class="gp">$</span> dot -Tps goatbrot.dot -o goatbrot.ps <span class="o">&amp;&amp;</span> ps2pdf goatbrot.ps
+</pre></div>
+
+
+<p>Regardless the format you use, the output should be something like:</p>
+<p><img alt="goatbrot.dag DOT visualization" src="goatbrot-dot.png" /></p>
+<p>More information is again in the
+<a href="http://www.cs.wisc.edu/condor/manual/v6.6/2_11DAGMan_Applications.html#SECTION003118000000000000000">manual</a>.</p>
+<h4>Simpler DAGs with variable substitutions</h4>
+<p>If you look at the DAG we made, you might find it a bit tedious because
+each goatbrot job has a separate Condor submit file. They're nearly
+identical except for a couple of parameters. Can we make it simpler?</p>
+<p>Yes, we can!</p>
+<h5>Declare your variables</h5>
+<p>First you need to declare your variables in your submit file. Make one
+submit file for all of your goatbrot jobs. Here's what it looks like.
+Call it <code>goatbrot.sub</code>:</p>
+<div class="codehilite"><pre>executable              = goatbrot
+arguments               = -i 100000 -c $(CENTERX),$(CENTERY) -w 1.5 -s 500,500 -o tile_$(TILEY)_$(TILEX).ppm
+log                     = goatbrot.log
+output                  = goatbrot.out.$(TILEY).$(TILEX)
+error                   = goatbrot.err.$(TILEY).$(TILEX)
+should_transfer_files   = YES
+when_to_transfer_output = ONEXIT
+queue
+</pre></div>
+
+
+<p>Then you need to change your DAG to use VARS for variable substitution.
+Here's what one of the jobs would look like:</p>
+<div class="codehilite"><pre>JOB g1 goatbrot.sub
+VARS g1 CENTERX=&quot;-0.75&quot;
+VARS g1 CENTERY=&quot;0.75&quot;
+VARS g1 TILEX=&quot;0&quot;
+VARS g1 TILEY=&quot;0&quot;
+</pre></div>
+
+
+<p>Edit your DAG similarly for all of your goatbrot jobs. If you need help,
+check the Condor manual for for a description of how to use <code>VARS</code>. What
+happens? </p>
+<h3>On your own</h3>
+<p>In real world you won't write DAGs and submit files all that often, you
+will usually generate them based on the needs of the experiments you
+will be working on.</p>
+<p>Let's try now. Make a program that will generate a DAG and a submit
+file(s) for the Mandelbrot example with a variable number of tiles. For
+example:</p>
+<div class="codehilite"><pre><span class="gp">$</span> ./gen-mandelbrot-dag 8 100000
+</pre></div>
+
+
+<p>will generate in total 64 jobs (8x8 grid) using 100000 iterations for
+each of the tile generation.</p>
+<p>Try to experiment with the number of jobs with regards to the total time
+of execution - that you can grab out of the log file. This will give you
+an idea who does this kind of a workflow scales.</p>
+<p>Bonus: use different variable for horizontal and vertical partitioning.</p>
+<h2>Exercises with Personal Condor (for home, if you like)</h2>
+<p>You can easily run Condor on your laptop or workstation. Go to Condor
+website and download appropriate version of you OS/ARCH and try it out.
+More information is in the Condor manual.</p>
+<p>Good luck!</p></body></html>

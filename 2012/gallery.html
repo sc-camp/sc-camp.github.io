@@ -1,0 +1,925 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><link rel="stylesheet" type="text/css" href="gallery/index.php5%3Fcmd=css.css"><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"><title>Gallery</title>
+<link rel="icon" type="image/png" href="http://sc-camp.org/2012/gallery/_images/picto2011.png" />
+<script language="JavaScript" TYPE="text/javascript">
+		<!--
+
+		var phpSelf = '/2012/gallery/index.php5';
+
+		var navLink = [];
+		var navName = [];
+
+		var dirLink = [];
+		var dirThumb = [];
+		var dirName = [];
+		var dirInfo = [];
+
+		var imgLink = [];
+		var imgName = [];
+		var imgInfo = [];
+
+		var fileLink = [];
+		var fileThumb = [];
+		var fileName = [];
+		var fileInfo = [];
+
+		var imageSpace = 50;
+
+		var waitSpin = ['&bull;-----', '-&bull;----', '--&bull;---', '---&bull;--', '----&bull;-', '-----&bull;'];
+		var waitSpinNr = 0;
+		var waitSpinSpeed = 100;
+
+		var graceMaxRun = Math.ceil(500 / waitSpinSpeed);
+
+		var showInfo = false;
+		var actualSize = false;
+		var fullImgLoaded = false;
+		var imageLargerThanViewport = false;
+
+		var index = false;
+		var preloadImg = new Image();
+		var preloaded = -1;
+		var preloadedFull = -1;
+
+		var viewportWidth;
+		var viewportHeight;
+
+		var imgFullWidth;
+		var imgFullHeight;
+
+
+		function getViewport()
+		{
+			if (typeof window.innerWidth != 'undefined')
+			{
+				viewportWidth = window.innerWidth,
+				viewportHeight = window.innerHeight
+			}
+			else if (typeof document.documentElement != 'undefined' && typeof document.documentElement.clientWidth != 'undefined' && document.documentElement.clientWidth != 0)
+			{
+				viewportWidth = document.documentElement.clientWidth,
+				viewportHeight = document.documentElement.clientHeight
+			}
+			else
+			{
+				viewportWidth = document.getElementsByTagName('body')[0].clientWidth,
+				viewportHeight = document.getElementsByTagName('body')[0].clientHeight
+			}
+			if (showInfo)
+			{
+				viewportWidth -= (250 + 12);
+			}
+			viewportHeight -= 70;
+			if (viewportHeight < 0) viewportHeight = 20;
+		}
+
+
+		function initDisplay()
+		{
+			getViewport();
+			if (index)
+			{
+				resizeImage();
+			}
+			document.getElementById('box_image').style.width = viewportWidth;
+			document.getElementById('box_image').style.height = viewportHeight;
+			document.getElementById('box_wait').style.width = viewportWidth;
+			document.getElementById('box_wait').style.height = viewportHeight;
+			document.getElementById('box_gallery').style.width = viewportWidth;
+			document.getElementById('box_gallery').style.height = viewportHeight;
+			document.getElementById('box_info').style.height = viewportHeight-20;
+			showMenu();
+		}
+
+
+		function resizeImage()
+		{
+			var availX, availY, aspectX, aspectY, newImgX, newImgY;
+			availX = viewportWidth - imageSpace;
+			availY = viewportHeight - imageSpace;
+			if (availX < 160)
+			{
+				availX = 160;
+			}
+			if (availY < 120)
+			{
+				availY = 120;
+			}
+			if ((imgFullWidth > availX) || (imgFullHeight > availY))
+			{
+				imageLargerThanViewport = true;
+			}
+			else
+			{
+				imageLargerThanViewport = false;
+			}
+			if (!actualSize && ((imgFullWidth > availX) || (imgFullHeight > availY)))
+			{
+				aspectX = imgFullWidth / availX;
+				aspectY = imgFullHeight / availY;
+				if (aspectX > aspectY)
+				{
+					newImgX = availX;
+					newImgY = Math.round(imgFullHeight / aspectX);
+				}
+				else
+				{
+					newImgX = Math.round(imgFullWidth / aspectY);
+					newImgY = availY;
+				}
+				document.getElementById('img_resize').innerHTML = newImgX + ' x ' + newImgY;
+			}
+			else
+			{
+				newImgX = imgFullWidth;
+				newImgY = imgFullHeight;
+				document.getElementById('img_resize').innerHTML = 'Not Scaled';
+			}
+			document.getElementById('full').width = newImgX;
+			document.getElementById('full').height = newImgY;
+		}
+
+
+		function fullSize()
+		{
+			if (actualSize == true)
+			{
+				actualSize = false;
+				initDisplay();
+			}
+			else
+			{
+				actualSize = true;
+				initDisplay();
+			}
+		}
+
+
+		function showMenu()
+		{
+			if (imgLink.length > 0)
+			{
+				menu = '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="cycleImg(-1)"><< Previous</span>';
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="cycleImg(1)">Next >></span>';
+			}
+			else
+			{
+				menu = '<span class="sfpg_button_disabled"><< Previous</span>';
+				menu += '<span class="sfpg_button_disabled">Next >></span>';
+			}
+
+			if (showInfo)
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_on\';" onclick="toggleInfo(showInfo);" class="sfpg_button_on">Information</span>';
+			}
+			else
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" onclick="toggleInfo(showInfo);" class="sfpg_button">Information</span>';
+			}
+
+			if (index && imageLargerThanViewport)
+			{
+				if (actualSize)
+				{
+					menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_on\';" class="sfpg_button_on" onclick="fullSize()">Actual Size</span>';
+				}
+				else
+				{
+					menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="fullSize()">Actual Size</span>';
+				}
+			}
+			else
+			{
+				menu += '<span class="sfpg_button_disabled">Actual Size</span>';
+			}
+
+
+			
+			if (index)
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="closeImageView()">Close Image</span>';
+			}
+			else
+			{
+				menu += '<span class="sfpg_button_disabled">Close Image</span>';
+			}
+			menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="window.location=\'http://sye.dk/sfpg/\'">sfpg 4.0.0 - sye.dk</span>';
+			document.getElementById('div_menu').innerHTML = menu;
+		}
+
+
+		function openImageView(imgId, full)
+		{
+			if (!index)
+			{
+				document.getElementById('box_overlay').style.visibility='visible';
+				setOpacity('box_overlay', 90);
+			}
+			index = imgId;
+			fillInfo('img', index);
+			setOpacity('full', 0);
+			document.getElementById('wait').style.visibility='visible';
+			document.getElementById('box_wait').style.visibility='visible';
+			document.getElementById('box_image').style.visibility='visible';
+			preloadImage(index, full);
+			actualSize = false;
+			fullImgLoaded = full;
+			showMenu();
+			showImage(0);
+		}
+
+
+		function preloadImage(imgId, full)
+		{
+			if ((preloaded != imgId) || (preloadedFull != full))
+			{
+				preloadImg = new Image();
+				if ((full == 1) || (true))
+				{
+					preloadImg.src = phpSelf+'?cmd=image&sfpg='+imgLink[imgId];
+					preloadedFull = 1;
+				}
+				else
+				{
+					preloadImg.src = phpSelf+'?cmd=preview&sfpg='+imgLink[imgId];
+					preloadedFull = 0;
+				}
+				preloaded = imgId;
+			}
+		}
+
+
+		function fillInfo(type, id)
+		{
+			if (!index || (type == 'img'))
+			{
+				var info='<div class="thumbimgbox">';
+				if (type == 'dir')
+				{
+					if (dirThumb[id] != '')
+					{
+						info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+dirThumb[id]+'">';
+					}
+					else
+					{
+						info += '<br><br>No Images in gallery';
+					}
+					info += '</div>';
+					info += '<strong>Gallery Name</strong><br><div class="sfpg_info_text">'+dirName[id] + '</div><br>';
+					var splint = dirInfo[id].split('|');
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>Sub galleries</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Images</strong><br><div class="sfpg_info_text">'+splint[2]+'</div><br>';
+					info += '<strong>Links</strong><br><a href="'+phpSelf+'?sfpg='+dirLink[id]+'">Direct link to Gallery</a><br><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[4]+'<br></div><br>';
+				}
+				else if (type == 'img')
+				{
+					info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+imgLink[id]+'">';
+					info += '</div>';
+					var splint = imgInfo[id].split('|');
+					info += '<strong>Image Name</strong><br><div class="sfpg_info_text">'+imgName[id] + '</div><br>';
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>Full Image Dimensions</strong><br><div class="sfpg_info_text">'+splint[2]+' x '+splint[3]+'</div><br>';
+					info += '<strong>Displayed Image Dimensions</strong><br><div class="sfpg_info_text">';
+										
+					info += 'Scaled to: <span id="img_resize"></span></div><br>';
+					info += '<strong>File size in bytes</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Image number</strong><div class="sfpg_info_text">'+id+' / '+(imgLink.length-1)+'</div><br>';
+					info += '<strong>Links</strong><br>';
+					info += '<a href="'+phpSelf+'?sfpg='+imgLink[id]+'">Direct link to Image</a><br>';
+					info += '<a href="'+phpSelf+'?cmd=dl&sfpg='+imgLink[id]+'">Download full-size image</a><br><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[4]+'<br></div><br>';
+				}
+				else if (type == 'file')
+				{
+					if (fileThumb[id] != '')
+					{
+						info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+fileThumb[id]+'">';
+					}
+					else
+					{
+						info += '<br><br>No Preview for file<br>';
+					}
+					info += '</div>';
+					info += '<strong>File Name</strong><br><div class="sfpg_info_text">'+fileName[id]+'</div><br>';
+					var splint = fileInfo[id].split('|');
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>File size in bytes</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[2]+'<br></div><br>';
+				}
+				document.getElementById('box_inner_info').innerHTML = info;
+			}
+		}
+
+
+		function toggleInfo(status)
+		{
+			if (status)
+			{
+				document.getElementById('box_info').style.visibility='hidden';
+			}
+			else
+			{
+				setOpacity('box_info', 0);
+				document.getElementById('box_info').style.visibility='visible';
+				fadeOpacity('box_info', 0,	100, 300);
+			}
+			showInfo = !status;
+			initDisplay();
+		}
+
+
+		function openGallery(id, type)
+		{
+			var link;
+			if (type == 'nav')
+			{
+				link=navLink[id];
+			}
+			else
+			{
+				link=dirLink[id];
+			}
+
+			var opt='';
+			if (showInfo)
+			{
+				opt = '&info=1';
+			}
+			window.location	= phpSelf+'?sfpg='+link+opt;
+		}
+
+
+		function openFile(id)
+		{
+			if (true)
+			{
+				window.open(phpSelf+'?cmd=file&sfpg='+fileLink[id]);
+			}
+			else
+			{
+				window.location	= phpSelf+'?cmd=file&sfpg='+fileLink[id];
+			}
+		}
+
+
+		function nextImage(direction)
+		{
+			var nextIndex;
+			if (!index)
+			{
+				if (direction > 0)
+				{
+					return 1;
+				}
+				else
+				{
+					return (imgLink.length - 1);
+				}
+			}
+			var nextImg = index + direction;
+			if (nextImg > imgLink.length - 1)
+			{
+				nextImg = 1;
+			}
+			if (nextImg < 1)
+			{
+				nextImg = imgLink.length - 1;
+			}
+			return nextImg;
+		}
+
+
+		function cycleImg(direction)
+		{
+			openImageView(nextImage(direction), false);
+		}
+
+
+		function showImage(graceRun)
+		{
+			if (graceRun < graceMaxRun)
+			{
+				if (preloadImg.complete || graceRun != 0)
+				{
+					if (graceRun == 0)
+					{
+						document.getElementById('full').src = preloadImg.src;
+						imgFullWidth = preloadImg.width;
+						imgFullHeight = preloadImg.height;
+						fillInfo('img', index);
+						initDisplay();
+						preloadImage(nextImage(1),0);
+					}
+					graceRun++;
+				}
+				if (waitSpinNr >= waitSpin.length)
+				{
+					waitSpinNr = 0;
+				}
+				document.getElementById('wait').innerHTML = '<div class="loading">Image Loading ' + waitSpin[waitSpinNr] + '</div>';
+				waitSpinNr++;
+				if (index)
+				{
+					setTimeout ('showImage(' + graceRun + ')', waitSpinSpeed);
+				}
+			}
+			else
+			{
+				document.getElementById('wait').style.visibility='hidden';
+				fadeOpacity('full', 0, 100, 300);
+			}
+		}
+
+
+		function closeImageView()
+		{
+			document.getElementById('box_wait').style.visibility='hidden';
+			document.getElementById('wait').style.visibility='hidden';
+			document.getElementById('box_image').style.visibility='hidden';
+			index = false;
+			showMenu();
+			fadeOpacity('box_overlay', 90, 0, 300);
+			document.getElementById('full').width = 1;
+			document.getElementById('full').height = 1;
+			document.getElementById('full').src = '';
+			fillInfo('dir', 0);
+		}
+
+
+		function setOpacity(id, opacity)
+		{
+			var element = document.getElementById(id).style;
+			element.opacity = (opacity / 100);	// std
+			element.MozOpacity = (opacity / 100);	// firefox
+			element.filter = 'alpha(opacity=' + opacity + ')';	// IE
+			element.KhtmlOpacity = (opacity / 100);	// Mac
+		}
+
+
+		function fadeOpacity(id, opacityStart, opacityEnd, msToFade)
+		{
+			if (msToFade > 0)
+			{
+				var frames = Math.round((msToFade / 1000) * 30);
+				var msPerFrame = Math.round(msToFade / frames);
+				var opacityPerFrame = (opacityEnd - opacityStart) / frames;
+				var opacity = opacityStart;
+				for (frame = 1; frame <= frames; frame++)
+				{
+					setTimeout('setOpacity(\'' + id + '\',' + opacity + ')',(frame * msPerFrame));
+					opacity += opacityPerFrame;
+				}
+				if (opacityEnd == 0)
+				{
+					setTimeout('document.getElementById(\'' + id + '\').style.visibility=\'hidden\'',((frames+1) * msPerFrame));
+				}
+				else
+				{
+					setTimeout('setOpacity(\'' + id + '\',' + opacityEnd + ')',((frames+1) * msPerFrame));
+				}
+			}
+			else
+			{
+				setOpacity(id, opacityEnd);
+				if (opacityEnd == 0)
+				{
+					document.getElementById(id).style.visibility='hidden';
+				}
+			}
+		}
+
+
+		function thumbDisplayName(name)
+		{
+			dispName = name.substring(0,20);
+			if (name.length > 20)
+			{
+				dispName += '...';
+			}
+			return dispName;
+		}
+
+
+		function addElement(elementNumber, type)
+		{
+			var newdiv = document.createElement('div');
+			newdiv.className = 'thumbbox';
+			if (type == 'dir')
+			{
+				content = '<div onclick="openGallery('+elementNumber+')" onmouseover="this.className=\'innerboxdir_hover\'; fillInfo(\'dir\', '+elementNumber+')" onmouseout="this.className=\'innerboxdir\'; fillInfo(\'dir\', 0)" class="innerboxdir"><div class="thumbimgbox">';
+				if (dirThumb[elementNumber] != '')
+				{
+					content += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+dirThumb[elementNumber]+'">';
+				}
+				else
+				{
+					content += '<br><br>No Images in gallery';
+				}
+				content += '</div>';
+				content += '['+thumbDisplayName(dirName[elementNumber])+']';
+				content += '</div>';
+			}
+			else if (type == 'img')
+			{
+				content = '<div onclick="openImageView('+elementNumber+', false)" onmouseover="this.className=\'innerboximg_hover\'; fillInfo(\'img\', '+elementNumber+')" onmouseout="this.className=\'innerboximg\'; fillInfo(\'dir\', 0)" class="innerboximg"><div class="thumbimgbox"><img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+imgLink[elementNumber]+'"></div>';
+				content += thumbDisplayName(imgName[elementNumber]);
+				content += '</div>';
+			}
+			else if (type == 'file')
+			{
+				content = '<div onclick="openFile('+elementNumber+')" onmouseover="this.className=\'innerboxfile_hover\'; fillInfo(\'file\', '+elementNumber+')" onmouseout="this.className=\'innerboxfile\'; fillInfo(\'dir\', 0)" class="innerboxfile"><div class="thumbimgbox">';
+				if (fileThumb[elementNumber] != '')
+				{
+					content += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+fileThumb[elementNumber]+'">';
+				}
+				else
+				{
+					content += '<br><br>No Preview for file';
+				}
+				content += '</div>'; 
+				content += thumbDisplayName(fileName[elementNumber]);
+				content += '</div>';
+			}
+			newdiv.innerHTML = content;
+			var boxC = document.getElementById('box_gallery');
+			boxC.appendChild(newdiv);
+		}
+
+
+		function showGallery(initOpenImage)
+		{
+			initDisplay();
+			if (initOpenImage)
+			{
+				openImageView(initOpenImage, false);
+			}
+			else
+			{
+				fillInfo('dir', 0);
+			}
+
+			if (showInfo)
+			{
+				toggleInfo(false);
+			}
+
+			var navLinks = '';
+			for (i = 1; i < navLink.length; i++)
+			{
+				if (navLink[i] != '')
+				{
+					navLinks += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_nav\';" class="sfpg_button_nav" onclick="openGallery('+i+', \'nav\')">'+navName[i]+'</span>';
+				}
+				else
+				{
+					navLinks += navName[i];
+				}
+			}
+			document.getElementById('navi').innerHTML = navLinks;
+
+			for (i = 1; i < dirLink.length; i++)
+			{
+				addElement(i, 'dir');
+			}
+
+			for (i = 1; i < imgLink.length; i++)
+			{
+				addElement(i, 'img');
+			}
+			
+			for (i = 1; i < fileLink.length; i++)
+			{
+				addElement(i, 'file');
+			}
+		}
+
+		
+
+navLink[1] = 'KiphNDVmMGNjMTYxNmRiY2M3ZmFlNzE4ZTJmY2Q3NDNlOA';
+navName[1] = 'Home';
+
+dirLink[0] = 'KiphNDVmMGNjMTYxNmRiY2M3ZmFlNzE4ZTJmY2Q3NDNlOA';
+dirName[0] = 'Home';
+dirThumb[0] = 'KlAxMDQwMDA5LkpQRyoxOTc1M2YxMzBiZTRkZjFkYTEwMDdiNzA0OGIxYjY0NQ';
+dirInfo[0] = '2013-04-09 10:23:42|0|79|0|';
+
+imgLink[1] = 'KlAxMDQwMDA5LkpQRyoxOTc1M2YxMzBiZTRkZjFkYTEwMDdiNzA0OGIxYjY0NQ';
+imgName[1] = 'P1040009';
+imgInfo[1] = '2013-04-08 09:22:36|190.568|912|684|';
+
+imgLink[2] = 'KlAxMDQwMDEwLkpQRyowOGFkMmI5OTFjNTFlOWFkYmRmYTg5ZjI5N2RjOTBmZQ';
+imgName[2] = 'P1040010';
+imgInfo[2] = '2013-04-08 09:22:39|123.655|912|684|';
+
+imgLink[3] = 'KlAxMDQwMDExLkpQRyowNGI4NjIwYjVhM2U4YzM5MGU1MGJhNWRjMWRhMWNiMQ';
+imgName[3] = 'P1040011';
+imgInfo[3] = '2013-04-08 09:22:42|155.657|912|684|';
+
+imgLink[4] = 'KlAxMDQwMDEyLkpQRypkOWExNmI4MThhMjVmMzE4Y2RiZWFlODFkODZjYjFiOQ';
+imgName[4] = 'P1040012';
+imgInfo[4] = '2013-04-08 09:22:44|174.048|912|684|';
+
+imgLink[5] = 'KlAxMDQwMDEzLkpQRyozOTZmNDYyMGYxNzI1OGRlNjI1NWM4M2Q5MjUzNjM4Ng';
+imgName[5] = 'P1040013';
+imgInfo[5] = '2013-04-08 09:22:48|129.265|912|684|';
+
+imgLink[6] = 'KlAxMDQwMDE0LkpQRyowNmZlYWE3NWQ3NjVmMDEwNDFlNDMyNzRkNDZjOGVkOA';
+imgName[6] = 'P1040014';
+imgInfo[6] = '2013-04-08 09:22:50|178.592|912|684|';
+
+imgLink[7] = 'KlAxMDQwMDE1LkpQRyphNmU1NjcwZGNlZGZiZDFlYjJjZTlhMWM3OThmODkxZg';
+imgName[7] = 'P1040015';
+imgInfo[7] = '2013-04-08 09:22:55|171.090|912|684|';
+
+imgLink[8] = 'KlAxMDQwMDE2LkpQRyo3NjliOTc5MTJiYTUyMDM1NWQzZWZiYThhMTZiZDAzYg';
+imgName[8] = 'P1040016';
+imgInfo[8] = '2013-04-08 09:22:59|172.751|912|684|';
+
+imgLink[9] = 'KlAxMDQwMDE3LkpQRypiM2Y5ZThhZmVlM2NkNDFlODhhMWE1NmIzZjU5ZTg5Ng';
+imgName[9] = 'P1040017';
+imgInfo[9] = '2013-04-08 09:23:03|156.644|912|684|';
+
+imgLink[10] = 'KlAxMDQwMDE4LkpQRyo3NTJlNDVmYTEzNzQxYTllMmM1MzkxMDMyY2EwODFmZg';
+imgName[10] = 'P1040018';
+imgInfo[10] = '2013-04-08 09:23:05|111.400|912|684|';
+
+imgLink[11] = 'KlAxMDQwMDE5LkpQRyo4OGY0NGJiZDdmYmZhYzZhODYwMjg3MjhmYTZmYzljZA';
+imgName[11] = 'P1040019';
+imgInfo[11] = '2013-04-08 09:23:08|103.692|912|684|';
+
+imgLink[12] = 'KlAxMDQwMDIwLkpQRypmYjIyMTc5M2ZjNTY2ODM2YTZmZTUwMDE5MTU0N2UzZQ';
+imgName[12] = 'P1040020';
+imgInfo[12] = '2013-04-08 09:23:12|96.532|912|684|';
+
+imgLink[13] = 'KlAxMDQwMDIxLkpQRyo0M2RhZTM1NTE3ZjE2NjBhNjM0MmM1M2VjZmEwY2RjYQ';
+imgName[13] = 'P1040021';
+imgInfo[13] = '2013-04-08 09:23:15|181.141|912|684|';
+
+imgLink[14] = 'KlAxMDQwMDIyLkpQRypmZTgyNzM4NjRlZWVjNDNhOTVlNDFiZGFkYzI5YWEyYg';
+imgName[14] = 'P1040022';
+imgInfo[14] = '2013-04-08 09:23:17|88.805|912|684|';
+
+imgLink[15] = 'KlAxMDQwMDIzLkpQRyo0NGViOTc5MjkyNzk0NzYzNTZkMTlhMTQ0YmYyZjEzYQ';
+imgName[15] = 'P1040023';
+imgInfo[15] = '2013-04-08 09:23:20|95.795|912|684|';
+
+imgLink[16] = 'KlAxMDQwMDI0LkpQRyozMWRmYzYwMWQ5N2MwNGNhZmNhYjUyZjNmNDgzZWJlNw';
+imgName[16] = 'P1040024';
+imgInfo[16] = '2013-04-08 09:23:23|178.053|684|912|';
+
+imgLink[17] = 'KlAxMDQwMDI1LkpQRyoyMThlODRhMGRkNmU0ZTIzOGM1ZmFlYzMxN2MyOTM4ZA';
+imgName[17] = 'P1040025';
+imgInfo[17] = '2013-04-08 09:23:26|148.650|912|684|';
+
+imgLink[18] = 'KlAxMDQwMDI2LkpQRyphYWNjZmI2YTRiOTEwNzlhMWY1ZGM3NzY1OWFhNDgwNg';
+imgName[18] = 'P1040026';
+imgInfo[18] = '2013-04-08 09:23:29|129.626|912|684|';
+
+imgLink[19] = 'KlAxMDQwMDI3LkpQRyo2MjU3YWVlOGRmYTk5ZmJkYjRmMWExYmIzMzEwYjhkNg';
+imgName[19] = 'P1040027';
+imgInfo[19] = '2013-04-08 09:23:32|96.713|912|684|';
+
+imgLink[20] = 'KlAxMDQwMDI4LkpQRyoxNWI2OWI3OGE5NGY3MzQ0ZDNiMGJiNzFiNjY3YjYzMQ';
+imgName[20] = 'P1040028';
+imgInfo[20] = '2013-04-08 09:23:36|157.000|912|684|';
+
+imgLink[21] = 'KlAxMDQwMDI5LkpQRyowNjFhY2JiY2U3YzQzZTAwOTg4NDdkYzFmMmUxMTZlMQ';
+imgName[21] = 'P1040029';
+imgInfo[21] = '2013-04-08 09:23:39|174.130|912|684|';
+
+imgLink[22] = 'KlAxMDQwMDMwLkpQRyo1MmY3NTlhNGNjYzc0MGVjOTlhNWRlODBjMDVjZWEwZA';
+imgName[22] = 'P1040030';
+imgInfo[22] = '2013-04-08 09:23:43|212.214|912|684|';
+
+imgLink[23] = 'KlAxMDQwMDMxLkpQRypkYjA0ZWY1YjUwMWUzMmFlYTBkNWQyYTEyM2U5ZjQ3ZA';
+imgName[23] = 'P1040031';
+imgInfo[23] = '2013-04-08 09:23:48|177.941|912|684|';
+
+imgLink[24] = 'KlAxMDQwMDMyLkpQRyo5ZTM0N2U1ZjVhMWRhNTI4NDIwZTY2MGM5MDNiMDhjNw';
+imgName[24] = 'P1040032';
+imgInfo[24] = '2013-04-08 09:23:52|159.314|912|684|';
+
+imgLink[25] = 'KlAxMDQwMDMzLkpQRyoxZmVjZTc4MDA1MzAxOWFkNzBjMTdhOTkwNzVlNjIzNw';
+imgName[25] = 'P1040033';
+imgInfo[25] = '2013-04-08 09:23:55|130.608|912|684|';
+
+imgLink[26] = 'KlAxMDQwMDM0LkpQRyo5MWFjYTNkNWE0ODgxZjFmOGE2YzJhMzZiNWVkYjU0NA';
+imgName[26] = 'P1040034';
+imgInfo[26] = '2013-04-08 09:23:58|173.183|912|684|';
+
+imgLink[27] = 'KlAxMDQwMDM1LkpQRypjOGUwM2ZiYjUxM2I2MmNhZTk4N2Y2YzY3MmQzZDk0ZA';
+imgName[27] = 'P1040035';
+imgInfo[27] = '2013-04-08 09:24:01|152.543|912|684|';
+
+imgLink[28] = 'KlAxMDQwMDM2LkpQRyo0YzU5ZDcyNGFiZjE0NTg2NjNjNGM1ZmEwZDQzZWRmNA';
+imgName[28] = 'P1040036';
+imgInfo[28] = '2013-04-08 09:24:05|141.231|912|684|';
+
+imgLink[29] = 'KlAxMDQwMDM3LkpQRyozNjEyYzdhZjM4N2ZlZTBmYjJhZjIwYzFlZWE3Y2FhMg';
+imgName[29] = 'P1040037';
+imgInfo[29] = '2013-04-08 09:24:09|168.244|912|684|';
+
+imgLink[30] = 'KlAxMDQwMDM4LkpQRyoxNWE4M2E3YWYyNjJmYmQ3MmQ2OTY5ZWMwZjNiZTVjZA';
+imgName[30] = 'P1040038';
+imgInfo[30] = '2013-04-08 09:24:12|111.268|912|684|';
+
+imgLink[31] = 'KlAxMDQwMDM5LkpQRyo3OTA5MjJmZTU1OTFkMzNhNjQyNDU5ZDAwOWRiNDY0Mw';
+imgName[31] = 'P1040039';
+imgInfo[31] = '2013-04-08 09:24:15|129.912|912|684|';
+
+imgLink[32] = 'KlAxMDQwMDQwLkpQRyoyODIxZTgxMDQ2OTMwMjVlM2I1OGZmZDNjZWMyMjhiOA';
+imgName[32] = 'P1040040';
+imgInfo[32] = '2013-04-08 09:24:18|95.317|912|684|';
+
+imgLink[33] = 'KlAxMDQwMDQxLkpQRyo2MTZjZWZhN2FjMmY3MTAwOThmYjUwNDE3YThkZjlhYg';
+imgName[33] = 'P1040041';
+imgInfo[33] = '2013-04-08 09:24:22|106.718|912|684|';
+
+imgLink[34] = 'KlAxMDQwMDQyLkpQRyo1NjI0ZGM1ODk2NzJjZjA5ZWRkYWJlODcyZGQwN2YxZg';
+imgName[34] = 'P1040042';
+imgInfo[34] = '2013-04-08 09:24:26|116.727|912|684|';
+
+imgLink[35] = 'KlAxMDQwMDQzLkpQRyo3ZjhjNjZmMmE3Njk0OGUzOGIwNmQ2MTc2ZWFlYmU2ZA';
+imgName[35] = 'P1040043';
+imgInfo[35] = '2013-04-08 09:24:28|122.939|912|684|';
+
+imgLink[36] = 'KlAxMDQwMDQ0LkpQRyo5MWViOTFiYWRlMzEzY2NiNzRhYzYwZTUwYzQ2MWI4Mw';
+imgName[36] = 'P1040044';
+imgInfo[36] = '2013-04-08 09:24:31|113.591|912|684|';
+
+imgLink[37] = 'KlAxMDQwMDQ1LkpQRyo0MmNjZjdjNDgzOWFiZTU2NjM4YzQ5ZWJlODU3ODI4NA';
+imgName[37] = 'P1040045';
+imgInfo[37] = '2013-04-08 09:24:33|137.961|912|684|';
+
+imgLink[38] = 'KlAxMDQwMDQ2LkpQRyowYWIzMjkyMDUzODU2ZmYzMWZkNmNkMTAwNzFiNjM3OQ';
+imgName[38] = 'P1040046';
+imgInfo[38] = '2013-04-08 09:24:36|127.013|912|684|';
+
+imgLink[39] = 'KlAxMDQwMDQ3LkpQRyo5ZTE4NjllMjc2ZWM0ODhlZWEwM2RlNjFkMWFjZDRjNQ';
+imgName[39] = 'P1040047';
+imgInfo[39] = '2013-04-08 09:24:40|120.950|912|684|';
+
+imgLink[40] = 'KlAxMDQwMDQ4LkpQRyo5MDJkM2JlMzliNzc5Mjk0NWIzN2M1MzBjODZlYTljMw';
+imgName[40] = 'P1040048';
+imgInfo[40] = '2013-04-08 09:24:43|148.405|912|684|';
+
+imgLink[41] = 'KlAxMDQwMDQ5LkpQRyoyNGU0ZmY2ODIwZWM3Y2UwNGVkZjNjNDM3ZWVlMWYyYg';
+imgName[41] = 'P1040049';
+imgInfo[41] = '2013-04-08 09:24:46|178.490|912|684|';
+
+imgLink[42] = 'KlAxMDQwMDUwLkpQRyo4ODc4MjRhN2ZiOGM3YjlhOTAzZWJhMWYxZjQ4NDQ2Yg';
+imgName[42] = 'P1040050';
+imgInfo[42] = '2013-04-08 09:24:51|185.084|912|684|';
+
+imgLink[43] = 'KlAxMDQwMDUxLkpQRyo5NjAxMTM0YmY2ZGEzYjczMDNjNDA4ZTg4NGQ4OWFlOQ';
+imgName[43] = 'P1040051';
+imgInfo[43] = '2013-04-08 09:24:54|129.542|912|684|';
+
+imgLink[44] = 'KlAxMDQwMDUyLkpQRyo4OGQ4NjYyMmYyMzU0N2Q3YWNkZWU5YzNiYTIwMzM4OA';
+imgName[44] = 'P1040052';
+imgInfo[44] = '2013-04-08 09:24:57|125.992|912|684|';
+
+imgLink[45] = 'KlAxMDQwMDUzLkpQRyo0NWIyYTVlZWM2MThhNzU4M2ZlNzc4ODg5M2JlYjhjZA';
+imgName[45] = 'P1040053';
+imgInfo[45] = '2013-04-08 09:24:59|182.369|912|684|';
+
+imgLink[46] = 'KlAxMDQwMDU0LkpQRyoxZTc2OGYxNmM3MGE3NDVjYjQzN2QyNDAzODU5ZjgzZg';
+imgName[46] = 'P1040054';
+imgInfo[46] = '2013-04-08 09:25:03|130.006|912|684|';
+
+imgLink[47] = 'KlAxMDQwMDU1LkpQRyoxZmMxMmVkMzk2ZjZlMGRjY2VhODMxNTc5Yjk0NDkzNQ';
+imgName[47] = 'P1040055';
+imgInfo[47] = '2013-04-08 09:25:06|111.345|912|684|';
+
+imgLink[48] = 'KlAxMDQwMDU2LkpQRyoxYjQyYWE1ZTI3NzcwODlhNDQ4ZGU5NTE2ZDBkNjk2NQ';
+imgName[48] = 'P1040056';
+imgInfo[48] = '2013-04-08 09:25:10|142.316|912|684|';
+
+imgLink[49] = 'KlAxMDQwMDU3LkpQRyowMzc3ZjA5ZWVjYTExZWNiMWQ1ZDBjOTkyZDI3Yjg1OQ';
+imgName[49] = 'P1040057';
+imgInfo[49] = '2013-04-08 09:25:13|134.882|912|684|';
+
+imgLink[50] = 'KlAxMDQwMDU4LkpQRyozY2Q4NDQ5OGE4Y2Q0MDFiZWRiNmEwNzNkNmZhMzY0Mg';
+imgName[50] = 'P1040058';
+imgInfo[50] = '2013-04-08 09:25:17|161.543|912|684|';
+
+imgLink[51] = 'KlAxMDQwMDU5LkpQRyo0YmIxZTA1OTIzNzUzMjJjZDhlZjAxMTAwYjM2NjQzNg';
+imgName[51] = 'P1040059';
+imgInfo[51] = '2013-04-08 09:25:19|100.029|912|684|';
+
+imgLink[52] = 'KlAxMDQwMDYwLkpQRyphNDMyYzY3OTVkNDExMDM5ZmFiNDVlZjBhNTQ3ZDE0ZQ';
+imgName[52] = 'P1040060';
+imgInfo[52] = '2013-04-08 09:25:21|117.851|912|684|';
+
+imgLink[53] = 'KlAxMDQwMDYxLkpQRypmYTFlODFlMTY4Y2Q2YmEwNjIxNDQ1NzJmYjlkMTgzMw';
+imgName[53] = 'P1040061';
+imgInfo[53] = '2013-04-08 09:25:26|150.890|912|684|';
+
+imgLink[54] = 'KlAxMDQwMDYyLkpQRyowNjA0MGUxMTllZWIwMzY1ZWYxNGJhMWM1MGU4NTY5Zg';
+imgName[54] = 'P1040062';
+imgInfo[54] = '2013-04-08 09:25:28|71.717|684|912|';
+
+imgLink[55] = 'KlAxMDQwMDYzLkpQRyo4MjJiMDA4ZjkyZTk3YmE3NzU4ZGFhZTJlYTkyNDk5OQ';
+imgName[55] = 'P1040063';
+imgInfo[55] = '2013-04-08 09:25:30|81.442|684|912|';
+
+imgLink[56] = 'KlAxMDQwMDY0LkpQRyozNGYxNmM2YjcxNTU0ODNlODAyYzdjOTEwNjE2ZjlkMA';
+imgName[56] = 'P1040064';
+imgInfo[56] = '2013-04-08 09:25:33|121.671|912|684|';
+
+imgLink[57] = 'KlAxMDQwMDY1LkpQRyo0NDExYmQ0NmRkM2IwMThhNzI5OGUwMDlkY2ExNWE5Yg';
+imgName[57] = 'P1040065';
+imgInfo[57] = '2013-04-08 09:25:35|153.168|912|684|';
+
+imgLink[58] = 'KlAxMDQwMDY2LkpQRyoxMDFhYjY3OWQ3YjFlZDk4NjA0NWZhYWQ3ODc3ZTVlMw';
+imgName[58] = 'P1040066';
+imgInfo[58] = '2013-04-08 09:25:39|148.827|912|684|';
+
+imgLink[59] = 'KlAxMDQwMDY3LkpQRyo5OWZmZjk1YmVjNDEzYWQzNzg2NDYyMjg5MGM2NWFmMQ';
+imgName[59] = 'P1040067';
+imgInfo[59] = '2013-04-08 09:25:41|106.665|912|684|';
+
+imgLink[60] = 'KlAxMDQwMDY4LkpQRyoyMjIyOWM4YWU1M2U0N2UzYTg0ZDYxYjJmZTFiYzhiZA';
+imgName[60] = 'P1040068';
+imgInfo[60] = '2013-04-08 09:25:44|117.910|912|684|';
+
+imgLink[61] = 'KlAxMDQwMDY5LkpQRyo1MzQ4NWUxNGNiYmUyY2RhZTNkMWEwNDk3ZGEwYzI4NQ';
+imgName[61] = 'P1040069';
+imgInfo[61] = '2013-04-08 09:25:47|121.911|912|684|';
+
+imgLink[62] = 'KlAxMDQwMDcwLkpQRypjZjljZTY4ZjdjZDNmZWFkMDNhNWU5MGI0NGFlZTNlMA';
+imgName[62] = 'P1040070';
+imgInfo[62] = '2013-04-08 09:25:51|119.388|912|684|';
+
+imgLink[63] = 'KlAxMDQwMDcxLkpQRyo0ZDNkYzM1MDkyYzA3ZWIwMzdkODYwZGUzYjc3MzdjYg';
+imgName[63] = 'P1040071';
+imgInfo[63] = '2013-04-08 09:25:54|136.464|912|684|';
+
+imgLink[64] = 'KlAxMDQwMDcyLkpQRyozZDY0NGY4ZDkxNzc0NzZhMzc1MjIyYTIwODZmODZmMg';
+imgName[64] = 'P1040072';
+imgInfo[64] = '2013-04-08 09:25:57|142.915|912|684|';
+
+imgLink[65] = 'KlAxMDQwMDczLkpQRyplNmMzY2Y3OWE1ZmI2NmYxMjRhNmNlYTA5N2IxMTU2NA';
+imgName[65] = 'P1040073';
+imgInfo[65] = '2013-04-08 09:26:00|131.831|912|684|';
+
+imgLink[66] = 'KlAxMDQwMDc0LkpQRyo1YjU1NzQ2ZDVhNGU3N2I1YWM4MzZjNDYxNTVmNzJmZQ';
+imgName[66] = 'P1040074';
+imgInfo[66] = '2013-04-08 09:26:04|143.628|912|684|';
+
+imgLink[67] = 'KlAxMDQwMDc1LkpQRyo1YTk3OGJiMTIyZjEwMmE1MGIxNmQ4ODkzYmQ2NzJlMg';
+imgName[67] = 'P1040075';
+imgInfo[67] = '2013-04-08 09:26:08|114.305|912|684|';
+
+imgLink[68] = 'KlAxMDQwMDc2LkpQRyo5ZTA0OWQxNjFiODc4NTVhYmY3Y2VjMjI2ODEyNGY1MA';
+imgName[68] = 'P1040076';
+imgInfo[68] = '2013-04-08 09:26:11|142.370|912|684|';
+
+imgLink[69] = 'KlAxMDQwMDc3LkpQRyplZjFkYTI3MzFkODBkMzlhMmE4OTBhMmY1NWM4ZWI3Yw';
+imgName[69] = 'P1040077';
+imgInfo[69] = '2013-04-08 09:26:15|145.280|912|684|';
+
+imgLink[70] = 'KlAxMDQwMDc4LkpQRyowODc1ZDMzMjExZDQyOTdhYzNhZDY5NDUzNDQwM2JhMw';
+imgName[70] = 'P1040078';
+imgInfo[70] = '2013-04-08 09:26:19|141.651|912|684|';
+
+imgLink[71] = 'KlAxMDQwMDc5LkpQRyo5MWNkY2M0ZDRmNTc4MDgxYzVjNDczNjI0OWQ3MWNjNg';
+imgName[71] = 'P1040079';
+imgInfo[71] = '2013-04-08 09:26:21|35.170|160|120|';
+
+imgLink[72] = 'KlAxMDQwMDgxLkpQRyo3M2YzYzgyZTkxOGY3OWQ5NjYwMGE0ZWFmZDFlZDk3YQ';
+imgName[72] = 'P1040081';
+imgInfo[72] = '2013-04-08 09:26:24|105.117|912|684|';
+
+imgLink[73] = 'KlAxMDQwMDgyLkpQRypjYzYwNTllYmFhZTljMGY2M2M1NmZkOWQ5ODAyZmRmMQ';
+imgName[73] = 'P1040082';
+imgInfo[73] = '2013-04-08 09:26:27|85.929|912|684|';
+
+imgLink[74] = 'KlAxMDQwMDgzLkpQRyo1MTNjOTcyY2I1ZDZmNDYwM2ZkODcxMzkyYzc3MzljMA';
+imgName[74] = 'P1040083';
+imgInfo[74] = '2013-04-08 09:26:29|83.970|912|684|';
+
+imgLink[75] = 'KlAxMDQwMDg0LkpQRyowZmVlYjNkNGFhZDAzOTZjNmI0YzAwZmE0NzFkYTI1NQ';
+imgName[75] = 'P1040084';
+imgInfo[75] = '2013-04-08 09:26:32|83.377|912|684|';
+
+imgLink[76] = 'KlAxMDQwMDg1LkpQRyo3MWNhNDFkMjBiNDhmZDY0YjdjNWI4NTgxNTJlMGE2NQ';
+imgName[76] = 'P1040085';
+imgInfo[76] = '2013-04-08 09:26:36|118.594|912|684|';
+
+imgLink[77] = 'KlAxMDQwMDg2LkpQRypiMDkwMDNmNTg3OTExZjI0Yzc5ZDM5MzdlNWJjYTc4NA';
+imgName[77] = 'P1040086';
+imgInfo[77] = '2013-04-08 09:26:39|108.501|912|684|';
+
+imgLink[78] = 'KlAxMDQwMDg3LkpQRyphOGFkMjNkNGQwMDE4Y2Q3ODEwNTE5YWRjYjU3OWZjZA';
+imgName[78] = 'P1040087';
+imgInfo[78] = '2013-04-08 09:26:42|122.846|912|684|';
+
+imgLink[79] = 'KlAxMDQwMDg4LkpQRyoxZDBiMWYxODRlY2E0ZWIwN2M5NmU4ODE4YjE1M2I3NQ';
+imgName[79] = 'P1040088';
+imgInfo[79] = '2013-04-08 09:26:44|115.243|912|684|';
+
+
+		//-->
+		</script></head><body onresize='initDisplay()' onload='showGallery(false)' class="sfpg"><div id="box_navi" class="box_navi"><table class="sfpg_disp" cellspacing="0"><tr><td class="navi"><div id="navi"></div></td></tr><tr><td class="menu"><div id="div_menu"></div></td></tr></table></div><div id="box_image" class="box_image"><table class="sfpg_disp" cellspacing="0"><tr><td class="mid"><img alt="" src="gallery.html" id="full" class="full_image" onclick="closeImageView()"></td></tr></table></div><div id="box_wait" class="box_wait"><table class="sfpg_disp" cellspacing="0"><tr><td class="mid"><div id="wait"></div></td></tr></table></div><div id="box_info" class="box_info"><table class="info" cellspacing="0"><tr><td><div id="box_inner_info"></div></td></tr></table></div><div id="box_gallery" class="box_gallery"></div><div id="box_overlay" class="box_overlay"></div></body></html>

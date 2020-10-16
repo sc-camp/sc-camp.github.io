@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="description" content="SC-Camp - SuperComputing Summer Camp">
+    <meta name="keywords" content="Super computing, high performance, summer school, MPI, OpenMP, Grid Computing, performance evaluation">
+    <link rel="icon" type="image/png" href="images/picto.png">
+
+    <title>Program</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.8.0">
+  </head>
+  <body>
+
+    <div class="header">
+<!--
+      <div class="header_logo_left">
+        <a href="http://uca.es/"><img src="images/cadiz/Logo-UCA-2.png" height="80"/></a>
+      </div>
+-->
+      <div class="header_logo_right">
+        <a href="http://www.sc-camp.org"><img src="images/Logo-SCCAMP.png" height="80"></a>
+      </div>
+      <a href="http://www.sc-camp.org" style="text-decoration: none;"><div class="header_title">     
+        <span class="header_title_text">9th International SuperComputing Camp 2018</span><br>
+        <span class="header_subtitle_text">Da Nang, Vietnam</span><br>
+        <span class="header_subtitle_text">8th-15th of July 2018</span><br>
+      </div></a>
+      <div style="clear:both"></div>
+      <div class="menu">
+        <a href="index.html">Overview</a>
+        <a href="program.html">Program</a>
+        <a href="application.html">Registration</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="information.html">Information</a>
+        <a href="committee.html">Committee</a>
+        <a href="sponsors.html">Sponsors</a>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+
+
+    <div class="content">
+
+      <div class="main">
+        
+<h1 class="no_toc" id="program">Program</h1>
+
+<h2 class="no_toc" id="overview">Overview</h2>
+
+<p>Preliminary program of SC-Camp 2018</p>
+
+<p><a href="docs/SC-Camp_2018_Program.pdf"><img src="images/program_2018.png" alt="Program" width="680"></a></p>
+
+<h2 class="no_toc" id="program-summary">Program summary</h2>
+
+<ul id="markdown-toc">
+  <li>
+<a href="#welcoming" id="markdown-toc-welcoming">Welcoming</a>    <ul>
+      <li><a href="#registration" id="markdown-toc-registration">Registration</a></li>
+      <li><a href="#welcome-and-local-presentation" id="markdown-toc-welcome-and-local-presentation">Welcome and Local Presentation</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#introduction-to-high-performance-computing" id="markdown-toc-introduction-to-high-performance-computing">Introduction to High Performance Computing</a>    <ul>
+      <li><a href="#lecture-introduction-to-hpc-applications-the-need-for-scalable-architectures" id="markdown-toc-lecture-introduction-to-hpc-applications-the-need-for-scalable-architectures">Lecture: Introduction to HPC Applications, the Need for Scalable Architectures</a></li>
+      <li><a href="#lecture-practical-introduction-to-high-performance-computing" id="markdown-toc-lecture-practical-introduction-to-high-performance-computing">Lecture: Practical Introduction to High Performance Computing</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#using-an-hpc-cluster" id="markdown-toc-using-an-hpc-cluster">Using an HPC cluster</a>    <ul>
+      <li><a href="#lecture-resource-manager--job-scheduler" id="markdown-toc-lecture-resource-manager--job-scheduler">Lecture: Resource Manager &amp; Job Scheduler</a></li>
+      <li><a href="#practical-session-getting-started-on-the-hpc-cluster" id="markdown-toc-practical-session-getting-started-on-the-hpc-cluster">Practical Session: Getting Started on the HPC cluster</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#debugging--profiling" id="markdown-toc-debugging--profiling">Debugging &amp; Profiling</a>    <ul>
+      <li><a href="#lecture-know-your-bugs-weapons-for-efficient-debugging" id="markdown-toc-lecture-know-your-bugs-weapons-for-efficient-debugging">Lecture: Know Your Bugs: Weapons for Efficient Debugging</a></li>
+      <li><a href="#practical-session-debugging--profiling" id="markdown-toc-practical-session-debugging--profiling">Practical session: Debugging &amp; Profiling</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#data-analysis-with-r" id="markdown-toc-data-analysis-with-r">Data Analysis with R</a>    <ul>
+      <li><a href="#lecture-introduction-to-r-and-data-analysis" id="markdown-toc-lecture-introduction-to-r-and-data-analysis">Lecture: Introduction to R and Data Analysis</a></li>
+      <li><a href="#practical-session-analyse-parallel-applications-performance-with-r" id="markdown-toc-practical-session-analyse-parallel-applications-performance-with-r">Practical Session: Analyse Parallel Applications Performance with R</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#hpc-programming-principles-of-distributed-and-shared-memory-models" id="markdown-toc-hpc-programming-principles-of-distributed-and-shared-memory-models">HPC Programming: Principles of Distributed and Shared Memory Models</a>    <ul>
+      <li><a href="#lecture-introduction-to-distributed-memory-models" id="markdown-toc-lecture-introduction-to-distributed-memory-models">Lecture: Introduction to Distributed Memory Models</a></li>
+      <li><a href="#lecture-distributed-computing-through-message-passing-mpi" id="markdown-toc-lecture-distributed-computing-through-message-passing-mpi">Lecture: Distributed Computing Through Message Passing MPI</a></li>
+      <li><a href="#lecture-introduction-to-shared-memory-models" id="markdown-toc-lecture-introduction-to-shared-memory-models">Lecture: Introduction to Shared Memory Models</a></li>
+      <li><a href="#practical-session-programming-with-mpi--and-openmp" id="markdown-toc-practical-session-programming-with-mpi--and-openmp">Practical Session: Programming with MPI  and OpenMP</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#leveraging-accelerators-for-hpc" id="markdown-toc-leveraging-accelerators-for-hpc">Leveraging Accelerators for HPC</a>    <ul>
+      <li><a href="#using-cuda-to-improve-performance-on-scientific-applications" id="markdown-toc-using-cuda-to-improve-performance-on-scientific-applications">Using CUDA to Improve Performance on Scientific Applications</a></li>
+      <li><a href="#openacc-et-beyond" id="markdown-toc-openacc-et-beyond">OpenACC et Beyond</a></li>
+      <li><a href="#practical-session-using-accelerators-to-improve-performance" id="markdown-toc-practical-session-using-accelerators-to-improve-performance">Practical Session: Using Accelerators to Improve Performance.</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#big-data" id="markdown-toc-big-data">Big Data</a>    <ul>
+      <li><a href="#lecture-big-data-essentials" id="markdown-toc-lecture-big-data-essentials">Lecture: Big Data Essentials</a></li>
+      <li><a href="#practical-session-parallel-python" id="markdown-toc-practical-session-parallel-python">Practical Session: Parallel Python</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#contest" id="markdown-toc-contest">Contest</a>    <ul>
+      <li><a href="#contest-introduction" id="markdown-toc-contest-introduction">Contest Introduction</a></li>
+      <li><a href="#contest-supervision" id="markdown-toc-contest-supervision">Contest Supervision</a></li>
+      <li><a href="#contest-results-and-student-awards" id="markdown-toc-contest-results-and-student-awards">Contest Results and Student Awards</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#keynotes" id="markdown-toc-keynotes">Keynotes</a>    <ul>
+      <li><a href="#keynote-1-hybrid-high-performance-systems-for-ultrascal-architectures-and-aidl-applications" id="markdown-toc-keynote-1-hybrid-high-performance-systems-for-ultrascal-architectures-and-aidl-applications">Keynote 1: Hybrid High Performance Systems for Ultrascal Architectures and AI/DL applications</a></li>
+      <li><a href="#keynote-2-methods-in--interpretation-of-multimodal-dataset-of-eegfmri-in-brain-signal" id="markdown-toc-keynote-2-methods-in--interpretation-of-multimodal-dataset-of-eegfmri-in-brain-signal">Keynote 2: Methods in  interpretation of multimodal dataset of EEG/fMRI in brain signal</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#closing" id="markdown-toc-closing">Closing</a>    <ul>
+      <li><a href="#closing-session" id="markdown-toc-closing-session">Closing Session</a></li>
+      <li><a href="#certificates-and-final-words" id="markdown-toc-certificates-and-final-words">Certificates and Final Words</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 class="no_toc" id="detailed-program">Detailed Program</h1>
+
+<hr>
+<hr>
+
+<h2 id="welcoming">Welcoming</h2>
+
+<hr>
+
+<h3 id="registration">Registration</h3>
+
+<p>Meeting the staff and instructors</p>
+
+<hr>
+
+<h3 id="welcome-and-local-presentation">Welcome and Local Presentation</h3>
+
+<!-- *From 9:45 to 10:45* -->
+
+<p><em>Speakers:</em></p>
+
+<ul>
+  <li>Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</li>
+  <li>Local committee</li>
+</ul>
+
+<p>Presentation of SC-Camp and the Sponsors and the local research teams.</p>
+
+<hr>
+<hr>
+
+<h2 id="introduction-to-high-performance-computing">Introduction to High Performance Computing</h2>
+
+<hr>
+
+<h3 id="lecture-introduction-to-hpc-applications-the-need-for-scalable-architectures">Lecture: Introduction to HPC Applications, the Need for Scalable Architectures</h3>
+
+<p><em>Duration:</em> 1h30</p>
+
+<p><em>Speaker:</em> Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</p>
+
+<p>An introduction to the first parallel and distributed machines until today state-of-the-art. This lecture aims at presenting the key factors from the rise of parallel applications to today’s huge distributed systems. From the cluster to BigData, passing through the grid, the cloud, GPU, and much more.</p>
+
+<hr>
+
+<h3 id="lecture-practical-introduction-to-high-performance-computing">Lecture: Practical Introduction to High Performance Computing</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Dr Xavier Besseron (University of Luxembourg)</p>
+
+<p>Computer simulation and data processing is now a key skill for every
+engineer as the complexity of the problems to be solved and the amount
+of data to analyzed are always increasing.
+High Performance Computing (HPC) proposes to leverage distributed and
+parallel computers to execute these applications quickly and
+efficiently. This talk gives an overview of the HPC concepts, then, a
+typical HPC workflow is studied and precious advice to get your HPC
+simulations running efficiently are provided.</p>
+
+<p><em>Objectives:</em></p>
+
+<ul>
+  <li>Know the hardware hiearachy of an HPC platform</li>
+  <li>Understand the different possible bottlenecks</li>
+  <li>Know the possible approaches to address bottlenecks and improve performance</li>
+</ul>
+
+<hr>
+<hr>
+
+<h2 id="using-an-hpc-cluster">Using an HPC cluster</h2>
+
+<hr>
+
+<h3 id="lecture-resource-manager--job-scheduler">Lecture: Resource Manager &amp; Job Scheduler</h3>
+
+<p><em>Duration:</em> 1h30</p>
+
+<p><em>Speaker:</em> Ing Gilberto Díaz (UIS - Bucaramanga, Colombia)</p>
+
+<p>High Performance Computing platforms are platforms offering a large number of computing resources shared among a large of number of users.
+The Resource Manager and Job Scheduler are the core tools of such platform which allow to distribute the resource to the users and avoid any conflict.</p>
+
+<p>This lecture proposes an overview of a typical HPC platform and defines the concept of resources.
+It describes and explains the role of the resource manager and job scheduler in an HPC platform, and introduce the concept of job scheduling.
+Then it offers an overview of the most useful features: interactive session, reservation, job submission, etc. in the main job schedulers (e.g. SLURM).</p>
+
+<p>In the end, it provides all the key elements for an efficient HPC workflow.</p>
+
+<p><em>Content:</em></p>
+
+<ul>
+  <li>Organization of a typical HPC platform
+    <ul>
+      <li>What is a resource?</li>
+    </ul>
+  </li>
+  <li>Introduction to resource manager and job scheduler
+    <ul>
+      <li>Job scheduling</li>
+      <li>Launcher script</li>
+      <li>HPC workflow</li>
+    </ul>
+  </li>
+  <li>Basic commands for SLURM and OAR</li>
+</ul>
+
+<hr>
+
+<h3 id="practical-session-getting-started-on-the-hpc-cluster">Practical Session: Getting Started on the HPC cluster</h3>
+
+<p><em>Duration:</em> 2h30</p>
+
+<p><em>Speaker:</em></p>
+
+<ul>
+  <li>Ing Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+  <li>Dr Xavier Besseron (University of Luxembourg)</li>
+</ul>
+
+<p>The first purpose of the this session is to allow the students to configure their access to the HPC platform.
+In a second time, the students can experiment with the main features of the job scheduler.</p>
+
+<p><em>Objectives:</em></p>
+
+<ul>
+  <li>Setting up access to the computing platforms with SSH</li>
+  <li>Getting familiar with the resource manager (SLURM, OAR)</li>
+  <li>Loading modules and using compilers</li>
+  <li>Running applications in interactive mode</li>
+  <li>Writing launcher script and submitting jobs</li>
+</ul>
+
+<hr>
+<hr>
+
+<h2 id="debugging--profiling">Debugging &amp; Profiling</h2>
+
+<hr>
+
+<h3 id="lecture-know-your-bugs-weapons-for-efficient-debugging">Lecture: Know Your Bugs: Weapons for Efficient Debugging</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Dr Xavier Besseron (University of Luxembourg)</p>
+
+<p>This presentation gives the essentials to fight and prevent the bug invasion occurring in any software. It proposes a short introduction to debugging tools, focusing mainly on GDB and Valgrind. Then the most common types of bugs are presented and explained, and a method to track them is proposed. Finally, recommendations for day-to-day software development are advised in order to keep safe from bugs (as much as possible) or at least track them efficiently.</p>
+
+<p><em>Content:</em></p>
+
+<ul>
+  <li>Overview of the main tools used for Debugging (Compilers, Debuggers, Dynamic Analyzers)</li>
+  <li>Detailed overview of the different of bugs:
+    <ul>
+      <li>Why it occurs?</li>
+      <li>How to find it?</li>
+      <li>How to fix?</li>
+    </ul>
+  </li>
+  <li>Good practices to avoid bugs and debug efficiently</li>
+</ul>
+
+<hr>
+
+<h3 id="practical-session-debugging--profiling">Practical session: Debugging &amp; Profiling</h3>
+
+<p><em>Duration:</em> 3h</p>
+
+<p><em>Speaker:</em> Dr Xavier Besseron (University of Luxembourg)</p>
+
+<p>During this practical session, the student will learn how to track bugs in voluntarily infested programs using the tools introduced previously.</p>
+
+<p><em>Objective:</em></p>
+
+<ul>
+  <li>Apply the tools introduced earlier to find bugs in many example programs</li>
+</ul>
+
+<hr>
+<hr>
+
+<h2 id="data-analysis-with-r">Data Analysis with R</h2>
+
+<hr>
+
+<h3 id="lecture-introduction-to-r-and-data-analysis">Lecture: Introduction to R and Data Analysis</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Dr Xavier Besseron (University of Luxembourg)</p>
+
+<p>This lecture proposes a quick introduction to R and data analysis. 
+It gives an overview of the basic commands and data structures to get started with R and suggests a few good practices to organize and manipulate data.</p>
+
+<p><em>Content:</em></p>
+
+<ul>
+  <li>Basic commands</li>
+  <li>Objects, Data structures and data frames</li>
+  <li>Reading and exploring data</li>
+  <li>Data manipulation with <code>dplyr</code>
+</li>
+</ul>
+
+<hr>
+
+<h3 id="practical-session-analyse-parallel-applications-performance-with-r">Practical Session: Analyse Parallel Applications Performance with R</h3>
+
+<p><em>Duration:</em> 3h</p>
+
+<p><em>Speaker:</em> Dr Xavier Besseron (University of Luxembourg)</p>
+
+<p>With a good basis, let’s practice on the subject of performance evaluation of parallel applications.</p>
+
+<p><em>Objective:</em></p>
+
+<ul>
+  <li>Practical session objectives:</li>
+  <li>Being able to plot data</li>
+  <li>Organize and Manipulate your data with <code>dplyr</code>
+</li>
+  <li>R in parallel, single-node and multi-mode</li>
+</ul>
+
+<hr>
+<hr>
+
+<h2 id="hpc-programming-principles-of-distributed-and-shared-memory-models">HPC Programming: Principles of Distributed and Shared Memory Models</h2>
+
+<hr>
+
+<h3 id="lecture-introduction-to-distributed-memory-models">Lecture: Introduction to Distributed Memory Models</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Ing Gilberto Díaz (UIS - Bucaramanga, Colombia)</p>
+
+<p>Programming models to understand the trends when using multiple computing units.</p>
+
+<hr>
+
+<h3 id="lecture-distributed-computing-through-message-passing-mpi">Lecture: Distributed Computing Through Message Passing MPI</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Ing Gilberto Díaz (UIS - Bucaramanga, Colombia)</p>
+
+<p>The challenges of distributed computing involve exchanging message. The MPI, message passing interface, is still THE standard for many distributed applications. Throughout this lecture we will visit many aspects of distributed programing usign MPI.</p>
+
+<hr>
+
+<h3 id="lecture-introduction-to-shared-memory-models">Lecture: Introduction to Shared Memory Models</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Prof Robinson Rivas (Universidad Central de Venezuela)</p>
+
+<p>Todays’ HPC systems always count on multiple cores. With the goal to improve the usage on such systems knowledge of multithread programing is mandatory. This lectures shows the basis of OpenMP : a well spred environment to implement parallel applications.</p>
+
+<p>Modern HPC platforms platforms are based on both Distributed and Shared memory architectures. In the case of Shared Memory, even handheld devices uses multiple processors/cores hardware, and it is usual to have up to 16 processing cores on commercial smartphones. 
+Understanding how these architectures works is very important for Computer Scientists and programmers. In this tutorial, students will learn about some different Shared Memory models, the advantages of this approach, and the main implementations found for commercial and scientific usage.</p>
+
+<hr>
+
+<h3 id="practical-session-programming-with-mpi--and-openmp">Practical Session: Programming with MPI  and OpenMP</h3>
+
+<p><em>Duration:</em> 3h30</p>
+
+<p><em>Speakers:</em></p>
+
+<ul>
+  <li>Ing. Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+  <li>Prof Robinson Rivas (Universidad Central de Venezuela)</li>
+</ul>
+
+<p>Using MPI and OpenMP, we will guide you on the implementation of a parallel and distributed application.</p>
+
+<hr>
+<hr>
+
+<h2 id="leveraging-accelerators-for-hpc">Leveraging Accelerators for HPC</h2>
+
+<hr>
+
+<h3 id="using-cuda-to-improve-performance-on-scientific-applications">Using CUDA to Improve Performance on Scientific Applications</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</p>
+
+<p>Programming with CUDA we will visit projects that significantly improve their performance using CUDA.</p>
+
+<hr>
+
+<h3 id="openacc-et-beyond">OpenACC et Beyond</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</p>
+
+<p>Programming with OpenACC.</p>
+
+<hr>
+
+<h3 id="practical-session-using-accelerators-to-improve-performance">Practical Session: Using Accelerators to Improve Performance.</h3>
+
+<p><em>Duration:</em> 3h</p>
+
+<p><em>Speaker:</em></p>
+
+<ul>
+  <li>Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</li>
+  <li>Ing. Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+</ul>
+
+<p>This practical session is the opportunity to use accelerators that will be available for the students.</p>
+
+<hr>
+<hr>
+
+<h2 id="big-data">Big Data</h2>
+
+<hr>
+
+<h3 id="lecture-big-data-essentials">Lecture: Big Data Essentials</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speakers:</em></p>
+
+<ul>
+  <li>Ing. Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+  <li>Prof Robinson Rivas (Universidad Central de Venezuela)</li>
+</ul>
+
+<hr>
+
+<h3 id="practical-session-parallel-python">Practical Session: Parallel Python</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speakers:</em></p>
+
+<ul>
+  <li>Ing. Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+  <li>Prof Robinson Rivas (Universidad Central de Venezuela)</li>
+</ul>
+
+<hr>
+<hr>
+
+<h2 id="contest">Contest</h2>
+
+<hr>
+
+<h3 id="contest-introduction">Contest Introduction</h3>
+
+<p><em>Speakers:</em></p>
+
+<ul>
+  <li>Ing. Gilberto Díaz (UIS - Bucaramanga, Colombia)</li>
+  <li>Dr Xavier Besseron (University of Luxembourg)</li>
+</ul>
+
+<p>A contest will be proposed to the student to allow them to apply the knowledge they acquired. Different problems are provided and they can selected one/many categories in which they which to participate. The students are encouraged to propose parallel and distributed solutions that run on the HPC cluster.</p>
+
+<p>Results are evaluated based on their <strong>correctness</strong> and <strong>performance</strong>.</p>
+
+<hr>
+
+<h3 id="contest-supervision">Contest Supervision</h3>
+
+<p>The students are given time to solve the problems and are supervised by the instructors of the SC-Camp.</p>
+
+<hr>
+
+<h3 id="contest-results-and-student-awards">Contest Results and Student Awards</h3>
+
+<p>The best solutions of the contest are presented by the students and discussed with everybody.</p>
+
+<hr>
+<hr>
+
+<h2 id="keynotes">Keynotes</h2>
+
+<hr>
+
+<h3 id="keynote-1-hybrid-high-performance-systems-for-ultrascal-architectures-and-aidl-applications">Keynote 1: Hybrid High Performance Systems for Ultrascal Architectures and AI/DL applications</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Prof Carlos Jaime Barrios Hernandez (UIS - Bucaramanga, Colombia)</p>
+
+<hr>
+
+<h3 id="keynote-2-methods-in--interpretation-of-multimodal-dataset-of-eegfmri-in-brain-signal">Keynote 2: Methods in  interpretation of multimodal dataset of EEG/fMRI in brain signal</h3>
+
+<p><em>Duration:</em> 1h</p>
+
+<p><em>Speaker:</em> Dr Nguyen Thi Ngoc Anh, UDN, Vietnam</p>
+
+<p>Data mining, machine learning, pattern recognition for time series 
+domains, applied to neurosciences and bioinformatics.</p>
+
+<hr>
+<hr>
+
+<h2 id="closing">Closing</h2>
+
+<hr>
+
+<h3 id="closing-session">Closing Session</h3>
+
+<hr>
+
+<h3 id="certificates-and-final-words">Certificates and Final Words</h3>
+
+
+      </div>
+
+      <div class="rightcolumn">
+        <div class="sponsors">
+            <h3>Sponsors</h3>
+            <a href="https://www.auf.org/" target="_blank"><img src="images/danang/Logo_AUF.png" width="180"></a><br> 
+            <a href="https://bsr.com.vn" target="_blank"><img src="images/danang/Logo_BSR.png" width="120"></a><br> 
+        </div>
+        <div class="organizers">
+            <h3>Organizers</h3>
+            <a href="http://www.udn.vn/english" target="_blank"><img src="images/danang/Logo_udn.jpg" width="100"></a><br>
+            <a href="http://www.udn.vn/english" target="_blank"><img src="images/danang/Logo_dniit.jpg" width="180"></a><br>
+            <a href="http://en.viethanit.edu.vn" target="_blank"><img src="images/danang/Logo_viethan.jpg" width="120"></a><br>
+            <a href="http://univ-cotedazur.fr" target="_blank"><img src="images/danang/Logo_uca.png" width="180"></a><br>
+            <a href="http://uni.lu" target="_blank"><img src="images/Logo-UL.png" width="100"></a><br>
+            <a href="http://www.uis.edu.co" target="_blank"><img src="images/Logo-UIS.jpg" width="180"></a><br>
+            <a href="http://www.sc3.uis.edu.co" target="_blank"><img src="images/Logo-UIS-S3C.png" width="150"></a><br>
+        </div>
+        <div class="archives">
+            <h3>Archives</h3>
+            <a href="http://www.sc-camp.org/2010/index.html">SC-Camp 2010</a><br>
+            <a href="http://www.sc-camp.org/2011/index.html">SC-Camp 2011</a><br>
+            <a href="http://www.sc-camp.org/2012/index.html">SC-Camp 2012</a><br>
+            <a href="http://www.sc-camp.org/2013/index.html">SC-Camp 2013</a><br>
+            <a href="http://www.sc-camp.org/2014/index.html">SC-Camp 2014</a><br>
+            <a href="http://www.sc-camp.org/2015/index.html">SC-Camp 2015</a><br>
+            <a href="http://www.sc-camp.org/2016/index.html">SC-Camp 2016</a><br>
+            <a href="http://www.sc-camp.org/2017/index.html">SC-Camp 2017</a><br>
+        </div>
+      </div>
+
+      <div style="clear:both"></div>
+
+    </div>
+
+
+    <div class="footer">
+      <p style="border-top:thin dotted #999;"></p>
+      <span>Copyright © 2018, <strong>SC Camp</strong> | for more information </span><a href="mailto:contact@sc-camp.org">contact@sc-camp.org</a>
+    </div>
+  
+  </body>
+</html>

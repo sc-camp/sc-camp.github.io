@@ -1,0 +1,737 @@
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="SC-Camp Super Computing and Distributed Systems Camp" />
+<meta name="keywords" content="Super computing, high performance, summer school, MPI, OpenMP, Grid Computing, performance evaluation" />
+<title>SC-Camp 2010</title>
+<link rel="icon" type="image/png" href="_images/picto.png" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="SpryAssets/SpryEffects.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+	var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_findObj(n, d) { //v4.01
+	var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+  if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_effectAppearFade(targetElement, duration, from, to, toggle)
+{
+	Spry.Effect.DoFade(targetElement, {duration: duration, from: from, to: to, toggle: toggle});
+}
+	//-->
+</script>
+</head>
+<body onload="MM_preloadImages('_images/SCcamp2011-survol.jpg')">
+<div class="fondSite">
+  <div class="accrochelogo">
+    <p><strong>Super Computing and Distributed Systems Camp</strong><br />
+      <span class="Style3">Catay, Santander, Colombia<br />August 15-22, 2010</span></p>
+  </div>
+  <div class="logo">
+  </div>
+  <div style="clear:both"></div>
+  <div class="menu"><a href="index.html%3Fshow=overview.html" target="_self" onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Overview</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=program.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Program</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=application&amp;action=newLogin.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Application Form</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=camp.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">News & Lectures</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=surounding.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Local Information</a><img src="_images/separateur-menu.jpg" align="absmiddle" /><a href="index.html%3Fshow=committee.html" target="_self"onmouseover="MM_effectAppearFade(this, 100, 100, 70, false)" onmouseout="MM_effectAppearFade(this, 100, 70, 100, false)">Committee</a></div>
+  <div class="colonneDroite">
+    <p><span style="letter-spacing: 8pt">SPONSORS</span></p>
+       <a href="https://www.grid5000.fr" target="_blank"><img src="_images/sponsors/grid5000.png" width="140" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://oar.imag.fr/" target="_blank"><img src="_images/sponsors/oar_logo.png" width="80" height="80" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>       <a href="http://www.i3s.unice.fr/I3S/" target="_blank"><img src="_images/sponsors/I3S_logo.png" width="150" height="45" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="http://liglab.imag.fr" target="_blank"><img src="_images/sponsors/logo-lig.png" width="100" height="86" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<p>       <a href="index.html%3Fshow=surounding.html" target="_blank"><img src="_images/sponsors/logo-fr.png" width="120" height="71" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+<p>    <a href="https://www.uis.edu.co" target="_blank"><img src="_images/sponsors/uis.jpg" alt="" width="120" height="79" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a>
+       <a href="http://www.facebook.com/group.php?v=wall&gid=23043333409" target="_blank"><img src="_images/sponsors/logo_fundeproyes.png" width="120" height="54" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+       <a href="http://bucaramanga.alianzafrancesa.org.co" target="_blank"><img src="_images/sponsors/logo-af.png" width="120" height="82" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<p>       <a href="http://cormoran.uis.edu.co/eisi/" target="_blank"><img src="_images/sponsors/logo-eisi.png" width="64" height="64" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br /></p>
+</p>    <a href="http://www.cecalc.ula.ve/" target="_blank"><img src="_images/sponsors/cecalcula.png" width="92" height="82" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></la>       <a href="https://www.ula.ve" target="_blank"><img src="_images/sponsors/udla.jpg" width="150" height="60" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+    <p><span style="letter-spacing: 8pt">MEDIA PARTNERS</span></p>
+<p><a href="http://www.isgtw.org/" target="_blank"><img src="_images/partners/isgtw-button.jpg" width="159" height="70" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+<a href="http://www.gridtalk.org/" target="_blank"><img src="_images/partners/logo-gridtalk.jpeg" width="108" height="108" border="0" onmouseover="MM_effectAppearFade(this, 100, 100, 50, false)" onmouseout="MM_effectAppearFade(this, 400, 50, 100, false)" /></a><br />
+</p>
+    <p><img src="_images/barre-separation-horizontale.jpg" width="140" height="68" /><br />
+    <a href="index.html%3Fshow=sc2011.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('SC Camp 2011','','_images/SCcamp2011-survol.jpg',1)"><img src="_images/SCcamp2011-actif.jpg" name="SC Camp 2011" width="94" height="40" border="0" id="SC Camp 2011" /></a></p>
+  </div>
+  <div class="colonnePrincipale">
+   
+    <p class="grandtitre"><img src="_images/carre-hachure.jpg" width="26" height="16" />Local Information</p>
+    
+    <p><iframe width="670" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?source=s_q&amp;hl=fr&amp;geocode=&amp;ie=UTF8&amp;hq=&amp;hnear=Piedecuesta,+Colombie&amp;msa=0&amp;ll=5.134715,-66.708984&amp;spn=33.522607,37.836914&amp;msid=101898883071190281574.000479f805dd11c7e1a7f&amp;output=embed"></iframe></p>
+    
+    <table width="100%" border="0" cellpadding="1" cellspacing="2" bgcolor="#EEEEEE">
+      
+      <tr>
+        <td width="20%" valign="top" bgcolor="#EEEEEE">
+              <span class="Style13"><strong>Country:</strong></span>
+        </td>
+        <td width="30%" valign="top">
+      		<span class="Style13"> Colombia</span>
+      	</td>
+      	<td width="20%" valign="top" bgcolor="#EEEEEE">
+              <span class="Style13"><strong>Departement:</strong></span>
+        </td>
+        <td width="30%" valign="top">
+      		<span class="Style13">Santander</span>
+      	</td>
+      </tr>
+      
+      
+      <tr>
+        <td width="20%" valign="top" bgcolor="#EEEEEE">
+              <span class="Style13"><strong>City:</strong></span>
+        </td>
+        <td width="30%" valign="top">
+      		<span class="Style13"><a href="index.html%3Fshow=surounding.html#piedecuesta">Piedecuesta</a></span>
+      	</td>
+      	<td width="20%" valign="top" bgcolor="#EEEEEE">
+              <span class="Style13"><strong>Nearest Metropoli:</strong></span>
+        </td>
+        <td width="30%" valign="top">
+      		<span class="Style13"><a href="index.html%3Fshow=surounding.html#bucaramanga">Bucaramanga</a></span>
+      	</td>
+     </tr>
+     
+     
+     <tr>
+        <td width="20%" valign="top" bgcolor="#EEEEEE">
+      		<span class="Style13"><strong>Altitude :</strong></span>
+        </td>
+        <td width="30%" valign="top" bgcolor="#EEEEEE">
+        	<span class="Style13">1005 m</span>
+        </td>
+        <td width="20%" valign="top">
+        	<span class="Style13"><strong>Geographic Class:</strong></span>
+      	</td>
+      	<td width="30%" valign="top">
+        	<span class="Style13">Mountain country side</span>
+      	</td>
+      </tr>
+      
+      <tr>
+        <td width="20%" valign="top" bgcolor="#EEEEEE">
+      		<span class="Style13"><strong>Temperature :</strong></span>
+        </td>
+        <td width="30%" valign="top" bgcolor="#EEEEEE">
+        	<span class="Style13">19 C</span>
+        </td>
+        <td width="20%" valign="top">
+        	<span class="Style13"><strong>Distance table :</strong></span>
+      	</td>
+      	<td width="30%" valign="top">
+        	<span class="Style13"></span>
+      	</td>
+      </tr>
+
+      <tr>
+        <td width="20%" valign="top" bgcolor="#EEEEEE">
+      		<span class="Style13"><strong></strong></span>
+        </td>
+        <td width="30%" valign="top" bgcolor="#EEEEEE">
+        	<span class="Style13"></span>
+        </td>
+      	<td colspan="2" width="50%" valign="top">
+        	<ul>
+        		<li>
+					<span class="Style13">
+        	 		17 Km from Bucaramanga Airport</span>
+        		</li>
+        		<li>
+					<span class="Style13">
+        	 		15 Km from Bucaramanga</span>
+        		</li>
+        		<li>
+					<span class="Style13">
+        	 		9 Km from <a href="index.html%3Fshow=surounding.html#floridablanca">Floridablanca</a></span>
+        		</li>
+        		<li>
+					<span class="Style13">
+        	 		10 Km from <a href="index.html%3Fshow=surounding.html#giron">Giròn</a></span>
+        		</li>
+        		<li>
+					<span class="Style13">
+        	 		50 Km from <a href="index.html%3Fshow=surounding.html#chicamocha">Chicamocha Canion	</a></span>
+        		</li>
+
+        	</ul>
+      	</td>
+      </tr>    
+  </table>
+
+  <br />
+  <br />
+  <a name="practical" id="practical"></a>
+  <p>  
+  <span class="moyentitre">Practical Guidelines</span><br />
+  </p> 
+  <p class="Style14j">	    
+  The official money in Colombia is the Colombian Peso (<i>peso colombiano</i>) which ISO official
+  acronym is COP. No other money is accepted in most part of Colombia so the careful visitor must 
+  always carry pesos in their wallets. Most money brokers are used to American dollars which is
+  the preferable money for exchange. The best fare can be obtained in Bucaramanga although
+  the airport has a good service of money brokers.
+  </p>
+  <p class="Style14j">	    
+  From Bucaramanga Palo Negro Airport to the camping site the recommended transportation is 
+  taxi which will cost from $35,000 COP up to $45,000 COP depending on the amount of 
+  luggage and the arrival time.
+  </p>
+    
+  <br />
+  <br />
+  <a name="santander" id="santander"></a>
+  <p>  
+  <span class="moyentitre">Santander</span><br />
+  </p> 
+  <p class="Style14j">	
+  The Department of Santander is located on the north of 
+  the Andes, bordering with <i>Norte
+  de Santander</i> department on the east, <i>Boyac&aacute;</i> on the south, 
+  <i>Antioquia</i> on the West 
+  and <i>Bol&iacute;var</i> on the north. 
+  Its Capital is the city of Bucaramanga.
+  </p>
+        <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		 
+		<td>
+		  <span class="Style12">
+			Sunrise view of Bucaramanga's Airport
+          </span>
+		</td>
+		<td>
+		  <span class="Style12">
+		    Chicamocha Riverbank
+          </span>
+		</td>
+		         
+	</tr>
+	<tr>
+	   
+	    <td>
+	    <a href="gallery/index.html" target="GALLERY"><img src="_images/bucaramanga/bmanga_airport.png" border="0"></a>
+  		</td>
+	  	<td>
+  		<a href="gallery/index.html" target="GALLERY"><img src="_images/chicamocha/chicamocha_river.png" border="0"></a>	
+        </td>
+	  	
+	</tr>
+	<tr>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+		<td>
+		</td>
+	</tr>	
+  </table>
+  <p class="Style14j">	
+  The main transport in Santander is bus (<i>Autobus</i>); there are many companies that 
+  offer different routes to travel between cities and villages. 
+  Palonegro, the International Airport of Bucaramanga, provide connections to 
+  many cities in Colombia including one international flight to Panam&aacute; City. 
+  </p>
+ 
+
+  <p class="Style14j">	
+  Santander has two distinct geographical regions:
+  </p>
+  <ul>
+  	<li class="Style14j">
+    The valley of Magdalena river,  located on the western Santander, 
+    cross the departement with from south to north with 
+    289 Km long. This region 
+    is rich in swamps suitable for fishing among other water sports. 
+    The most important swamps are: San Silvestre, Opón, 
+    El Tigre, Torcoroma and El llanito.
+    </li>
+    <li class="Style14j">
+    On the eastern Andes lies an accidental region of plateaus, where are 
+    most of Santanderean cities are located. 
+    It also marked by some  paramos  (a high, bleak plateau or district, 
+    with stunted trees, and cold, damp atmosphere typical of the South American's 
+    Andes) where most river sources can be found.
+    The highest mountains are: <i>Alto de la Colorada</i> (4440 m), <i>P&aacute;ramo de la Rusia</i> 
+    (4320 m), <i>Picacho del Ture</i> (4300 m), <i>P&aacute;ramo Cachir&iacute;</i> (4220 m), 
+    <i>P&aacute;ramo Rico</i> (4200 m), <i>P&aacute;ramo Almorzadero</i> (4093 m) and 
+    <i>Pe&ntilde;a de Saboy&aacute;</i> (4003 m).
+    </li>
+  </ul>
+ 
+  <p class="Style14j">	
+  Due to geography, Santander is an excellent place for extreme sports. 
+  Fonce and Chicamocha Rivers are known for being challanging even
+  to experients rafting riders; there are waterfalls 
+  to practice climbing, caverns to perform speleology, most of 
+  them with subterranean water; and the plateau of Ruitoque, near to Bucaramanga, 
+  is a perfect spot for parapenting.
+  </p>
+ 
+
+  <p class="Style14j">	
+  There are many typical coarses in Santander: Mute is a soup with 
+  corn and pieces of meat; Arepa is a flat bread of corn; pepitoria is rice 
+  with pieces of goat; tamal is a starchy dough of corn filled with meat, 
+  chicken or pig and wrapped in plantain leaves; the goat is also a typical 
+  food and it cooked in many ways. The most exotic food in Santander is an 
+  ant called <i>hormiga culona</i>.
+  </p>
+ 
+  <br />
+  <br />
+  <a name="bucaramanga" id="bucaramanga"></a>
+  <p>  
+  <span class="moyentitre">Bucaramanga</span><br />
+  </p> 
+  
+  Bucaramanga Justice Hall and Galan Square
+  <br />
+  <a href="gallery/index.html" target="GALLERY"><img src="_images/bucaramanga/bmanga_justice_building_and_galan_square.png" border="0"></a>
+  <span class="legend">Victor Eduardo Mart&iacute;nez &copy; 2010</span> 
+
+  		<p class="Style14j">	
+		  Bucaramanga is located in the midle of Colombia on the Eastern 
+		  Andes Mountains at 959 m of altitude (3146.325 ft). 
+		  It is nicknamed "Beautiful City", "City of Cicadas" 
+		  or “City of Parks". It is the capital of Santander department 
+		  with a approximate population of 560,000 inhabitants. 
+		  It is strategically located on the axis of  
+		  pathways that connect Bogotá (422 Km), Cúcuta (191 Km), 
+		  Medellín (478 Km) and the Atlantic Coast (534 Km). The Metropolitan 
+		  Area of Bucaramanga is conformed by Floridablanca, Piedecuesta and Girón.
+        </p>
+        
+  <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		<td>
+		</td>
+		<td>
+		<span class="Style12">
+		   Bucaramanga State Hall
+ 
+        </span>       
+		</td>
+	</tr>
+	<tr>
+	  	<td valign="top" class="Style14j">
+           
+
+  <p class="Style14j">	
+  Taxis or bus are the main transport choices. Since last February 
+  2010 a new integrated public transport system was implemented. Now
+  it is possible to use a single ticket to join Floridablanca.
+  </p>
+ 
+ 
+ 
+ 
+  <p class="Style14j">	
+  Bucaramanga has a template climate and its thermal levels 
+  are divided into: warm, medium and cold. Its average temperature 
+  is 23°C and annual rainfall of 1041 mm. It’s located on a 
+  plateau and surrounded by mountains.
+  </p>
+ 
+ 
+  		</td>
+		<td>
+          <a href="gallery/index.html" target="GALLERY"><img src="_images/bucaramanga/bmanga_governor_building.png" border="0"  align="top"></a>
+ 
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+	</tr>	
+  </table>
+
+  <p class="Style14j">	
+  Bucaramanga has many green spaces on his parks, the most 
+  important are: Custodio García Rovira Park, in front of Town hall; 
+  Centenario Park, complemented by a Republican Building; Los Niños 
+  Park, to practice sports as basketball or tennis; Guillermo 
+  Sorzano González Park, nicknamed as San Pío; Mejoras Públicas Park, 
+  some cultural activities like musicians or storytellers are 
+  presented here; and La Flora Park, with paths and roads to 
+  walking and sightseeing.
+  </p>
+ 
+ 
+  <p class="Style14j">	
+  Ancient buildings are located mainly at downtown of 
+  Bucaramanga as: Bolívar House, Custodio Garía Rovira House, 
+  Luis Perú de la Croix House, Centro Cultural del Oriente Building,
+  Santander Theatre, Coliseo Peralta Theater, Sagrada Familia Church, 
+  San Laureano Church and Los Dolores Church.
+  </p>
+  
+   <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		
+		<td>
+		  <span class="Style12">
+			   Bucaramanga Holy Family Church
+ 
+          </span>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+			<td>
+          <a href="gallery/index.html" target="GALLERY"><img src="_images/bucaramanga/bmanga_church_holy_family.png" border="0"  align="top"></a>
+ 
+		</td>
+	  	<td valign="top" class="Style14j">
+
+
+  
+    <p class="Style14j">	
+  Luis A. Calvo Auditorium, at Universidad Industrial de Santander, 
+  is the most important building for cultural activities like music, 
+  theatre, congress and conferences. The Whole Book House, or Casa 
+  del Libro Total, is a new place in Bucaramanga for these kind activities. 
+  Festivals are organized according to the month: January, Blues and 
+  Jazz Festival; March, Tango and Argentinean Festival; April, Week 
+  of Letters; May, Festivalito Ruitoqueño Music Festival; June, Guitar 
+  Festival; July, Theatre Festival; September, Fair of Bucaramanga that 
+  is biggest festival; October, Abrapalabra Storytellers Festival; 
+  November, Puppets Festival; December, Bucaramanga Anniversary.
+  </p>
+  		</td>
+
+	</tr>
+	<tr>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+		<td>
+		</td>
+	
+	</tr>	
+  </table>
+
+ 
+
+
+ 
+  <br />
+  <br />
+  <a name="piedecuesta" id="piedecuesta"></a>
+  <p>  
+  <span class="moyentitre">Piedecuesta</span><br />
+  </p> 
+  <p class="Style14j">	
+  The «Villa de San Carlos de Pie de la Cuesta», commonly  known as
+  "Piedecuesta", is a city in the metropolitan area of Bucaramanga. It’s
+  also called “City of Milk and Honey” and located south of 
+  Floridablanca, over a valley into the last chaine of the Andes
+  mountains.
+  </p>
+  <p class="Style14j">	
+  The first economic activity is agriculture, with farming of sugar cane,
+  tobacco and cocoa. The fairs are related to the economic and
+  agribusiness, with exhibition of cow, horses and goats.
+  </p>
+  <p class="Style14j">	
+  In Piedecuesta is located the Headquarters of major national petroleum
+  research center: The Colombian Petrolium Institut (<i>Instituto Colombiano del Petr&oacute;leo</i>) 
+  Colombia, supported by the national petrolium enterprise (Ecopetrol).
+  </p>
+  <p class="Style14j">	
+  Also, UIS University has their technological park named "Guatigüara".
+  Center of the advanced and sensible research developed by the
+  University.
+  </p>
+  
+  <br />
+  <br />
+  <a name="floridablanca" id="floridablanca"></a>
+  <p>  
+  <span class="moyentitre">Floridablanca</span><br />
+  </p> 
+  <p class="Style14j">	
+  Floridablanca is the second biggest city of Santander departement. Located 8km south of Bucaramanga
+  It has a population of 250,000 inhabitans sharing the same public transport system of Bucaramanga. 
+  It is nicknamed “City of Caracol&iacute;”, due to a tree of approximately 35 m height in the 
+  native forests.
+  </p> 
+  
+  <p class="Style14j"> 
+  The Guane Museum has a pre-Columbian monument called The Rock of Sun (<i>La Piedra del Sol</i>), 
+  covered with indecipherable signs of ancient Guane culture. Near to Museum there is a park 
+  for ecological resting called Jard&iacute;n Bot&aacute;nico Eloy Valenzuela.
+  </p>
+ 
+  <p class="Style14j">  
+  A typical food in Floridablanca is Oblea; a rounded wafer filled with caramel, condensed milk, 
+  blackberry dessert and shredded cheese. The plateau of Ruitoque is located at Floridablanca.
+  </p>
+
+ 
+
+
+
+  <br />
+  <br />
+  <a name="giron" id="giron"></a>
+  <p>  
+  <span class="moyentitre">Gir&oacute;n</span><br />
+  </p> 
+  <p class="Style14j">
+  San Juan de Gir&oacute;n is one of the most beautiful cities in Colombia; 
+  it was recently classified as a <strong>National Treasure of History</strong>. 
+  Located 9 km west from Bucaramanga, Gir&oacute;n with approximately 120000 
+  inhabitants is an obligatory stop for turists coming from abroad. This 
+  three centuries and a half old city economics is mainly based on turism.
+  </p>
+  
+  
+     <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		
+		<td>
+		  <span class="Style12">
+			Basilica Lord of Miracles
+          </span>
+		</td>
+		<td>
+		  <span class="Style12">
+		    Las Nieves bridge
+          </span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	    <a href="gallery/index.html" target="GALLERY"><img src="_images/giron/giron_basilica_lord_miracles.png" border="0"></a>
+  		</td>
+	  	<td>
+  		<a href="gallery/index.html" target="GALLERY"><img src="_images/giron/giron_Las_Nieves_bridge.png" border="0"></a>	
+        </td>
+	</tr>
+	<tr>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+		<td>
+		</td>
+	</tr>	
+  </table>
+  
+  
+  <p class="Style14j">
+  Gir&oacute;n architecture is colonial, it is highlighted by ancient churches, 
+  with special attention to the Chapel of Holy Mary of the Snows 
+  (<i>Nuestra Se&ntilde;ora de las Nieves</i>) build with carved stones. 
+  The Cathedral, named Basilica Lord of Miracles (<i>Señor de Los Milagros</i>), is a place where the catholic Colombians refill
+  their faith in god. During the Saint Benito Festival, men, women and children paint theirs faces in 
+  black in contastation with the european images where Saint Benito was presented white-skinned.
+  El Malec&oacute;n, which was the gold rush riverbank, is now a traditional place for touristic 
+  sightseeing where foreigners can have a typical meal.
+  </p>
+  
+       <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		
+		<td>
+		  <span class="Style12">
+			Holy Mary of the Snow Church
+          </span>
+		</td>
+		<td>
+		  <span class="Style12">
+		    G&iacute;ron City Hall
+          </span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	    <a href="gallery/index.html" target="GALLERY"><img src="_images/giron/giron_chapel_senora_de_las_nieves.png" border="0"></a>
+  		</td>
+	  	<td>
+  		<a href="gallery/index.html" target="GALLERY"><img src="_images/giron/giron_town_hall.png" border="0"></a>	
+        </td>
+	</tr>
+	<tr>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+		<td>
+		</td>
+	</tr>	
+  </table>
+  
+  <br />
+  <br />
+  <p>  
+  <a name="chicamocha" id="chichamocha"></a>
+  <span class="moyentitre">Chicamocha Canion</span><br />
+  </p>
+  
+  East view from Chicamocha canion
+<br />
+<a href="gallery/index.html" target="GALLERY"><img src="_images/chicamocha/chicamocha_east.png" border="0"></a>
+ 
+  
+  <span class="legend">Victor Eduardo Mart&iacute;nez &copy; 2010</span> 
+  
+  <p class="Style14j">
+  Parque Nacional del Chicamocha is located about an hour and a half north of Bucaramanga on the road to San Gil. 
+  It is a park which combines Santanderean culture, fun activities, adventure sports, the country's biggest 
+  cable car route, and all amidst breadtaking views out over the Chicamocha canyon.
+  The park is open from 9am to 6pm (Tuesday to Thursday), 9am to 7pm (Friday to Sunday). 
+  The cable car is open from 9am until 4.30pm.
+  Entrance to the park costs $10,000 COP for adults ($30,000 COP including the cable car ride) 
+  and $5,000 COP for children ($15,000 COP inc. cable car).
+  </p>
+
+  <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		<td>
+			<span class="Style12">
+			   Chicamocha National Park
+ 
+			</span>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+          <a href="gallery/index.html" target="GALLERY"><img src="_images/chicamocha/chicamocha_park.png" border="0"  align="top"></a>
+ 
+	  	</td>
+	  	<td valign="top" class="Style14j">
+		  From the entrance to the park you steadily climb the winding staircase arriving at 
+		  various attractions along the way. Relief from the hot sun is provided in the form 
+		  of various archways along the path which shoot out a cool spray of water as you 
+		  pass under them. There are various shops and restaurants around which shows of 
+		  Santanderean dances are often performed. For the vast majority the main highlight 
+		  of the park will be the views across the canyon and down to the Rio Chicamocha. 
+		  If and when you tire of the view, however, there are a some other decent attractions 
+		  within the park with which to keep yourself occupied.  sdfa s sdfa asdf 
+  		</td>
+  	 </tr>
+	 <tr>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+		<td>
+		</td>
+	 </tr>
+  </table>
+  <p class="Style14j">
+	On 16 March 1781, fed up with the ridiculously high taxes being imposed upon 
+	them, the people of Santander, led by Manuela BeltrAn, decided enough 
+	was enough and began a rebellion against Tobaco leaf monumentthe 
+	rulers of the colony which ultimately ended in independence. 
+	El Monumento a La Santandereanidad (Monument to Santander), which 
+	features a symbolic explosion of rebellion at its centre, depicts 
+	the various key players during this fight, both the heroes and the villains. 
+	The whole monument is situated on a tobacco leaf (tobacco was, and remains, 
+	one of Santander's most important industries) pointing in the direction of 
+	the town of Socorro, where many of the important events took place. 
+	The monument looks impressive viewed from above with the canyon forming the backdrop.
+  </p>
+  <p class="Style14j">
+  One of the park's more exciting attractions is 'Cable-Vuelo', a zip line that slides you down 
+  from a platform towards the top of the park to a platform further down. There are three lines 
+  depending on how much speed and vertigo you want to experience.
+  The park also boasts an ice skating rink set on a ridge about halfway up the hill 
+  on the left hand side. The rink itself is pretty small and ordinary, and you'd 
+  barely give it a second glance if it were erected in a supermarket car park or 
+  somewhere, but the fact that it's over looking the dramatic canyon makes it 
+  quite a cool spot (pun Ice rinkintended).
+ </p>
+  
+
+  <table width="670" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		<td>
+		</td>
+		<td>
+		  <span class="Style12">
+			   Palonegro sunset
+ 
+          </span>
+		</td>
+	</tr>
+	<tr>
+	  	<td valign="top" class="Style14j">
+          There several other fun activities including a circuit fot buggy racing and a giant slide.
+          Just outside the park it is possible to organise paragliding, and at busy 
+          times helicopter rides over the canyon.
+          The park also offers rafting through 'Canoas del Chicamocha' along the 
+          Chicamocha River: <a href="http://www.colombiarafting.com/rafting/chicamocha/index.shtml" target="_blank">Colombia Rafting Expediciones</a> 
+  		  <br />
+  		  <br />
+  		  <p class="Style14j warning">
+  		  	<strong>
+  		  	The text about Chicamocha was extracted with the authors permission from 
+  		  	<a href="http://www.colombiatravelguide.net/chicamocha.html" target="_blank">Colombia Travel Guide</a> 
+  		  	&copy; 2009, all rights reserved
+  		  	</strong> 
+  		  </p>
+  		</td>
+		<td>
+          <a href="gallery/index.html" target="GALLERY"><img src="_images/chicamocha/palonegro_sunset.png" border="0"  align="top"></a>
+ 
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+			<span class="Style12">
+			Victor Eduardo Mart&iacute;nez &copy; 2010
+			</span>
+		</td>
+	</tr>	
+  </table>
+    </div>
+  <div style="clear:both"></div>
+  <div class="piedPage">
+   <p style="border-top:thin dotted #999;"></p>
+   <div style="float:right">
+     <div align="right"><a href="http://www.miamybiz.com" target="_blank">sitedesign : miamybiz</a></div>
+   </div>
+   <div> <span>Copyright © 2009, <strong>SC Camp</strong> | for Information : </span><a href="mailto:contact@sc-camp.org">contact@sc-camp.org</a></div>
+   <div style="clear:both"></div>
+  </div>
+  </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16081819-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

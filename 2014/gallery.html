@@ -1,0 +1,609 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><link rel="stylesheet" type="text/css" href="gallery/index.php5%3Fcmd=css.css"><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"><title>Gallery</title>
+<link rel="icon" type="image/png" href="http://sc-camp.org/2014/gallery/_images/picto2011.png" />
+<script language="JavaScript" TYPE="text/javascript">
+		<!--
+
+		var phpSelf = '/2014/gallery/index.php5';
+
+		var navLink = [];
+		var navName = [];
+
+		var dirLink = [];
+		var dirThumb = [];
+		var dirName = [];
+		var dirInfo = [];
+
+		var imgLink = [];
+		var imgName = [];
+		var imgInfo = [];
+
+		var fileLink = [];
+		var fileThumb = [];
+		var fileName = [];
+		var fileInfo = [];
+
+		var imageSpace = 50;
+
+		var waitSpin = ['&bull;-----', '-&bull;----', '--&bull;---', '---&bull;--', '----&bull;-', '-----&bull;'];
+		var waitSpinNr = 0;
+		var waitSpinSpeed = 100;
+
+		var graceMaxRun = Math.ceil(500 / waitSpinSpeed);
+
+		var showInfo = false;
+		var actualSize = false;
+		var fullImgLoaded = false;
+		var imageLargerThanViewport = false;
+
+		var index = false;
+		var preloadImg = new Image();
+		var preloaded = -1;
+		var preloadedFull = -1;
+
+		var viewportWidth;
+		var viewportHeight;
+
+		var imgFullWidth;
+		var imgFullHeight;
+
+
+		function getViewport()
+		{
+			if (typeof window.innerWidth != 'undefined')
+			{
+				viewportWidth = window.innerWidth,
+				viewportHeight = window.innerHeight
+			}
+			else if (typeof document.documentElement != 'undefined' && typeof document.documentElement.clientWidth != 'undefined' && document.documentElement.clientWidth != 0)
+			{
+				viewportWidth = document.documentElement.clientWidth,
+				viewportHeight = document.documentElement.clientHeight
+			}
+			else
+			{
+				viewportWidth = document.getElementsByTagName('body')[0].clientWidth,
+				viewportHeight = document.getElementsByTagName('body')[0].clientHeight
+			}
+			if (showInfo)
+			{
+				viewportWidth -= (250 + 12);
+			}
+			viewportHeight -= 70;
+			if (viewportHeight < 0) viewportHeight = 20;
+		}
+
+
+		function initDisplay()
+		{
+			getViewport();
+			if (index)
+			{
+				resizeImage();
+			}
+			document.getElementById('box_image').style.width = viewportWidth;
+			document.getElementById('box_image').style.height = viewportHeight;
+			document.getElementById('box_wait').style.width = viewportWidth;
+			document.getElementById('box_wait').style.height = viewportHeight;
+			document.getElementById('box_gallery').style.width = viewportWidth;
+			document.getElementById('box_gallery').style.height = viewportHeight;
+			document.getElementById('box_info').style.height = viewportHeight-20;
+			showMenu();
+		}
+
+
+		function resizeImage()
+		{
+			var availX, availY, aspectX, aspectY, newImgX, newImgY;
+			availX = viewportWidth - imageSpace;
+			availY = viewportHeight - imageSpace;
+			if (availX < 160)
+			{
+				availX = 160;
+			}
+			if (availY < 120)
+			{
+				availY = 120;
+			}
+			if ((imgFullWidth > availX) || (imgFullHeight > availY))
+			{
+				imageLargerThanViewport = true;
+			}
+			else
+			{
+				imageLargerThanViewport = false;
+			}
+			if (!actualSize && ((imgFullWidth > availX) || (imgFullHeight > availY)))
+			{
+				aspectX = imgFullWidth / availX;
+				aspectY = imgFullHeight / availY;
+				if (aspectX > aspectY)
+				{
+					newImgX = availX;
+					newImgY = Math.round(imgFullHeight / aspectX);
+				}
+				else
+				{
+					newImgX = Math.round(imgFullWidth / aspectY);
+					newImgY = availY;
+				}
+				document.getElementById('img_resize').innerHTML = newImgX + ' x ' + newImgY;
+			}
+			else
+			{
+				newImgX = imgFullWidth;
+				newImgY = imgFullHeight;
+				document.getElementById('img_resize').innerHTML = 'Not Scaled';
+			}
+			document.getElementById('full').width = newImgX;
+			document.getElementById('full').height = newImgY;
+		}
+
+
+		function fullSize()
+		{
+			if (actualSize == true)
+			{
+				actualSize = false;
+				initDisplay();
+			}
+			else
+			{
+				actualSize = true;
+				initDisplay();
+			}
+		}
+
+
+		function showMenu()
+		{
+			if (imgLink.length > 0)
+			{
+				menu = '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="cycleImg(-1)"><< Previous</span>';
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="cycleImg(1)">Next >></span>';
+			}
+			else
+			{
+				menu = '<span class="sfpg_button_disabled"><< Previous</span>';
+				menu += '<span class="sfpg_button_disabled">Next >></span>';
+			}
+
+			if (showInfo)
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_on\';" onclick="toggleInfo(showInfo);" class="sfpg_button_on">Information</span>';
+			}
+			else
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" onclick="toggleInfo(showInfo);" class="sfpg_button">Information</span>';
+			}
+
+			if (index && imageLargerThanViewport)
+			{
+				if (actualSize)
+				{
+					menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_on\';" class="sfpg_button_on" onclick="fullSize()">Actual Size</span>';
+				}
+				else
+				{
+					menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="fullSize()">Actual Size</span>';
+				}
+			}
+			else
+			{
+				menu += '<span class="sfpg_button_disabled">Actual Size</span>';
+			}
+
+
+			
+			if (index)
+			{
+				menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="closeImageView()">Close Image</span>';
+			}
+			else
+			{
+				menu += '<span class="sfpg_button_disabled">Close Image</span>';
+			}
+			menu += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button\';" class="sfpg_button" onclick="window.location=\'http://sye.dk/sfpg/\'">sfpg 4.0.0 - sye.dk</span>';
+			document.getElementById('div_menu').innerHTML = menu;
+		}
+
+
+		function openImageView(imgId, full)
+		{
+			if (!index)
+			{
+				document.getElementById('box_overlay').style.visibility='visible';
+				setOpacity('box_overlay', 90);
+			}
+			index = imgId;
+			fillInfo('img', index);
+			setOpacity('full', 0);
+			document.getElementById('wait').style.visibility='visible';
+			document.getElementById('box_wait').style.visibility='visible';
+			document.getElementById('box_image').style.visibility='visible';
+			preloadImage(index, full);
+			actualSize = false;
+			fullImgLoaded = full;
+			showMenu();
+			showImage(0);
+		}
+
+
+		function preloadImage(imgId, full)
+		{
+			if ((preloaded != imgId) || (preloadedFull != full))
+			{
+				preloadImg = new Image();
+				if ((full == 1) || (true))
+				{
+					preloadImg.src = phpSelf+'?cmd=image&sfpg='+imgLink[imgId];
+					preloadedFull = 1;
+				}
+				else
+				{
+					preloadImg.src = phpSelf+'?cmd=preview&sfpg='+imgLink[imgId];
+					preloadedFull = 0;
+				}
+				preloaded = imgId;
+			}
+		}
+
+
+		function fillInfo(type, id)
+		{
+			if (!index || (type == 'img'))
+			{
+				var info='<div class="thumbimgbox">';
+				if (type == 'dir')
+				{
+					if (dirThumb[id] != '')
+					{
+						info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+dirThumb[id]+'">';
+					}
+					else
+					{
+						info += '<br><br>No Images in gallery';
+					}
+					info += '</div>';
+					info += '<strong>Gallery Name</strong><br><div class="sfpg_info_text">'+dirName[id] + '</div><br>';
+					var splint = dirInfo[id].split('|');
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>Sub galleries</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Images</strong><br><div class="sfpg_info_text">'+splint[2]+'</div><br>';
+					info += '<strong>Links</strong><br><a href="'+phpSelf+'?sfpg='+dirLink[id]+'">Direct link to Gallery</a><br><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[4]+'<br></div><br>';
+				}
+				else if (type == 'img')
+				{
+					info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+imgLink[id]+'">';
+					info += '</div>';
+					var splint = imgInfo[id].split('|');
+					info += '<strong>Image Name</strong><br><div class="sfpg_info_text">'+imgName[id] + '</div><br>';
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>Full Image Dimensions</strong><br><div class="sfpg_info_text">'+splint[2]+' x '+splint[3]+'</div><br>';
+					info += '<strong>Displayed Image Dimensions</strong><br><div class="sfpg_info_text">';
+										
+					info += 'Scaled to: <span id="img_resize"></span></div><br>';
+					info += '<strong>File size in bytes</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Image number</strong><div class="sfpg_info_text">'+id+' / '+(imgLink.length-1)+'</div><br>';
+					info += '<strong>Links</strong><br>';
+					info += '<a href="'+phpSelf+'?sfpg='+imgLink[id]+'">Direct link to Image</a><br>';
+					info += '<a href="'+phpSelf+'?cmd=dl&sfpg='+imgLink[id]+'">Download full-size image</a><br><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[4]+'<br></div><br>';
+				}
+				else if (type == 'file')
+				{
+					if (fileThumb[id] != '')
+					{
+						info += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+fileThumb[id]+'">';
+					}
+					else
+					{
+						info += '<br><br>No Preview for file<br>';
+					}
+					info += '</div>';
+					info += '<strong>File Name</strong><br><div class="sfpg_info_text">'+fileName[id]+'</div><br>';
+					var splint = fileInfo[id].split('|');
+					info += '<strong>Date</strong><br><div class="sfpg_info_text">'+splint[0]+'</div><br>';
+					info += '<strong>File size in bytes</strong><br><div class="sfpg_info_text">'+splint[1]+'</div><br>';
+					info += '<strong>Description</strong><br><div class="sfpg_info_text">'+splint[2]+'<br></div><br>';
+				}
+				document.getElementById('box_inner_info').innerHTML = info;
+			}
+		}
+
+
+		function toggleInfo(status)
+		{
+			if (status)
+			{
+				document.getElementById('box_info').style.visibility='hidden';
+			}
+			else
+			{
+				setOpacity('box_info', 0);
+				document.getElementById('box_info').style.visibility='visible';
+				fadeOpacity('box_info', 0,	100, 300);
+			}
+			showInfo = !status;
+			initDisplay();
+		}
+
+
+		function openGallery(id, type)
+		{
+			var link;
+			if (type == 'nav')
+			{
+				link=navLink[id];
+			}
+			else
+			{
+				link=dirLink[id];
+			}
+
+			var opt='';
+			if (showInfo)
+			{
+				opt = '&info=1';
+			}
+			window.location	= phpSelf+'?sfpg='+link+opt;
+		}
+
+
+		function openFile(id)
+		{
+			if (true)
+			{
+				window.open(phpSelf+'?cmd=file&sfpg='+fileLink[id]);
+			}
+			else
+			{
+				window.location	= phpSelf+'?cmd=file&sfpg='+fileLink[id];
+			}
+		}
+
+
+		function nextImage(direction)
+		{
+			var nextIndex;
+			if (!index)
+			{
+				if (direction > 0)
+				{
+					return 1;
+				}
+				else
+				{
+					return (imgLink.length - 1);
+				}
+			}
+			var nextImg = index + direction;
+			if (nextImg > imgLink.length - 1)
+			{
+				nextImg = 1;
+			}
+			if (nextImg < 1)
+			{
+				nextImg = imgLink.length - 1;
+			}
+			return nextImg;
+		}
+
+
+		function cycleImg(direction)
+		{
+			openImageView(nextImage(direction), false);
+		}
+
+
+		function showImage(graceRun)
+		{
+			if (graceRun < graceMaxRun)
+			{
+				if (preloadImg.complete || graceRun != 0)
+				{
+					if (graceRun == 0)
+					{
+						document.getElementById('full').src = preloadImg.src;
+						imgFullWidth = preloadImg.width;
+						imgFullHeight = preloadImg.height;
+						fillInfo('img', index);
+						initDisplay();
+						preloadImage(nextImage(1),0);
+					}
+					graceRun++;
+				}
+				if (waitSpinNr >= waitSpin.length)
+				{
+					waitSpinNr = 0;
+				}
+				document.getElementById('wait').innerHTML = '<div class="loading">Image Loading ' + waitSpin[waitSpinNr] + '</div>';
+				waitSpinNr++;
+				if (index)
+				{
+					setTimeout ('showImage(' + graceRun + ')', waitSpinSpeed);
+				}
+			}
+			else
+			{
+				document.getElementById('wait').style.visibility='hidden';
+				fadeOpacity('full', 0, 100, 300);
+			}
+		}
+
+
+		function closeImageView()
+		{
+			document.getElementById('box_wait').style.visibility='hidden';
+			document.getElementById('wait').style.visibility='hidden';
+			document.getElementById('box_image').style.visibility='hidden';
+			index = false;
+			showMenu();
+			fadeOpacity('box_overlay', 90, 0, 300);
+			document.getElementById('full').width = 1;
+			document.getElementById('full').height = 1;
+			document.getElementById('full').src = '';
+			fillInfo('dir', 0);
+		}
+
+
+		function setOpacity(id, opacity)
+		{
+			var element = document.getElementById(id).style;
+			element.opacity = (opacity / 100);	// std
+			element.MozOpacity = (opacity / 100);	// firefox
+			element.filter = 'alpha(opacity=' + opacity + ')';	// IE
+			element.KhtmlOpacity = (opacity / 100);	// Mac
+		}
+
+
+		function fadeOpacity(id, opacityStart, opacityEnd, msToFade)
+		{
+			if (msToFade > 0)
+			{
+				var frames = Math.round((msToFade / 1000) * 30);
+				var msPerFrame = Math.round(msToFade / frames);
+				var opacityPerFrame = (opacityEnd - opacityStart) / frames;
+				var opacity = opacityStart;
+				for (frame = 1; frame <= frames; frame++)
+				{
+					setTimeout('setOpacity(\'' + id + '\',' + opacity + ')',(frame * msPerFrame));
+					opacity += opacityPerFrame;
+				}
+				if (opacityEnd == 0)
+				{
+					setTimeout('document.getElementById(\'' + id + '\').style.visibility=\'hidden\'',((frames+1) * msPerFrame));
+				}
+				else
+				{
+					setTimeout('setOpacity(\'' + id + '\',' + opacityEnd + ')',((frames+1) * msPerFrame));
+				}
+			}
+			else
+			{
+				setOpacity(id, opacityEnd);
+				if (opacityEnd == 0)
+				{
+					document.getElementById(id).style.visibility='hidden';
+				}
+			}
+		}
+
+
+		function thumbDisplayName(name)
+		{
+			dispName = name.substring(0,20);
+			if (name.length > 20)
+			{
+				dispName += '...';
+			}
+			return dispName;
+		}
+
+
+		function addElement(elementNumber, type)
+		{
+			var newdiv = document.createElement('div');
+			newdiv.className = 'thumbbox';
+			if (type == 'dir')
+			{
+				content = '<div onclick="openGallery('+elementNumber+')" onmouseover="this.className=\'innerboxdir_hover\'; fillInfo(\'dir\', '+elementNumber+')" onmouseout="this.className=\'innerboxdir\'; fillInfo(\'dir\', 0)" class="innerboxdir"><div class="thumbimgbox">';
+				if (dirThumb[elementNumber] != '')
+				{
+					content += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+dirThumb[elementNumber]+'">';
+				}
+				else
+				{
+					content += '<br><br>No Images in gallery';
+				}
+				content += '</div>';
+				content += '['+thumbDisplayName(dirName[elementNumber])+']';
+				content += '</div>';
+			}
+			else if (type == 'img')
+			{
+				content = '<div onclick="openImageView('+elementNumber+', false)" onmouseover="this.className=\'innerboximg_hover\'; fillInfo(\'img\', '+elementNumber+')" onmouseout="this.className=\'innerboximg\'; fillInfo(\'dir\', 0)" class="innerboximg"><div class="thumbimgbox"><img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+imgLink[elementNumber]+'"></div>';
+				content += thumbDisplayName(imgName[elementNumber]);
+				content += '</div>';
+			}
+			else if (type == 'file')
+			{
+				content = '<div onclick="openFile('+elementNumber+')" onmouseover="this.className=\'innerboxfile_hover\'; fillInfo(\'file\', '+elementNumber+')" onmouseout="this.className=\'innerboxfile\'; fillInfo(\'dir\', 0)" class="innerboxfile"><div class="thumbimgbox">';
+				if (fileThumb[elementNumber] != '')
+				{
+					content += '<img class="thumb" alt="" src="'+phpSelf+'?cmd=thumb&sfpg='+fileThumb[elementNumber]+'">';
+				}
+				else
+				{
+					content += '<br><br>No Preview for file';
+				}
+				content += '</div>'; 
+				content += thumbDisplayName(fileName[elementNumber]);
+				content += '</div>';
+			}
+			newdiv.innerHTML = content;
+			var boxC = document.getElementById('box_gallery');
+			boxC.appendChild(newdiv);
+		}
+
+
+		function showGallery(initOpenImage)
+		{
+			initDisplay();
+			if (initOpenImage)
+			{
+				openImageView(initOpenImage, false);
+			}
+			else
+			{
+				fillInfo('dir', 0);
+			}
+
+			if (showInfo)
+			{
+				toggleInfo(false);
+			}
+
+			var navLinks = '';
+			for (i = 1; i < navLink.length; i++)
+			{
+				if (navLink[i] != '')
+				{
+					navLinks += '<span onmouseover="this.className=\'sfpg_button_hover\';" onmouseout="this.className=\'sfpg_button_nav\';" class="sfpg_button_nav" onclick="openGallery('+i+', \'nav\')">'+navName[i]+'</span>';
+				}
+				else
+				{
+					navLinks += navName[i];
+				}
+			}
+			document.getElementById('navi').innerHTML = navLinks;
+
+			for (i = 1; i < dirLink.length; i++)
+			{
+				addElement(i, 'dir');
+			}
+
+			for (i = 1; i < imgLink.length; i++)
+			{
+				addElement(i, 'img');
+			}
+			
+			for (i = 1; i < fileLink.length; i++)
+			{
+				addElement(i, 'file');
+			}
+		}
+
+		
+
+navLink[1] = 'KiphNDVmMGNjMTYxNmRiY2M3ZmFlNzE4ZTJmY2Q3NDNlOA';
+navName[1] = 'Home';
+
+dirLink[0] = 'KiphNDVmMGNjMTYxNmRiY2M3ZmFlNzE4ZTJmY2Q3NDNlOA';
+dirName[0] = 'Home';
+dirThumb[0] = '';
+dirInfo[0] = '2015-04-16 11:25:51|0|0|0|';
+
+
+		//-->
+		</script></head><body onresize='initDisplay()' onload='showGallery(false)' class="sfpg"><div id="box_navi" class="box_navi"><table class="sfpg_disp" cellspacing="0"><tr><td class="navi"><div id="navi"></div></td></tr><tr><td class="menu"><div id="div_menu"></div></td></tr></table></div><div id="box_image" class="box_image"><table class="sfpg_disp" cellspacing="0"><tr><td class="mid"><img alt="" src="gallery.html" id="full" class="full_image" onclick="closeImageView()"></td></tr></table></div><div id="box_wait" class="box_wait"><table class="sfpg_disp" cellspacing="0"><tr><td class="mid"><div id="wait"></div></td></tr></table></div><div id="box_info" class="box_info"><table class="info" cellspacing="0"><tr><td><div id="box_inner_info"></div></td></tr></table></div><div id="box_gallery" class="box_gallery"></div><div id="box_overlay" class="box_overlay"></div></body></html>
